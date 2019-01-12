@@ -131,29 +131,72 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Administrators.cs" />
+    <Compile Include="Administrators.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\Courses.cs" />
-    <Compile Include="Models\Days.cs" />
-    <Compile Include="Models\Employees.cs" />
-    <Compile Include="Models\FieldsOfStudy.cs" />
+    <Compile Include="Courses.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Days.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FieldsOfStudy.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Groups.cs" />
-    <Compile Include="Models\GroupsOfCoursesOverview.cs" />
-    <Compile Include="Models\ModelDatabase.cs" />
+    <Compile Include="Groups.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GroupsOfCoursesOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDatabase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Semesters.cs" />
-    <Compile Include="Models\SemestersStudentsOverview.cs" />
-    <Compile Include="Models\StudentEnrollmentLog.cs" />
-    <Compile Include="Models\Students.cs" />
-    <Compile Include="Models\StudentsGroups.cs" />
-    <Compile Include="Models\StudentsGroupsOverview.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Semesters.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SemestersStudentsOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentEnrollmentLog.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Students.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentsGroups.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentsGroupsOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -164,8 +207,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ModelDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDatabase.edmx</DependentUpon>
+      <LastGenOutput>ModelDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelDatabase.edmx</DependentUpon>
+      <LastGenOutput>ModelDatabase.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="ModelDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ModelDatabase.edmx.diagram">
+      <DependentUpon>ModelDatabase.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -194,6 +254,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -207,6 +269,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

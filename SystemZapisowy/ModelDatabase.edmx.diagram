@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="999359f0f26644ce906c6bf823e208a2" Name="Diagram1">
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Administrators" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Courses" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Days" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Employees" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.FieldsOfStudy" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Groups" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Semesters" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.StudentEnrollmentLog" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Students" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.StudentsGroups" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.Users" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.GroupsOfCoursesOverview" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.SemestersStudentsOverview" Width="1.5" PointX="2.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowy.Model.StudentsGroupsOverview" Width="1.5" PointX="10.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Administr__Emplo__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Courses__FieldOf__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Courses__Semeste__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Groups__CourseId__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Groups__DayId__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Employees__UserI__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Students__FieldO__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__StudentEn__Group__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__StudentsG__Group__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Students__Semest__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__StudentEn__Index__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__Students__UserId__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="SystemZapisowy.Model.FK__StudentsG__Index__2E1BDC42" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

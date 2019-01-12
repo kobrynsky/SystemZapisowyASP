@@ -1,0 +1,1046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SystemZapisowy.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="AdministratorId" />
+          </Key>
+          <Property Name="AdministratorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="FieldOfStudyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Days">
+          <Key>
+            <PropertyRef Name="DayId" />
+          </Key>
+          <Property Name="DayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="money" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FieldsOfStudy">
+          <Key>
+            <PropertyRef Name="FieldOfStudyId" />
+          </Key>
+          <Property Name="FieldOfStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
+          <Property Name="DayId" Type="int" Nullable="false" />
+          <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaximumSeats" Type="int" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Semesters">
+          <Key>
+            <PropertyRef Name="SemesterId" />
+          </Key>
+          <Property Name="SemesterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentEnrollmentLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfOperation" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IndexNumber" />
+          </Key>
+          <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FieldOfStudyId" Type="int" Nullable="false" />
+          <Property Name="YearOfCollege" Type="int" Nullable="false" />
+          <Property Name="SemesterId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsGroups">
+          <Key>
+            <PropertyRef Name="StudentsGroupsId" />
+          </Key>
+          <Property Name="StudentsGroupsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PESEL" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SystemZapisowy.dbo.GroupsOfCoursesOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GroupsOfCoursesOverview">
+          <Key>
+            <PropertyRef Name="Course" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="StartTime" />
+            <PropertyRef Name="Teacher" />
+            <PropertyRef Name="MaximumSeats" />
+            <PropertyRef Name="OccupiedSeats" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="FieldOfStudy" />
+          </Key>
+          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
+          <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaximumSeats" Type="int" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SystemZapisowy.dbo.SemestersStudentsOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SemestersStudentsOverview">
+          <Key>
+            <PropertyRef Name="Semester" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IndexNumber" />
+            <PropertyRef Name="BirthDate" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="PESEL" />
+          </Key>
+          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PESEL" Type="numeric" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentsGroupsOverview">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IndexNumber" />
+            <PropertyRef Name="Course" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="StartTime" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Teacher" />
+            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="MaximumSeats" />
+            <PropertyRef Name="OccupiedSeats" />
+            <PropertyRef Name="Semester" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaximumSeats" Type="int" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="int" Nullable="false" />
+          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Administr__Emplo__24927208">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Courses__FieldOf__29572725">
+          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldsOfStudy">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Courses__Semeste__286302EC">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__UserI__239E4DCF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__CourseId__2A4B4B5E">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__DayId__2B3F6F97">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="DayId" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="DayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEn__Group__2D27B809">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="StudentEnrollmentLog">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEn__Index__2C3393D0">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IndexNumber" />
+            </Principal>
+            <Dependent Role="StudentEnrollmentLog">
+              <PropertyRef Name="IndexNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__FieldO__267ABA7A">
+          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldsOfStudy">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__Semest__276EDEB3">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__UserId__25869641">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentsG__Group__2F10007B">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="StudentsGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentsG__Index__2E1BDC42">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IndexNumber" />
+            </Principal>
+            <Dependent Role="StudentsGroups">
+              <PropertyRef Name="IndexNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SystemZapisowyModelStoreContainer">
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Days" EntityType="Self.Days" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FieldsOfStudy" EntityType="Self.FieldsOfStudy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semesters" EntityType="Self.Semesters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEnrollmentLog" EntityType="Self.StudentEnrollmentLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentsGroups" EntityType="Self.StudentsGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupsOfCoursesOverview" EntityType="Self.GroupsOfCoursesOverview" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GroupsOfCoursesOverview].[Course] AS [Course], 
+    [GroupsOfCoursesOverview].[Type] AS [Type], 
+    [GroupsOfCoursesOverview].[StartTime] AS [StartTime], 
+    [GroupsOfCoursesOverview].[Teacher] AS [Teacher], 
+    [GroupsOfCoursesOverview].[MaximumSeats] AS [MaximumSeats], 
+    [GroupsOfCoursesOverview].[OccupiedSeats] AS [OccupiedSeats], 
+    [GroupsOfCoursesOverview].[Day] AS [Day], 
+    [GroupsOfCoursesOverview].[FieldOfStudy] AS [FieldOfStudy]
+    FROM [dbo].[GroupsOfCoursesOverview] AS [GroupsOfCoursesOverview]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SemestersStudentsOverview" EntityType="Self.SemestersStudentsOverview" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SemestersStudentsOverview].[Semester] AS [Semester], 
+    [SemestersStudentsOverview].[FirstName] AS [FirstName], 
+    [SemestersStudentsOverview].[LastName] AS [LastName], 
+    [SemestersStudentsOverview].[IndexNumber] AS [IndexNumber], 
+    [SemestersStudentsOverview].[BirthDate] AS [BirthDate], 
+    [SemestersStudentsOverview].[Gender] AS [Gender], 
+    [SemestersStudentsOverview].[Email] AS [Email], 
+    [SemestersStudentsOverview].[PESEL] AS [PESEL]
+    FROM [dbo].[SemestersStudentsOverview] AS [SemestersStudentsOverview]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentsGroupsOverview" EntityType="Self.StudentsGroupsOverview" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentsGroupsOverview].[FirstName] AS [FirstName], 
+    [StudentsGroupsOverview].[LastName] AS [LastName], 
+    [StudentsGroupsOverview].[IndexNumber] AS [IndexNumber], 
+    [StudentsGroupsOverview].[Course] AS [Course], 
+    [StudentsGroupsOverview].[Type] AS [Type], 
+    [StudentsGroupsOverview].[StartTime] AS [StartTime], 
+    [StudentsGroupsOverview].[Day] AS [Day], 
+    [StudentsGroupsOverview].[Teacher] AS [Teacher], 
+    [StudentsGroupsOverview].[FieldOfStudy] AS [FieldOfStudy], 
+    [StudentsGroupsOverview].[MaximumSeats] AS [MaximumSeats], 
+    [StudentsGroupsOverview].[OccupiedSeats] AS [OccupiedSeats], 
+    [StudentsGroupsOverview].[Semester] AS [Semester]
+    FROM [dbo].[StudentsGroupsOverview] AS [StudentsGroupsOverview]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Administr__Emplo__24927208" Association="Self.FK__Administr__Emplo__24927208">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__FieldOf__29572725" Association="Self.FK__Courses__FieldOf__29572725">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__Semeste__286302EC" Association="Self.FK__Courses__Semeste__286302EC">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__UserI__239E4DCF" Association="Self.FK__Employees__UserI__239E4DCF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__CourseId__2A4B4B5E" Association="Self.FK__Groups__CourseId__2A4B4B5E">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__DayId__2B3F6F97" Association="Self.FK__Groups__DayId__2B3F6F97">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Group__2D27B809" Association="Self.FK__StudentEn__Group__2D27B809">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Index__2C3393D0" Association="Self.FK__StudentEn__Index__2C3393D0">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__FieldO__267ABA7A" Association="Self.FK__Students__FieldO__267ABA7A">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__Semest__276EDEB3" Association="Self.FK__Students__Semest__276EDEB3">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__UserId__25869641" Association="Self.FK__Students__UserId__25869641">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Group__2F10007B" Association="Self.FK__StudentsG__Group__2F10007B">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Index__2E1BDC42" Association="Self.FK__StudentsG__Index__2E1BDC42">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SystemZapisowy.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="AdministratorId" />
+          </Key>
+          <Property Name="AdministratorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Administr__Emplo__24927208" FromRole="Administrators" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FieldsOfStudy" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="Courses" ToRole="FieldsOfStudy" />
+          <NavigationProperty Name="Semesters" Relationship="Self.FK__Courses__Semeste__286302EC" FromRole="Courses" ToRole="Semesters" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__CourseId__2A4B4B5E" FromRole="Courses" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="Days">
+          <Key>
+            <PropertyRef Name="DayId" />
+          </Key>
+          <Property Name="DayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__DayId__2B3F6F97" FromRole="Days" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrators" Relationship="Self.FK__Administr__Emplo__24927208" FromRole="Employees" ToRole="Administrators" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Employees__UserI__239E4DCF" FromRole="Employees" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="FieldsOfStudy">
+          <Key>
+            <PropertyRef Name="FieldOfStudyId" />
+          </Key>
+          <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="FieldsOfStudy" ToRole="Courses" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__FieldO__267ABA7A" FromRole="FieldsOfStudy" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
+          <Property Name="DayId" Type="Int32" Nullable="false" />
+          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Groups__CourseId__2A4B4B5E" FromRole="Groups" ToRole="Courses" />
+          <NavigationProperty Name="Days" Relationship="Self.FK__Groups__DayId__2B3F6F97" FromRole="Groups" ToRole="Days" />
+          <NavigationProperty Name="StudentEnrollmentLog" Relationship="Self.FK__StudentEn__Group__2D27B809" FromRole="Groups" ToRole="StudentEnrollmentLog" />
+          <NavigationProperty Name="StudentsGroups" Relationship="Self.FK__StudentsG__Group__2F10007B" FromRole="Groups" ToRole="StudentsGroups" />
+        </EntityType>
+        <EntityType Name="Semesters">
+          <Key>
+            <PropertyRef Name="SemesterId" />
+          </Key>
+          <Property Name="SemesterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__Semeste__286302EC" FromRole="Semesters" ToRole="Courses" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__Semest__276EDEB3" FromRole="Semesters" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="StudentEnrollmentLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfOperation" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__StudentEn__Group__2D27B809" FromRole="StudentEnrollmentLog" ToRole="Groups" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__StudentEn__Index__2C3393D0" FromRole="StudentEnrollmentLog" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="IndexNumber" />
+          </Key>
+          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" />
+          <Property Name="YearOfCollege" Type="Int32" Nullable="false" />
+          <Property Name="SemesterId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FieldsOfStudy" Relationship="Self.FK__Students__FieldO__267ABA7A" FromRole="Students" ToRole="FieldsOfStudy" />
+          <NavigationProperty Name="Semesters" Relationship="Self.FK__Students__Semest__276EDEB3" FromRole="Students" ToRole="Semesters" />
+          <NavigationProperty Name="StudentEnrollmentLog" Relationship="Self.FK__StudentEn__Index__2C3393D0" FromRole="Students" ToRole="StudentEnrollmentLog" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Students__UserId__25869641" FromRole="Students" ToRole="Users" />
+          <NavigationProperty Name="StudentsGroups" Relationship="Self.FK__StudentsG__Index__2E1BDC42" FromRole="Students" ToRole="StudentsGroups" />
+        </EntityType>
+        <EntityType Name="StudentsGroups">
+          <Key>
+            <PropertyRef Name="StudentsGroupsId" />
+          </Key>
+          <Property Name="StudentsGroupsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__StudentsG__Group__2F10007B" FromRole="StudentsGroups" ToRole="Groups" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__StudentsG__Index__2E1BDC42" FromRole="StudentsGroups" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PESEL" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__UserI__239E4DCF" FromRole="Users" ToRole="Employees" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Students__UserId__25869641" FromRole="Users" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="GroupsOfCoursesOverview">
+          <Key>
+            <PropertyRef Name="Course" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="StartTime" />
+            <PropertyRef Name="Teacher" />
+            <PropertyRef Name="MaximumSeats" />
+            <PropertyRef Name="OccupiedSeats" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="FieldOfStudy" />
+          </Key>
+          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
+          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SemestersStudentsOverview">
+          <Key>
+            <PropertyRef Name="Semester" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IndexNumber" />
+            <PropertyRef Name="BirthDate" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="PESEL" />
+          </Key>
+          <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PESEL" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsGroupsOverview">
+          <Key>
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="IndexNumber" />
+            <PropertyRef Name="Course" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="StartTime" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Teacher" />
+            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="MaximumSeats" />
+            <PropertyRef Name="OccupiedSeats" />
+            <PropertyRef Name="Semester" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
+          <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
+          <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
+          <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Administr__Emplo__24927208">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Courses__FieldOf__29572725">
+          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldsOfStudy">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Courses__Semeste__286302EC">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__CourseId__2A4B4B5E">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__DayId__2B3F6F97">
+          <End Role="Days" Type="Self.Days" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Days">
+              <PropertyRef Name="DayId" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="DayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__UserI__239E4DCF">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__FieldO__267ABA7A">
+          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldsOfStudy">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="FieldOfStudyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEn__Group__2D27B809">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="StudentEnrollmentLog">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentsG__Group__2F10007B">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="StudentsGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__Semest__276EDEB3">
+          <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semesters">
+              <PropertyRef Name="SemesterId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentEn__Index__2C3393D0">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IndexNumber" />
+            </Principal>
+            <Dependent Role="StudentEnrollmentLog">
+              <PropertyRef Name="IndexNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Students__UserId__25869641">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StudentsG__Index__2E1BDC42">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="IndexNumber" />
+            </Principal>
+            <Dependent Role="StudentsGroups">
+              <PropertyRef Name="IndexNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SystemZapisowyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" />
+          <EntitySet Name="Days" EntityType="Self.Days" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="FieldsOfStudy" EntityType="Self.FieldsOfStudy" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" />
+          <EntitySet Name="Semesters" EntityType="Self.Semesters" />
+          <EntitySet Name="StudentEnrollmentLog" EntityType="Self.StudentEnrollmentLog" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="StudentsGroups" EntityType="Self.StudentsGroups" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="GroupsOfCoursesOverview" EntityType="Self.GroupsOfCoursesOverview" />
+          <EntitySet Name="SemestersStudentsOverview" EntityType="Self.SemestersStudentsOverview" />
+          <EntitySet Name="StudentsGroupsOverview" EntityType="Self.StudentsGroupsOverview" />
+          <AssociationSet Name="FK__Administr__Emplo__24927208" Association="Self.FK__Administr__Emplo__24927208">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__FieldOf__29572725" Association="Self.FK__Courses__FieldOf__29572725">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__Semeste__286302EC" Association="Self.FK__Courses__Semeste__286302EC">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__CourseId__2A4B4B5E" Association="Self.FK__Groups__CourseId__2A4B4B5E">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__DayId__2B3F6F97" Association="Self.FK__Groups__DayId__2B3F6F97">
+            <End Role="Days" EntitySet="Days" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__UserI__239E4DCF" Association="Self.FK__Employees__UserI__239E4DCF">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__FieldO__267ABA7A" Association="Self.FK__Students__FieldO__267ABA7A">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Group__2D27B809" Association="Self.FK__StudentEn__Group__2D27B809">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Group__2F10007B" Association="Self.FK__StudentsG__Group__2F10007B">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__Semest__276EDEB3" Association="Self.FK__Students__Semest__276EDEB3">
+            <End Role="Semesters" EntitySet="Semesters" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Index__2C3393D0" Association="Self.FK__StudentEn__Index__2C3393D0">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__UserId__25869641" Association="Self.FK__Students__UserId__25869641">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Index__2E1BDC42" Association="Self.FK__StudentsG__Index__2E1BDC42">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SystemZapisowyModelStoreContainer" CdmEntityContainer="SystemZapisowyEntities">
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Administrators">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Days">
+              <MappingFragment StoreEntitySet="Days">
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FieldsOfStudy">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.FieldsOfStudy">
+              <MappingFragment StoreEntitySet="FieldsOfStudy">
+                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Groups">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Semesters">
+              <MappingFragment StoreEntitySet="Semesters">
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEnrollmentLog">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.StudentEnrollmentLog">
+              <MappingFragment StoreEntitySet="StudentEnrollmentLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="DateOfOperation" ColumnName="DateOfOperation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+                <ScalarProperty Name="YearOfCollege" ColumnName="YearOfCollege" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsGroups">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.StudentsGroups">
+              <MappingFragment StoreEntitySet="StudentsGroups">
+                <ScalarProperty Name="StudentsGroupsId" ColumnName="StudentsGroupsId" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupsOfCoursesOverview">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.GroupsOfCoursesOverview">
+              <MappingFragment StoreEntitySet="GroupsOfCoursesOverview">
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SemestersStudentsOverview">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.SemestersStudentsOverview">
+              <MappingFragment StoreEntitySet="SemestersStudentsOverview">
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsGroupsOverview">
+            <EntityTypeMapping TypeName="SystemZapisowy.Model.StudentsGroupsOverview">
+              <MappingFragment StoreEntitySet="StudentsGroupsOverview">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
