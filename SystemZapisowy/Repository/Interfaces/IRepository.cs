@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace SystemZapisowy.Repository.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity> where TEntity : class
     {
-        IEnumerable<T> GetOverview(Func<T, bool> predicate = null);
-        T GetDetail(Func<T, bool> predicate);
-        void Add(T entity);
-        void Delete(T entity);
+        //IEnumerable<TEntity> GetOverview(Func<TEntity, bool> predicate = null);
+        //TEntity GetDetail(Func<TEntity, bool> predicate);
+
+        TEntity Get(int id);
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+
+        void Add(TEntity entity);
+        void AddRange(IEnumerable<TEntity> entities);
+
+        void Remove(TEntity entity);
+        void RemoveRange(IEnumerable<TEntity> entities);
     }
 }
 
