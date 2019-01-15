@@ -9,6 +9,8 @@ namespace SystemZapisowy.Repository.Interfaces
     {
         ICourseRepository Courses { get; }
         IUserRepository Users { get; }
+        IAdministratorRepository Administrators { get; }
+        IEmployeeRepository Employees { get; }
         int Complete();
     }
 }
