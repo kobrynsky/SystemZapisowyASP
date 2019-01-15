@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Cours>
+﻿@model IEnumerable<Course>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -6,6 +6,6 @@
 <ul>
     @foreach (var course in Model)
     {
-        <li>@course.Course</li>
+        <li>@course.Name</li>
     }
 </ul>

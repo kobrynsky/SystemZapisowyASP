@@ -139,7 +139,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Cours.cs">
+    <Compile Include="Course.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Day.cs">
@@ -183,6 +183,7 @@
     <Compile Include="Repository\Interfaces\IAdministratorRepository.cs" />
     <Compile Include="Repository\Interfaces\ICourseRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Interfaces\IStudentRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
@@ -230,6 +231,7 @@
       <DependentUpon>ModelDatabase.edmx</DependentUpon>
       <LastGenOutput>ModelDatabase.cs</LastGenOutput>
     </Content>
+    <Compile Include="Repository\StudentRepository.cs" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="ModelDatabase.edmx">

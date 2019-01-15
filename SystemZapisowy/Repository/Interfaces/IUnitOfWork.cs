@@ -11,6 +11,7 @@ namespace SystemZapisowy.Repository.Interfaces
         IUserRepository Users { get; }
         IAdministratorRepository Administrators { get; }
         IEmployeeRepository Employees { get; }
+        IStudentRepository Students { get; }
         int Complete();
     }
 }

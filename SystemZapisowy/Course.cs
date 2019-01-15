@@ -12,16 +12,16 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Cours
+    public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cours()
+        public Course()
         {
             this.Groups = new HashSet<Group>();
         }
     
         public int CourseId { get; set; }
-        public string Course { get; set; }
+        public string Name { get; set; }
         public int SemesterId { get; set; }
         public int FieldOfStudyId { get; set; }
     

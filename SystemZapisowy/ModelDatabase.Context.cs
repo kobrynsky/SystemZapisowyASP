@@ -26,7 +26,7 @@ namespace SystemZapisowy
         }
     
         public virtual DbSet<Administrator> Administrators { get; set; }
-        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Day> Days { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<FieldsOfStudy> FieldsOfStudies { get; set; }

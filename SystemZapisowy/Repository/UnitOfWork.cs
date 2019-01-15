@@ -17,12 +17,14 @@ namespace SystemZapisowy.Repository
             Users = new UserRepository(_context);
             Administrators = new AdministratorRepository(_context);
             Employees = new EmployeeRepository(_context);
+            Students = new StudentRepository(_context);
         }
 
         public ICourseRepository Courses { get; private set; }
         public IUserRepository Users { get; }
         public IAdministratorRepository Administrators { get; }
         public IEmployeeRepository Employees { get; }
+        public IStudentRepository Students { get; }
 
         public int Complete()
         {
