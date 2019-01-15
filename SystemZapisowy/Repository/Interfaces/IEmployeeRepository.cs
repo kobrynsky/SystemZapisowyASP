@@ -1,4 +1,6 @@
-﻿namespace SystemZapisowy.Repository.Interfaces
+﻿using SystemZapisowy.Models;
+
+namespace SystemZapisowy.Repository.Interfaces
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {

@@ -137,9 +137,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrator.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -147,41 +144,65 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Course.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Day.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FieldsOfStudy.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Group.cs">
+    <Compile Include="Models\Administrator.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="GroupsOfCoursesOverview.cs">
+    <Compile Include="Models\Course.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDatabase.Context.cs">
+    <Compile Include="Models\Day.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FieldsOfStudy.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Group.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupsOfCoursesOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDatabase.cs">
+    <Compile Include="Models\ModelDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDatabase.Designer.cs">
+    <Compile Include="Models\ModelDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Semester.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SemestersStudentsOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentEnrollmentLog.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentsGroup.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentsGroupsOverview.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserSessionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,29 +219,8 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="Semester.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SemestersStudentsOverview.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
-    <Compile Include="Student.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentEnrollmentLog.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsGroup.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsGroupsOverview.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-readable.css" />
@@ -233,23 +233,23 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Compile Include="Repository\StudentRepository.cs" />
-    <Content Include="ModelDatabase.Context.tt">
+    <Content Include="Models\ModelDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDatabase.edmx</DependentUpon>
       <LastGenOutput>ModelDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelDatabase.tt">
+    <Content Include="Models\ModelDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelDatabase.edmx</DependentUpon>
       <LastGenOutput>ModelDatabase.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ModelDatabase.edmx">
+    <EntityDeploy Include="Models\ModelDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelDatabase.edmx.diagram">
+    <Content Include="Models\ModelDatabase.edmx.diagram">
       <DependentUpon>ModelDatabase.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

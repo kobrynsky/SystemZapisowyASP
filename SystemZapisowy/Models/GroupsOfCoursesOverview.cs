@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Administrator
+    public partial class GroupsOfCoursesOverview
     {
-        public int AdministratorId { get; set; }
-        public int EmployeeId { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public string Course { get; set; }
+        public string Type { get; set; }
+        public System.TimeSpan StartTime { get; set; }
+        public string Teacher { get; set; }
+        public int MaximumSeats { get; set; }
+        public int OccupiedSeats { get; set; }
+        public string Day { get; set; }
+        public string FieldOfStudy { get; set; }
     }
 }

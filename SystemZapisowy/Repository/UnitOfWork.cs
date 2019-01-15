@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SystemZapisowy.Models;
 using SystemZapisowy.Repository.Interfaces;
 
 namespace SystemZapisowy.Repository

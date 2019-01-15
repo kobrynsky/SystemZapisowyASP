@@ -7,27 +7,32 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Course
+    public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Course()
+        public Student()
         {
-            this.Groups = new HashSet<Group>();
+            this.StudentEnrollmentLogs = new HashSet<StudentEnrollmentLog>();
+            this.StudentsGroups = new HashSet<StudentsGroup>();
         }
     
-        public int CourseId { get; set; }
-        public string Name { get; set; }
-        public int SemesterId { get; set; }
+        public decimal IndexNumber { get; set; }
         public int FieldOfStudyId { get; set; }
+        public int YearOfCollege { get; set; }
+        public int SemesterId { get; set; }
+        public int UserId { get; set; }
     
         public virtual FieldsOfStudy FieldsOfStudy { get; set; }
         public virtual Semester Semester { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentsGroup> StudentsGroups { get; set; }
     }
 }

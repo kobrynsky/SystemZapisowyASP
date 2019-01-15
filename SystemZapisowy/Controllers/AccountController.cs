@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;

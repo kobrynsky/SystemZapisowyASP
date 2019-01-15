@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Data.Entity;

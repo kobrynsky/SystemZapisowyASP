@@ -7,25 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Course()
         {
-            this.Administrators = new HashSet<Administrator>();
+            this.Groups = new HashSet<Group>();
         }
     
-        public int EmployeeId { get; set; }
-        public decimal Salary { get; set; }
-        public int UserId { get; set; }
+        public int CourseId { get; set; }
+        public string Name { get; set; }
+        public int SemesterId { get; set; }
+        public int FieldOfStudyId { get; set; }
     
+        public virtual FieldsOfStudy FieldsOfStudy { get; set; }
+        public virtual Semester Semester { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Administrator> Administrators { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class GroupsOfCoursesOverview
+    public partial class StudentEnrollmentLog
     {
-        public string Course { get; set; }
-        public string Type { get; set; }
-        public System.TimeSpan StartTime { get; set; }
-        public string Teacher { get; set; }
-        public int MaximumSeats { get; set; }
-        public int OccupiedSeats { get; set; }
-        public string Day { get; set; }
-        public string FieldOfStudy { get; set; }
+        public int Id { get; set; }
+        public decimal IndexNumber { get; set; }
+        public int GroupId { get; set; }
+        public string MessageText { get; set; }
+        public System.DateTime DateOfOperation { get; set; }
+    
+        public virtual Group Group { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

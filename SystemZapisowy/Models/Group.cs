@@ -7,32 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Group()
         {
-            this.Employees = new HashSet<Employee>();
-            this.Students = new HashSet<Student>();
+            this.StudentEnrollmentLogs = new HashSet<StudentEnrollmentLog>();
+            this.StudentsGroups = new HashSet<StudentsGroup>();
         }
     
-        public int UserId { get; set; }
-        public decimal PESEL { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string Gender { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int GroupId { get; set; }
+        public int CourseId { get; set; }
+        public string Type { get; set; }
+        public System.TimeSpan StartTime { get; set; }
+        public int DayId { get; set; }
+        public string Teacher { get; set; }
+        public int MaximumSeats { get; set; }
+        public int OccupiedSeats { get; set; }
     
+        public virtual Course Cours { get; set; }
+        public virtual Day Day { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<StudentsGroup> StudentsGroups { get; set; }
     }
 }

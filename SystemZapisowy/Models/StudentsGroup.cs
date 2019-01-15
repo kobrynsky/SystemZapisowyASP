@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentEnrollmentLog
+    public partial class StudentsGroup
     {
-        public int Id { get; set; }
+        public int StudentsGroupsId { get; set; }
         public decimal IndexNumber { get; set; }
         public int GroupId { get; set; }
-        public string MessageText { get; set; }
-        public System.DateTime DateOfOperation { get; set; }
     
         public virtual Group Group { get; set; }
         public virtual Student Student { get; set; }

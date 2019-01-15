@@ -7,23 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Day
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Day()
+        public Employee()
         {
-            this.Groups = new HashSet<Group>();
+            this.Administrators = new HashSet<Administrator>();
         }
     
-        public int DayId { get; set; }
-        public string Day1 { get; set; }
+        public int EmployeeId { get; set; }
+        public decimal Salary { get; set; }
+        public int UserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Administrator> Administrators { get; set; }
+        public virtual User User { get; set; }
     }
 }

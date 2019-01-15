@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemZapisowy
+namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentsGroup
+    public partial class Administrator
     {
-        public int StudentsGroupsId { get; set; }
-        public decimal IndexNumber { get; set; }
-        public int GroupId { get; set; }
+        public int AdministratorId { get; set; }
+        public int EmployeeId { get; set; }
     
-        public virtual Group Group { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }
