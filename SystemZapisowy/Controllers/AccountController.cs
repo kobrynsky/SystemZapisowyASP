@@ -5,16 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
+using SystemZapisowy.Services;
+using SystemZapisowy.Services.Interfaces;
 
 namespace SystemZapisowy.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IAccountService _accountService;
 
-        public AccountController()
+        public AccountController(IAccountService accountService)
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
+            _accountService = new AccountService();
         }
 
 
@@ -28,27 +32,24 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && _accountService.UserExistsInDatabase(user))
             {
-                var userInDatabase =
-                    _unitOfWork.Users.Find(x => x.Email.Equals(user.Email) && x.Password.Equals(user.Password)).FirstOrDefault();
-
-                    if (userInDatabase != null)
-                    {
-                      //  var isAdmin = _unitOfWork.Admins.Find(x => x.UserId == userInDatabase.UserId).FirstOrDefault();
-
-
-                        Session["UserID"] = userInDatabase.UserId.ToString();
-                        Session["UserEmail"] = userInDatabase.Email;
-                                
-
-                    //    Session["Type"] = userInDatabase.
+                var data = _accountService.GetUserSessionData(user);
+                if (data == null)
+                {
+                    ModelState.AddModelError("", "Email or password is wrong.");
+                }
+                else
+                {
+                    Session["UserID"] = data.UserId.ToString();
+                    Session["UserEmail"] = data.Email;
+                    Session["Type"] = data.Type;
                     return RedirectToAction("Index", "Home");
                 }
-                    else
-                    {
-                        ModelState.AddModelError("", "Email or passowrd is wrong.");
-                    }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Email or password is wrong.");
             }
             return View();
         }
@@ -63,6 +64,12 @@ namespace SystemZapisowy.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

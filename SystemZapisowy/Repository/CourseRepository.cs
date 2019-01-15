@@ -17,7 +17,7 @@ namespace SystemZapisowy.Repository
         {
             return SystemZapisowyEntities.Courses
                 .Include(c => c.Groups)
-                .OrderBy(c => c.Course)
+                .OrderBy(c => c.Name)
                 .Skip((pageIndex - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();

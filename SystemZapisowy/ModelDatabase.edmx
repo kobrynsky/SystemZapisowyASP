@@ -17,7 +17,7 @@
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SemesterId" Type="int" Nullable="false" />
           <Property Name="FieldOfStudyId" Type="int" Nullable="false" />
         </EntityType>
@@ -452,12 +452,12 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Administr__Emplo__24927208" FromRole="Administrators" ToRole="Employees" />
         </EntityType>
-        <EntityType Name="Cours">
+        <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SemesterId" Type="Int32" Nullable="false" />
           <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="FieldsOfStudy" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="Courses" ToRole="FieldsOfStudy" />
@@ -651,7 +651,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
         </Association>
         <Association Name="FK__Courses__FieldOf__29572725">
           <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
-          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FieldsOfStudy">
               <PropertyRef Name="FieldOfStudyId" />
@@ -663,7 +663,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
         </Association>
         <Association Name="FK__Courses__Semeste__286302EC">
           <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
-          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Semesters">
               <PropertyRef Name="SemesterId" />
@@ -674,7 +674,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Groups__CourseId__2A4B4B5E">
-          <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="1" />
           <End Role="Groups" Type="Self.Group" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Courses">
@@ -793,9 +793,9 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SystemZapisowyEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrators" EntityType="Self.Administrator" />
-          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="Courses" EntityType="SystemZapisowyModel.Course" />
           <EntitySet Name="Days" EntityType="Self.Day" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="FieldsOfStudies" EntityType="Self.FieldsOfStudy" />
@@ -866,7 +866,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SystemZapisowyModelStoreContainer" CdmEntityContainer="SystemZapisowyEntities1">
+        <EntityContainerMapping StorageEntityContainer="SystemZapisowyModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Administrators">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Administrator">
               <MappingFragment StoreEntitySet="Administrators">
@@ -876,10 +876,10 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="SystemZapisowyModel.Cours">
+            <EntityTypeMapping TypeName="SystemZapisowyModel.Course">
               <MappingFragment StoreEntitySet="Courses">
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
                 <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
               </MappingFragment>

@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e97082520b61406ca0f59e15ee8398bd" Name="Diagram1">
+      <Diagram DiagramId="ae97f12da0a04d4fa8718d2d1d2d5303" Name="Diagram1">
         <EntityTypeShape EntityType="SystemZapisowyModel.Administrator" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Cours" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Course" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="SystemZapisowyModel.Day" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SystemZapisowyModel.Employee" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="SystemZapisowyModel.FieldsOfStudy" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />

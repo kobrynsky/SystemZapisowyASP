@@ -30,7 +30,7 @@ namespace SystemZapisowy
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
     
-        public virtual Course Course { get; set; }
+        public virtual Course Cours { get; set; }
         public virtual Day Day { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
