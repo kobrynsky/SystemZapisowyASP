@@ -12,21 +12,18 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Semesters
+    public partial class Day
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Semesters()
+        public Day()
         {
-            this.Courses = new HashSet<Courses>();
-            this.Students = new HashSet<Students>();
+            this.Groups = new HashSet<Group>();
         }
     
-        public int SemesterId { get; set; }
-        public string Semester { get; set; }
+        public int DayId { get; set; }
+        public string Day1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Courses> Courses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Students> Students { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

@@ -131,20 +131,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrators.cs">
+    <Compile Include="Administrator.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Courses.cs">
+    <Compile Include="Cours.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Days.cs">
+    <Compile Include="Day.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employees.cs">
+    <Compile Include="Employee.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="FieldsOfStudy.cs">
@@ -153,7 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Groups.cs">
+    <Compile Include="Group.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="GroupsOfCoursesOverview.cs">
@@ -179,27 +180,29 @@
     <Compile Include="Repository\Interfaces\ICourseRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
-    <Compile Include="Semesters.cs">
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Semester.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="SemestersStudentsOverview.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>ModelDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="StudentEnrollmentLog.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Students.cs">
-      <DependentUpon>ModelDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentsGroups.cs">
+    <Compile Include="StudentsGroup.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentsGroupsOverview.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs">
+    <Compile Include="User.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -258,6 +261,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\LoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

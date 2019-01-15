@@ -14,9 +14,11 @@ namespace SystemZapisowy.Repository
         {
             _context = context;
             Courses = new CourseRepository(_context);
+            Users = new UserRepository(_context);
         }
 
         public ICourseRepository Courses { get; private set; }
+        public IUserRepository Users { get; }
 
         public int Complete()
         {

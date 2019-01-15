@@ -12,18 +12,20 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Days
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Days()
+        public Employee()
         {
-            this.Groups = new HashSet<Groups>();
+            this.Administrators = new HashSet<Administrator>();
         }
     
-        public int DayId { get; set; }
-        public string Day { get; set; }
+        public int EmployeeId { get; set; }
+        public decimal Salary { get; set; }
+        public int UserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Groups> Groups { get; set; }
+        public virtual ICollection<Administrator> Administrators { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Groups
+    public partial class Group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Groups()
+        public Group()
         {
-            this.StudentEnrollmentLog = new HashSet<StudentEnrollmentLog>();
-            this.StudentsGroups = new HashSet<StudentsGroups>();
+            this.StudentEnrollmentLogs = new HashSet<StudentEnrollmentLog>();
+            this.StudentsGroups = new HashSet<StudentsGroup>();
         }
     
         public int GroupId { get; set; }
@@ -30,11 +30,11 @@ namespace SystemZapisowy
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
     
-        public virtual Courses Courses { get; set; }
-        public virtual Days Days { get; set; }
+        public virtual Cours Cours { get; set; }
+        public virtual Day Day { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLog { get; set; }
+        public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentsGroups> StudentsGroups { get; set; }
+        public virtual ICollection<StudentsGroup> StudentsGroups { get; set; }
     }
 }

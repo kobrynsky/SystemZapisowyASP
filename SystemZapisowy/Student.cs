@@ -12,26 +12,27 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Student()
         {
-            this.Employees = new HashSet<Employees>();
-            this.Students = new HashSet<Students>();
+            this.StudentEnrollmentLogs = new HashSet<StudentEnrollmentLog>();
+            this.StudentsGroups = new HashSet<StudentsGroup>();
         }
     
+        public decimal IndexNumber { get; set; }
+        public int FieldOfStudyId { get; set; }
+        public int YearOfCollege { get; set; }
+        public int SemesterId { get; set; }
         public int UserId { get; set; }
-        public decimal PESEL { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public System.DateTime BirthDate { get; set; }
-        public string Gender { get; set; }
-        public string Email { get; set; }
     
+        public virtual FieldsOfStudy FieldsOfStudy { get; set; }
+        public virtual Semester Semester { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Students> Students { get; set; }
+        public virtual ICollection<StudentsGroup> StudentsGroups { get; set; }
     }
 }

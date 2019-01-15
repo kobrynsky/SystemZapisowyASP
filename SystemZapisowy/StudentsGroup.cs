@@ -12,13 +12,13 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentsGroups
+    public partial class StudentsGroup
     {
         public int StudentsGroupsId { get; set; }
         public decimal IndexNumber { get; set; }
         public int GroupId { get; set; }
     
-        public virtual Groups Groups { get; set; }
-        public virtual Students Students { get; set; }
+        public virtual Group Group { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

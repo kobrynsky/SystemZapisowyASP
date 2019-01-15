@@ -5,8 +5,8 @@ using System.Web;
 
 namespace SystemZapisowy.Repository.Interfaces
 {
-    public interface ICourseRepository : IRepository<Courses>
+    public interface ICourseRepository : IRepository<Cours>
     {
-        IEnumerable<Courses> GetCoursesWithGroups(int pageIndex, int pageSize);
+        IEnumerable<Cours> GetCoursesWithGroups(int pageIndex, int pageSize);
     }
 }

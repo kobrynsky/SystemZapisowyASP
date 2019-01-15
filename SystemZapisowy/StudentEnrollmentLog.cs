@@ -20,7 +20,7 @@ namespace SystemZapisowy
         public string MessageText { get; set; }
         public System.DateTime DateOfOperation { get; set; }
     
-        public virtual Groups Groups { get; set; }
-        public virtual Students Students { get; set; }
+        public virtual Group Group { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

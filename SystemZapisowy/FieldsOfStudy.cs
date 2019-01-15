@@ -17,16 +17,16 @@ namespace SystemZapisowy
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FieldsOfStudy()
         {
-            this.Courses = new HashSet<Courses>();
-            this.Students = new HashSet<Students>();
+            this.Courses = new HashSet<Cours>();
+            this.Students = new HashSet<Student>();
         }
     
         public int FieldOfStudyId { get; set; }
         public string FieldOfStudy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Courses> Courses { get; set; }
+        public virtual ICollection<Cours> Courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Students> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

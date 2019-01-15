@@ -7,13 +7,13 @@ using SystemZapisowy.Repository.Interfaces;
 
 namespace SystemZapisowy.Repository
 {
-    public class CourseRepository : Repository<Courses>, ICourseRepository
+    public class CourseRepository : Repository<Cours>, ICourseRepository
     {
         public CourseRepository(SystemZapisowyEntities context) : base(context)
         {
         }
 
-        public IEnumerable<Courses> GetCoursesWithGroups(int pageIndex, int pageSize = 10)
+        public IEnumerable<Cours> GetCoursesWithGroups(int pageIndex, int pageSize = 10)
         {
             return SystemZapisowyEntities.Courses
                 .Include(c => c.Groups)

@@ -8,6 +8,7 @@ namespace SystemZapisowy.Repository.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         ICourseRepository Courses { get; }
+        IUserRepository Users { get; }
         int Complete();
     }
 }

@@ -25,19 +25,19 @@ namespace SystemZapisowy
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Administrators> Administrators { get; set; }
-        public virtual DbSet<Courses> Courses { get; set; }
-        public virtual DbSet<Days> Days { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
-        public virtual DbSet<FieldsOfStudy> FieldsOfStudy { get; set; }
-        public virtual DbSet<Groups> Groups { get; set; }
-        public virtual DbSet<Semesters> Semesters { get; set; }
-        public virtual DbSet<StudentEnrollmentLog> StudentEnrollmentLog { get; set; }
-        public virtual DbSet<Students> Students { get; set; }
-        public virtual DbSet<StudentsGroups> StudentsGroups { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<GroupsOfCoursesOverview> GroupsOfCoursesOverview { get; set; }
-        public virtual DbSet<SemestersStudentsOverview> SemestersStudentsOverview { get; set; }
-        public virtual DbSet<StudentsGroupsOverview> StudentsGroupsOverview { get; set; }
+        public virtual DbSet<Administrator> Administrators { get; set; }
+        public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<Day> Days { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<FieldsOfStudy> FieldsOfStudies { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Semester> Semesters { get; set; }
+        public virtual DbSet<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<StudentsGroup> StudentsGroups { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<GroupsOfCoursesOverview> GroupsOfCoursesOverviews { get; set; }
+        public virtual DbSet<SemestersStudentsOverview> SemestersStudentsOverviews { get; set; }
+        public virtual DbSet<StudentsGroupsOverview> StudentsGroupsOverviews { get; set; }
     }
 }

@@ -12,20 +12,22 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class Cours
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employees()
+        public Cours()
         {
-            this.Administrators = new HashSet<Administrators>();
+            this.Groups = new HashSet<Group>();
         }
     
-        public int EmployeeId { get; set; }
-        public decimal Salary { get; set; }
-        public int UserId { get; set; }
+        public int CourseId { get; set; }
+        public string Course { get; set; }
+        public int SemesterId { get; set; }
+        public int FieldOfStudyId { get; set; }
     
+        public virtual FieldsOfStudy FieldsOfStudy { get; set; }
+        public virtual Semester Semester { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Administrators> Administrators { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
     }
 }

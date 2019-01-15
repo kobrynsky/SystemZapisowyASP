@@ -12,11 +12,11 @@ namespace SystemZapisowy
     using System;
     using System.Collections.Generic;
     
-    public partial class Administrators
+    public partial class Administrator
     {
         public int AdministratorId { get; set; }
         public int EmployeeId { get; set; }
     
-        public virtual Employees Employees { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }
