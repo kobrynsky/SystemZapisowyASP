@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SystemZapisowy.Models
+﻿namespace SystemZapisowy.Models
 {
     public class UserSessionData
     {
