@@ -4,11 +4,17 @@ namespace SystemZapisowy.Repository.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        ICourseRepository Courses { get; }
-        IUserRepository Users { get; }
         IAdministratorRepository Administrators { get; }
+        ICourseRepository Courses { get; }
+        IDayRepository Days { get; }
         IEmployeeRepository Employees { get; }
+        IFieldsOfStudyRepository FieldsOfStudyRepository { get; }
+        IGroupRepository Groups { get; }
+        ISemesterRepository Semesters { get; }
+        IStudentEnrollmentLogRepository Logs { get; }
         IStudentRepository Students { get; }
+        IStudentsGroupRepository StudentsGroup { get; }
+        IUserRepository Users { get; }
         int Complete();
     }
 }
