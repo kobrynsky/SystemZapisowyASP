@@ -32,15 +32,15 @@ namespace SystemZapisowy.Controllers
             if (ModelState.IsValid && _accountService.UserExistsInDatabase(user))
             {
                 var data = _accountService.GetUserSessionData(user);
-                if (data == null)
+                if (data.Item1.Equals(""))
                 {
                     ModelState.AddModelError("", "Email or password is wrong.");
                 }
                 else
                 {
-                    Session["UserID"] = data.UserId.ToString();
-                    Session["UserEmail"] = data.Email;
-                    Session["Type"] = data.Type;
+                    Session["UserID"] = data.Item1;
+                    Session["UserEmail"] = data.Item2;
+                    Session["Type"] = data.Item3;
                     return RedirectToAction("Index", "Home");
                 }
             }

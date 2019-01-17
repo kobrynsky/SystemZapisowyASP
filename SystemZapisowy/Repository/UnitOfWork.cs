@@ -18,8 +18,9 @@ namespace SystemZapisowy.Repository
             Days = new DayRepository(_context);
             StudentsGroup = new StudentsGroupRepository(_context);
             FieldsOfStudyRepository = new FieldsOfStudyRepository(_context);
-            Groups = new GroupRepository(_context);
+            Groups = new GroupRepository(_context);   
             Semesters = new SemesterRepository(_context);
+            Logs = new StudentEnrollmentLogRepository(_context);
         }
 
         public ICourseRepository Courses { get; private set; }

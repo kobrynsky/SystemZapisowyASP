@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
@@ -16,13 +17,11 @@ namespace SystemZapisowy.Services
         }
 
 
-        public UserSessionData GetUserSessionData(User user)
+        public ValueTuple<string, string, string> GetUserSessionData(User user)
         {
             var userInDatabase =
                 _unitOfWork.Users.Find(x => x.Email.Equals(user.Email) && x.Password.Equals(user.Password))
                     .FirstOrDefault();
-
-            var data = new UserSessionData();
 
             if (userInDatabase != null)
             {
@@ -30,9 +29,7 @@ namespace SystemZapisowy.Services
                     .FirstOrDefault();
                 if (studentRole != null)
                 {
-                    data.UserId = studentRole.UserId;
-                    data.Email = userInDatabase.Email;
-                    data.Type = "Student";
+                    var data = (studentRole.UserId.ToString(), userInDatabase.Email, "Student");
                     return data;
                 }
                 else
@@ -47,22 +44,19 @@ namespace SystemZapisowy.Services
                             .FirstOrDefault();
                         if (administratorRole != null)
                         {
-                            data.UserId = employeeRole.UserId;
-                            data.Email = userInDatabase.Email;
-                            data.Type = "Administrator";
+                            var data = (employeeRole.UserId.ToString(), userInDatabase.Email, "Administrator");
                             return data;
                         }
                         else
                         {
-                            data.UserId = employeeRole.UserId;
-                            data.Email = userInDatabase.Email;
-                            data.Type = "Employee";
+                            var data = (employeeRole.UserId.ToString(), userInDatabase.Email, "Employee");
+
                             return data;
                         }
                     }
                 }
             }
-            return null;
+            return ("", "", "");
         }
 
         public bool UserExistsInDatabase(User user)

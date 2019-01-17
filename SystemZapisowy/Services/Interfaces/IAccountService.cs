@@ -1,10 +1,11 @@
-﻿using SystemZapisowy.Models;
+﻿using System;
+using SystemZapisowy.Models;
 
 namespace SystemZapisowy.Services.Interfaces
 {
     public interface IAccountService
     {
-        UserSessionData GetUserSessionData(User user);
+        ValueTuple<string, string, string> GetUserSessionData(User user);
         bool UserExistsInDatabase(User user);
     }
 }
