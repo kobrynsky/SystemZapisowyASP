@@ -8,7 +8,7 @@ namespace SystemZapisowy.Repository.Interfaces
         ICourseRepository Courses { get; }
         IDayRepository Days { get; }
         IEmployeeRepository Employees { get; }
-        IFieldsOfStudyRepository FieldsOfStudyRepository { get; }
+        IFieldsOfStudyRepository FieldsOfStudy { get; }
         IGroupRepository Groups { get; }
         ISemesterRepository Semesters { get; }
         IStudentEnrollmentLogRepository Logs { get; }

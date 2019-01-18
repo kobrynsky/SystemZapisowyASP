@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
+using SystemZapisowy.ViewModels;
 
 namespace SystemZapisowy.Services
 {
@@ -68,6 +71,40 @@ namespace SystemZapisowy.Services
             if (userInDatabase == null)
                 return false;
             return true;
+        }
+
+        public RegisterStudentViewModel GetRegisterStudentViewModelWithBasicData()
+        {
+            var semesters = _unitOfWork.Semesters.GetAll();
+            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
+
+            var semestersSelectList = semesters.Select(semester => new SelectListItem()
+            {
+                Value = semester.SemesterId.ToString(),
+                Text = semester.Semester1
+            }).ToList();
+
+            var fieldsOfStudySelectList = fieldsOfStudy.Select(fieldOfStudy => new SelectListItem()
+            {
+                Value = fieldOfStudy.FieldOfStudyId.ToString(),
+                Text = fieldOfStudy.FieldOfStudy,
+            }).ToList();
+
+            var model = new RegisterStudentViewModel()
+            {
+                FieldsOfStudy = fieldsOfStudySelectList,
+                Semesters = semestersSelectList,
+            };
+
+            return model;
+        }
+
+        public string SaveStudent(RegisterStudentViewModel viewModel)
+        {
+
+
+
+            return "XD";
         }
     }
 }

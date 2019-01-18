@@ -17,7 +17,7 @@ namespace SystemZapisowy.Repository
             Students = new StudentRepository(_context);
             Days = new DayRepository(_context);
             StudentsGroup = new StudentsGroupRepository(_context);
-            FieldsOfStudyRepository = new FieldsOfStudyRepository(_context);
+            FieldsOfStudy = new FieldsOfStudyRepository(_context);
             Groups = new GroupRepository(_context);   
             Semesters = new SemesterRepository(_context);
             Logs = new StudentEnrollmentLogRepository(_context);
@@ -29,7 +29,7 @@ namespace SystemZapisowy.Repository
         public IUserRepository Users { get; }
         public IAdministratorRepository Administrators { get; }
         public IEmployeeRepository Employees { get; }
-        public IFieldsOfStudyRepository FieldsOfStudyRepository { get; }
+        public IFieldsOfStudyRepository FieldsOfStudy { get; }
         public IGroupRepository Groups { get; }
         public ISemesterRepository Semesters { get; }
         public IStudentEnrollmentLogRepository Logs { get; }

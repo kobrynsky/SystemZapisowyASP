@@ -72,7 +72,7 @@ namespace SystemZapisowy.Controllers
 
         public ActionResult RegisterStudent()
         {
-            var viewModel = new RegisterStudentViewModel();
+            var viewModel = _accountService.GetRegisterStudentViewModelWithBasicData();
             return View(viewModel);
         }
 
@@ -80,6 +80,14 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RegisterStudent(RegisterStudentViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Something went wrong, check correctness of the data!");
+                return View();
+            }
+
+            TempData["Message"] = _accountService.SaveStudent(viewModel);
+
             return RedirectToAction("Index", "Home");
         }
 

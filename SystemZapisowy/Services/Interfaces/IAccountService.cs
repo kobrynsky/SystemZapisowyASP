@@ -1,5 +1,6 @@
 ﻿using System;
 using SystemZapisowy.Models;
+using SystemZapisowy.ViewModels;
 
 namespace SystemZapisowy.Services.Interfaces
 {
@@ -7,5 +8,7 @@ namespace SystemZapisowy.Services.Interfaces
     {
         ValueTuple<string, string, string> GetUserSessionData(User user);
         bool UserExistsInDatabase(User user);
+        RegisterStudentViewModel GetRegisterStudentViewModelWithBasicData();
+        string SaveStudent(RegisterStudentViewModel viewModel);
     }
 }
