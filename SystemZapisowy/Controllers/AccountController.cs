@@ -4,6 +4,7 @@ using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
+using SystemZapisowy.ViewModels;
 
 namespace SystemZapisowy.Controllers
 {
@@ -66,6 +67,45 @@ namespace SystemZapisowy.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult RegisterStudent()
+        {
+            var viewModel = new RegisterStudentViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterStudent(RegisterStudentViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult RegisterEmployee()
+        {
+            var viewModel = new RegisterEmployeeViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterEmployee(RegisterEmployeeViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult RegisterAdministrator()
+        {
+            var viewModel = new RegisterAdministratorViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterAdministrator(RegisterAdministratorViewModel viewModel)
+        {
             return RedirectToAction("Index", "Home");
         }
     }
