@@ -1,8 +1,47 @@
-﻿
+﻿@model IEnumerable<SystemZapisowy.Models.Group>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Courses</h2>
 
+@if (!Model.Any())
+{
+    <p>There are not any courses yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>GroupID</th>
+                <th>Course</th>
+                <th>Type</th>
+                <th>Start time</th>
+                <th>Day</th>
+                <th>Maximum seats</th>
+                <th>Occupied seats</th>
+                <th>Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    @foreach (var group in Model)
+                    {
+                        <td>@group.GroupId</td>
+                        <td>@group.Cours.Name</td>
+                        <td>@group.Type</td>
+                        <td>@group.StartTime</td>
+                        <td>@group.Day.Day1</td>
+                        <td>@group.MaximumSeats</td>
+                        <td>@group.OccupiedSeats</td>
+                        <td>@group.Teacher</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

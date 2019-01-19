@@ -153,9 +153,9 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\CoursesService.cs" />
     <Compile Include="Services\GroupsService.cs" />
-    <Compile Include="Services\Interfaces\ICourseService.cs" />
+    <Compile Include="Services\Interfaces\ICoursesService.cs" />
     <Compile Include="Services\Interfaces\IGroupsService.cs" />
     <Compile Include="ViewModels\Course\CourseOverviewViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseViewModel.cs" />

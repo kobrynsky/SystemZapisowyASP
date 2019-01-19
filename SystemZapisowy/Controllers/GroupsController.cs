@@ -35,8 +35,9 @@ namespace SystemZapisowy.Controllers
         // GET: Groups
         public ActionResult Index()
         {
-            
-            return View();
+            var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.FieldOfStudy,
+                g => g.Cours.Semester.Name);   
+            return View(model);
         }
 
         public ActionResult New()
