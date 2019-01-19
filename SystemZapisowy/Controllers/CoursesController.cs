@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -52,7 +53,7 @@ namespace SystemZapisowy.Controllers
         // GET: Course
         public ActionResult Index()
         {
-            IEnumerable<Course> model = _unitOfWork.Courses.GetAll();
+            var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.FieldOfStudy);
             return View(model);
         }
 
@@ -71,15 +72,14 @@ namespace SystemZapisowy.Controllers
 
         public ActionResult Edit(int id)
         {
-            var course = _unitOfWork.Courses.Get(id);
-            var tmp = Mapper.Map<Course, CourseViewModel>(course);
-
-            if (course == null)
+            var courseInDb = _unitOfWork.Courses.Get(id);
+          
+            if (courseInDb == null)
                 return HttpNotFound();
 
             var viewModel = new CourseFormViewModel
             {
-                Course = tmp,
+                Course = Mapper.Map<Course, CourseViewModel>(courseInDb),
                 Semesters = _unitOfWork.Semesters.GetAll(),
                 FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll()
             };

@@ -13,6 +13,12 @@ namespace SystemZapisowy.Repository.Interfaces
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
+        IEnumerable<TEntity> GetOrdered<TKey>(Expression<Func<TEntity, TKey>> predicate, bool descending = false);
+
+        IEnumerable<TEntity> GetOrdered<TKey>(Expression<Func<TEntity, TKey>> predicate,
+            Expression<Func<TEntity, TKey>> thenBy, bool firstDescending = false, bool secondDescending = false);
+
+
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
 

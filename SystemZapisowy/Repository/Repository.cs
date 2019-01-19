@@ -23,13 +23,14 @@ namespace SystemZapisowy.Repository
 
         public IEnumerable<TEntity> GetAll()
         {
-            return Context.Set<TEntity>().ToList(); 
+            return Context.Set<TEntity>().ToList();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Where(predicate);
         }
+
 
         public void Add(TEntity entity)
         {
@@ -49,6 +50,25 @@ namespace SystemZapisowy.Repository
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public IEnumerable<TEntity> GetOrdered<TKey>(Expression<Func<TEntity, TKey>> predicate, bool descending = false)
+        {
+            return descending ? Context.Set<TEntity>().OrderByDescending(predicate).ToList() : Context.Set<TEntity>().OrderBy(predicate).ToList();
+        }
+
+        public IEnumerable<TEntity> GetOrdered<TKey>(Expression<Func<TEntity, TKey>> predicate, Expression<Func<TEntity, TKey>> thenBy, bool firstDescending = false, bool secondDescending = false)
+        {
+            if (firstDescending && secondDescending)
+                return Context.Set<TEntity>().OrderByDescending(predicate).ThenByDescending(thenBy).ToList();
+
+            if (firstDescending && !secondDescending)
+                return Context.Set<TEntity>().OrderByDescending(predicate).ThenBy(thenBy).ToList();
+
+            if (!firstDescending && secondDescending)
+                return Context.Set<TEntity>().OrderBy(predicate).ThenByDescending(thenBy).ToList();
+
+            return Context.Set<TEntity>().OrderBy(predicate).ThenBy(thenBy).ToList();
         }
     }
 }
