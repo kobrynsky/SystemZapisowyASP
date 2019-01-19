@@ -23,20 +23,20 @@ else
         <tbody>
             @foreach (var course in Model)
             {
-            <tr>
-                <td>
-                    @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
-                    {
-                        @Html.ActionLink(course.Name, "Edit", "Courses", new { id = course.CourseId }, null)
-                    }
-                    else
-                    {
-                        @course.Name
-                    }
-                </td>
-                <td>@course.FieldsOfStudy.FieldOfStudy</td>
-                <td>@course.Semester.Name</td>
-            </tr>
+                <tr>
+                    <td>
+                        @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                        {
+                            @Html.ActionLink(course.Name, "Edit", "Courses", new { id = course.CourseId }, null)
+                        }
+                        else
+                        {
+                            @course.Name
+                        }
+                    </td>
+                    <td>@course.FieldsOfStudy.FieldOfStudy</td>
+                    <td>@course.Semester.Name</td>
+                </tr>
             }
         </tbody>
     </table>
