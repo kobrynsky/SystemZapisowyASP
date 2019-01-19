@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -22,9 +19,23 @@ namespace SystemZapisowy.Controllers
             _courseService = new CourseService();
         }
 
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Create(CourseViewModel course)
         {
-            return View();
+            var tmpCourse = Mapper.Map<CourseViewModel, Course>(course);
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new NewCourseViewModel
+                {
+                    Course = course,
+                    FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
+                    Semesters = _unitOfWork.Semesters.GetAll()
+                };
+                return View("New", viewModel);
+            }
+            _unitOfWork.Courses.Add(tmpCourse);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index", "Courses");
         }
 
 
@@ -37,9 +48,12 @@ namespace SystemZapisowy.Controllers
         public ActionResult New()
         {
             var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
+            var semesters = _unitOfWork.Semesters.GetAll();
             var viewModel = new NewCourseViewModel
             {
-                FieldsOfStudy = fieldsOfStudy
+                FieldsOfStudy = fieldsOfStudy,
+                Semesters = semesters
+
             };
             return View(viewModel);
         }

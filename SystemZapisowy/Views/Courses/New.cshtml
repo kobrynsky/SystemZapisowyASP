@@ -1,26 +1,30 @@
 ﻿@model SystemZapisowy.ViewModels.NewCourseViewModel
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "New course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New</h2>
+<h2>New course</h2>
 
 @using (@Html.BeginForm("Create", "Courses"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Course.Name)
         @Html.TextBoxFor(m => m.Course.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Course.Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Course.FieldOfStudyId)
-        @Html.DropDownListFor(m => m.Course.SemesterId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "FieldOfStudy"), "Select the field of study" , new { @class = "form-control" })
-        @Html.TextBoxFor(m => m.Course.FieldOfStudyId, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Course.FieldOfStudyId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "FieldOfStudy"), "Select the field of study", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Course.FieldOfStudyId)
+
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Course.SemesterId)
-        @Html.TextBoxFor(m => m.Course.SemesterId, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Course.SemesterId, new SelectList(Model.Semesters, "SemesterId", "Semester1"), "Select the semester", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Course.SemesterId)
     </div>
+    <button type="submit" class="btn btn-primary">Save</button>
 }
