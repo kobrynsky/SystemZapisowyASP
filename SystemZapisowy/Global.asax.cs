@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using SystemZapisowy.App_Start;
+using AutoMapper;
 using Unity;
 
 namespace SystemZapisowy
@@ -9,6 +11,7 @@ namespace SystemZapisowy
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             AreaRegistration.RegisterAllAreas();
             UnityConfig.RegisterTypes(new UnityContainer()); 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

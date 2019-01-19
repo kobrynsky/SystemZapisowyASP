@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SystemZapisowy.Controllers
 {
-    public class CourseController : Controller
+    public class CoursesController : Controller
     {
         // GET: Course
         public ActionResult Index()
