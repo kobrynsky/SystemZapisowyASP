@@ -106,5 +106,12 @@ namespace SystemZapisowy.Services
 
             return "XD";
         }
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    _unitOfWork.Dispose();
+        //    base.Dispose(disposing);
+        //}
+
     }
 }

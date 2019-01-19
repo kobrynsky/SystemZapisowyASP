@@ -46,10 +46,12 @@ namespace SystemZapisowy
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IAccountService, AccountService>();
+            container.RegisterType<ICourseService, CourseService>();
             container.RegisterType<IAdministratorRepository, AdministratorRepository>();
             container.RegisterType<ICourseRepository,CourseRepository>();
             container.RegisterType<IEmployeeRepository,EmployeeRepository>();
             container.RegisterType<IStudentRepository,StudentRepository>();
+            container.RegisterType<IUserRepository,UserRepository>();
             container.RegisterType<IUserRepository,UserRepository>();
         }
     }
