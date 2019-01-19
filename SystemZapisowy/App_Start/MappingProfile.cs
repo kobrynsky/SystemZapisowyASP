@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
 using SystemZapisowy.Models;
-using SystemZapisowy.ViewModels;
 using SystemZapisowy.ViewModels.Course;
-using AutoMapper;
 
 namespace SystemZapisowy.App_Start
 {
@@ -13,8 +8,11 @@ namespace SystemZapisowy.App_Start
     {
         public MappingProfile()
         {
+            // Models to ViewModels
             Mapper.CreateMap<Course, CourseViewModel>();
 
+
+            // ViewModels to Models
             Mapper.CreateMap<CourseViewModel, Course>();
         }
     }

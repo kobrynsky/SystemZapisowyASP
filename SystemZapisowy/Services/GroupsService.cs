@@ -5,14 +5,15 @@ using System.Web;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
+using SystemZapisowy.Services.Interfaces;
 
-namespace SystemZapisowy.Services.Interfaces
+namespace SystemZapisowy.Services
 {
-    public class CourseService : ICourseService
+    public class GroupsService : IGroupsService
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CourseService()
+        public GroupsService()
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
         }

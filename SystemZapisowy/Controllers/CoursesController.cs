@@ -15,7 +15,7 @@ namespace SystemZapisowy.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICourseService _courseService;
 
-        public CoursesController(ICourseService accountService)
+        public CoursesController(ICourseService courseService)
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
             _courseService = new CourseService();
