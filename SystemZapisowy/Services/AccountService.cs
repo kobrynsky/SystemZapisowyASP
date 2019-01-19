@@ -81,7 +81,7 @@ namespace SystemZapisowy.Services
             var semestersSelectList = semesters.Select(semester => new SelectListItem()
             {
                 Value = semester.SemesterId.ToString(),
-                Text = semester.Semester1
+                Text = semester.Name
             }).ToList();
 
             var fieldsOfStudySelectList = fieldsOfStudy.Select(fieldOfStudy => new SelectListItem()

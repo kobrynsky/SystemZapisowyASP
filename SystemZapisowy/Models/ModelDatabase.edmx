@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SystemZapisowyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SystemZapisowyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrators">
           <Key>
             <PropertyRef Name="AdministratorId" />
@@ -61,7 +61,7 @@
             <PropertyRef Name="SemesterId" />
           </Key>
           <Property Name="SemesterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentEnrollmentLog">
           <Key>
@@ -178,7 +178,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <Property Name="OccupiedSeats" Type="int" Nullable="false" />
           <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Administr__Emplo__24927208">
+        <Association Name="FK__Administr__Emplo__5DCAEF64">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +190,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__FieldOf__29572725">
+        <Association Name="FK__Courses__FieldOf__628FA481">
           <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
           <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +202,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__Semeste__286302EC">
+        <Association Name="FK__Courses__Semeste__619B8048">
           <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
           <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
           <ReferentialConstraint>
@@ -214,7 +214,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__UserI__239E4DCF">
+        <Association Name="FK__Employees__UserI__5CD6CB2B">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +226,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Groups__CourseId__2A4B4B5E">
+        <Association Name="FK__Groups__CourseId__6383C8BA">
           <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
           <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -238,7 +238,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Groups__DayId__2B3F6F97">
+        <Association Name="FK__Groups__DayId__6477ECF3">
           <End Role="Days" Type="Self.Days" Multiplicity="1" />
           <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -250,7 +250,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentEn__Group__2D27B809">
+        <Association Name="FK__StudentEn__Group__66603565">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
           <ReferentialConstraint>
@@ -262,7 +262,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentEn__Index__2C3393D0">
+        <Association Name="FK__StudentEn__Index__656C112C">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
           <ReferentialConstraint>
@@ -274,7 +274,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__FieldO__267ABA7A">
+        <Association Name="FK__Students__FieldO__5FB337D6">
           <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
           <End Role="Students" Type="Self.Students" Multiplicity="*" />
           <ReferentialConstraint>
@@ -286,7 +286,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__Semest__276EDEB3">
+        <Association Name="FK__Students__Semest__60A75C0F">
           <End Role="Semesters" Type="Self.Semesters" Multiplicity="1" />
           <End Role="Students" Type="Self.Students" Multiplicity="*" />
           <ReferentialConstraint>
@@ -298,7 +298,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__UserId__25869641">
+        <Association Name="FK__Students__UserId__5EBF139D">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Students" Type="Self.Students" Multiplicity="*" />
           <ReferentialConstraint>
@@ -310,7 +310,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentsG__Group__2F10007B">
+        <Association Name="FK__StudentsG__Group__68487DD7">
           <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
           <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -322,7 +322,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentsG__Index__2E1BDC42">
+        <Association Name="FK__StudentsG__Index__6754599E">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="StudentsGroups" Type="Self.StudentsGroups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -386,61 +386,60 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     [StudentsGroupsOverview].[Semester] AS [Semester]
     FROM [dbo].[StudentsGroupsOverview] AS [StudentsGroupsOverview]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Administr__Emplo__24927208" Association="Self.FK__Administr__Emplo__24927208">
+          <AssociationSet Name="FK__Administr__Emplo__5DCAEF64" Association="Self.FK__Administr__Emplo__5DCAEF64">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Administrators" EntitySet="Administrators" />
           </AssociationSet>
-          <AssociationSet Name="FK__Courses__FieldOf__29572725" Association="Self.FK__Courses__FieldOf__29572725">
+          <AssociationSet Name="FK__Courses__FieldOf__628FA481" Association="Self.FK__Courses__FieldOf__628FA481">
             <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Courses__Semeste__286302EC" Association="Self.FK__Courses__Semeste__286302EC">
+          <AssociationSet Name="FK__Courses__Semeste__619B8048" Association="Self.FK__Courses__Semeste__619B8048">
             <End Role="Semesters" EntitySet="Semesters" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__UserI__239E4DCF" Association="Self.FK__Employees__UserI__239E4DCF">
+          <AssociationSet Name="FK__Employees__UserI__5CD6CB2B" Association="Self.FK__Employees__UserI__5CD6CB2B">
             <End Role="Users" EntitySet="Users" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Groups__CourseId__2A4B4B5E" Association="Self.FK__Groups__CourseId__2A4B4B5E">
+          <AssociationSet Name="FK__Groups__CourseId__6383C8BA" Association="Self.FK__Groups__CourseId__6383C8BA">
             <End Role="Courses" EntitySet="Courses" />
             <End Role="Groups" EntitySet="Groups" />
           </AssociationSet>
-          <AssociationSet Name="FK__Groups__DayId__2B3F6F97" Association="Self.FK__Groups__DayId__2B3F6F97">
+          <AssociationSet Name="FK__Groups__DayId__6477ECF3" Association="Self.FK__Groups__DayId__6477ECF3">
             <End Role="Days" EntitySet="Days" />
             <End Role="Groups" EntitySet="Groups" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentEn__Group__2D27B809" Association="Self.FK__StudentEn__Group__2D27B809">
+          <AssociationSet Name="FK__StudentEn__Group__66603565" Association="Self.FK__StudentEn__Group__66603565">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentEn__Index__2C3393D0" Association="Self.FK__StudentEn__Index__2C3393D0">
+          <AssociationSet Name="FK__StudentEn__Index__656C112C" Association="Self.FK__StudentEn__Index__656C112C">
             <End Role="Students" EntitySet="Students" />
             <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLog" />
           </AssociationSet>
-          <AssociationSet Name="FK__Students__FieldO__267ABA7A" Association="Self.FK__Students__FieldO__267ABA7A">
+          <AssociationSet Name="FK__Students__FieldO__5FB337D6" Association="Self.FK__Students__FieldO__5FB337D6">
             <End Role="FieldsOfStudy" EntitySet="FieldsOfStudy" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__Students__Semest__276EDEB3" Association="Self.FK__Students__Semest__276EDEB3">
+          <AssociationSet Name="FK__Students__Semest__60A75C0F" Association="Self.FK__Students__Semest__60A75C0F">
             <End Role="Semesters" EntitySet="Semesters" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__Students__UserId__25869641" Association="Self.FK__Students__UserId__25869641">
+          <AssociationSet Name="FK__Students__UserId__5EBF139D" Association="Self.FK__Students__UserId__5EBF139D">
             <End Role="Users" EntitySet="Users" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentsG__Group__2F10007B" Association="Self.FK__StudentsG__Group__2F10007B">
+          <AssociationSet Name="FK__StudentsG__Group__68487DD7" Association="Self.FK__StudentsG__Group__68487DD7">
             <End Role="Groups" EntitySet="Groups" />
             <End Role="StudentsGroups" EntitySet="StudentsGroups" />
           </AssociationSet>
-          <AssociationSet Name="FK__StudentsG__Index__2E1BDC42" Association="Self.FK__StudentsG__Index__2E1BDC42">
+          <AssociationSet Name="FK__StudentsG__Index__6754599E" Association="Self.FK__StudentsG__Index__6754599E">
             <End Role="Students" EntitySet="Students" />
             <End Role="StudentsGroups" EntitySet="StudentsGroups" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SystemZapisowyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -513,7 +512,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="SemesterId" />
           </Key>
           <Property Name="SemesterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Semester1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__Semeste__286302EC" FromRole="Semesters" ToRole="Courses" />
           <NavigationProperty Name="Students" Relationship="Self.FK__Students__Semest__276EDEB3" FromRole="Semesters" ToRole="Students" />
         </EntityType>
@@ -927,8 +926,8 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <EntitySetMapping Name="Semesters">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Semester">
               <MappingFragment StoreEntitySet="Semesters">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
-                <ScalarProperty Name="Semester1" ColumnName="Semester" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
