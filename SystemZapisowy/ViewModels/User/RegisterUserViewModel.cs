@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Security.AccessControl;
 
-namespace SystemZapisowy.ViewModels
+namespace SystemZapisowy.ViewModels.User
 {
     public class RegisterUserViewModel
     {

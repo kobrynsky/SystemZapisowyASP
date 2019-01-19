@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using SystemZapisowy.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace SystemZapisowy.ViewModels
+namespace SystemZapisowy.ViewModels.Course
 {
     public class CourseViewModel
     {

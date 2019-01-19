@@ -154,12 +154,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\Interfaces\ICourseService.cs" />
-    <Compile Include="ViewModels\CourseViewModel.cs" />
-    <Compile Include="ViewModels\NewCourseViewModel.cs" />
-    <Compile Include="ViewModels\RegisterAdministratorViewModel.cs" />
-    <Compile Include="ViewModels\RegisterEmployeeViewModel.cs" />
-    <Compile Include="ViewModels\RegisterStudentViewModel.cs" />
-    <Compile Include="ViewModels\RegisterUserViewModel.cs" />
+    <Compile Include="ViewModels\Course\CourseOverviewViewModel.cs" />
+    <Compile Include="ViewModels\Course\CourseViewModel.cs" />
+    <Compile Include="ViewModels\Course\CourseFormViewModel.cs" />
+    <Compile Include="ViewModels\User\Administrator\RegisterAdministratorViewModel.cs" />
+    <Compile Include="ViewModels\User\Employee\RegisterEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\User\Student\RegisterStudentViewModel.cs" />
+    <Compile Include="ViewModels\User\RegisterUserViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,7 +311,8 @@
     <Content Include="Views\Account\RegisterStudent.cshtml" />
     <Content Include="Views\Account\RegisterEmployee.cshtml" />
     <Content Include="Views\Account\RegisterAdministrator.cshtml" />
-    <Content Include="Views\Courses\New.cshtml" />
+    <Content Include="Views\Courses\CourseForm.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

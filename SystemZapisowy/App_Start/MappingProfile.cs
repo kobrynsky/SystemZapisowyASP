@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SystemZapisowy.Models;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.Course;
 using AutoMapper;
 
 namespace SystemZapisowy.App_Start

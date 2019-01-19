@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SystemZapisowy.Models.Course>
+@{
+    ViewBag.Title = "Courses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Courses</h2>
+
+@if (!Model.Any())
+{
+    <p>There are not any courses yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Field of study</th>
+                <th>Semester</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(course.Name, "Edit", "Courses", new { id = course.CourseId }, null)</td>
+                    <td>@course.FieldsOfStudy.FieldOfStudy</td>
+                    <td>@course.Semester.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,4 +1,4 @@
-﻿@model SystemZapisowy.ViewModels.NewCourseViewModel
+﻿@model SystemZapisowy.ViewModels.Course.CourseFormViewModel
 @{
     ViewBag.Title = "New course";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,7 @@
 
 <h2>New course</h2>
 
-@using (@Html.BeginForm("Create", "Courses"))
+@using (@Html.BeginForm("Save", "Courses"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Course.Name)
@@ -26,5 +26,6 @@
         @Html.DropDownListFor(m => m.Course.SemesterId, new SelectList(Model.Semesters, "SemesterId", "Name"), "Select the semester", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Course.SemesterId)
     </div>
+    @Html.HiddenFor(m => m.Course.CourseId)
     <button type="submit" class="btn btn-primary">Save</button>
 }

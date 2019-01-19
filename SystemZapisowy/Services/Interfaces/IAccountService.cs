@@ -1,6 +1,7 @@
 ﻿using System;
 using SystemZapisowy.Models;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.User.Student;
 
 namespace SystemZapisowy.Services.Interfaces
 {

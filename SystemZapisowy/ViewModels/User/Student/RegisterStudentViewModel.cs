@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace SystemZapisowy.ViewModels
+namespace SystemZapisowy.ViewModels.User.Student
 {
     public class RegisterStudentViewModel : RegisterUserViewModel
     {

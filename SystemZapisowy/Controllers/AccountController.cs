@@ -5,6 +5,9 @@ using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.User.Administrator;
+using SystemZapisowy.ViewModels.User.Employee;
+using SystemZapisowy.ViewModels.User.Student;
 
 namespace SystemZapisowy.Controllers
 {

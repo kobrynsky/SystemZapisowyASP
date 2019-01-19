@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
-using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.Course;
 
 namespace SystemZapisowy.Controllers
 {
@@ -20,20 +21,28 @@ namespace SystemZapisowy.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(CourseViewModel course)
+        public ActionResult Save(CourseViewModel course)
         {
-            var tmpCourse = Mapper.Map<CourseViewModel, Course>(course);
             if (!ModelState.IsValid)
             {
-                var viewModel = new NewCourseViewModel
+                var viewModel = new CourseFormViewModel
                 {
                     Course = course,
                     FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
                     Semesters = _unitOfWork.Semesters.GetAll()
                 };
-                return View("New", viewModel);
+                return View("CourseForm", viewModel);
             }
-            _unitOfWork.Courses.Add(tmpCourse);
+
+            if (course.CourseId != 0)
+            {
+                var courseInDb = _unitOfWork.Courses.Get(course.CourseId);
+                Mapper.Map(course, courseInDb);
+            }
+            else
+                _unitOfWork.Courses.Add(Mapper.Map<CourseViewModel, Course>(course));
+            
+
             _unitOfWork.Complete();
             return RedirectToAction("Index", "Courses");
         }
@@ -42,20 +51,40 @@ namespace SystemZapisowy.Controllers
         // GET: Course
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Course> model = _unitOfWork.Courses.GetAll();
+            return View(model);
         }
 
         public ActionResult New()
         {
             var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
             var semesters = _unitOfWork.Semesters.GetAll();
-            var viewModel = new NewCourseViewModel
+            var viewModel = new CourseFormViewModel
             {
                 FieldsOfStudy = fieldsOfStudy,
                 Semesters = semesters
 
             };
-            return View(viewModel);
+            return View("CourseForm", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var course = _unitOfWork.Courses.Get(id);
+            var tmp = Mapper.Map<Course, CourseViewModel>(course);
+
+            if (course == null)
+                return HttpNotFound();
+
+            var viewModel = new CourseFormViewModel
+            {
+                Course = tmp,
+                Semesters = _unitOfWork.Semesters.GetAll(),
+                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll()
+            };
+
+
+            return View("CourseForm", viewModel);
         }
     }
 }

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using SystemZapisowy.Models;
 
-namespace SystemZapisowy.ViewModels
+namespace SystemZapisowy.ViewModels.Course
 {
-    public class NewCourseViewModel
+    public class CourseOverviewViewModel
     {
         public IEnumerable<FieldsOfStudy> FieldsOfStudy { get; set; }
-        public IEnumerable<Semester> Semesters{ get; set; }
+        public IEnumerable<Semester> Semesters { get; set; }
         public CourseViewModel Course { get; set; }
     }
 }

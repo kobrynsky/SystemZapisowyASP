@@ -1,4 +1,4 @@
-﻿namespace SystemZapisowy.ViewModels
+﻿namespace SystemZapisowy.ViewModels.User.Employee
 {
     public class RegisterEmployeeViewModel : RegisterUserViewModel
     {

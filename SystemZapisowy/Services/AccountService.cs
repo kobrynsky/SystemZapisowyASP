@@ -7,6 +7,7 @@ using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.User.Student;
 
 namespace SystemZapisowy.Services
 {
