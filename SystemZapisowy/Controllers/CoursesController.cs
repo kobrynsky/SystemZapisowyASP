@@ -21,6 +21,7 @@ namespace SystemZapisowy.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(CourseViewModel course)
         {
             if (!ModelState.IsValid)
