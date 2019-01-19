@@ -6,7 +6,7 @@ using SystemZapisowy.Models;
 
 namespace SystemZapisowy.Services.Interfaces
 {
-    public interface ICourseService
+    public interface ICoursesService
     {
         
     }

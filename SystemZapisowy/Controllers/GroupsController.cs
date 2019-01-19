@@ -16,12 +16,12 @@ namespace SystemZapisowy.Controllers
     public class GroupsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IGroupsService _courseService;
+        private readonly IGroupsService _groupsService;
 
         public GroupsController(IGroupsService groupsService)
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
-            _courseService = new GroupsService();
+            _groupsService = new GroupsService();
         }
 
         [HttpPost]

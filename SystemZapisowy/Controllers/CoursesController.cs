@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
+using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels.Course;
 
@@ -13,12 +14,12 @@ namespace SystemZapisowy.Controllers
     public class CoursesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ICourseService _courseService;
+        private readonly ICoursesService _coursesService;
 
-        public CoursesController(ICourseService courseService)
+        public CoursesController(ICoursesService coursesService)
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
-            _courseService = new CourseService();
+            _coursesService = new CoursesService();
         }
 
         [HttpPost]
