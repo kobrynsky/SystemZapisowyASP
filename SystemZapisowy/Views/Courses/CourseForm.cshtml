@@ -15,7 +15,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Course.FieldOfStudyId)
-        @Html.DropDownListFor(m => m.Course.FieldOfStudyId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "FieldOfStudy"), "Select the field of study", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Course.FieldOfStudyId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "Name"), "Select the field of study", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Course.FieldOfStudyId)
 
     </div>

@@ -22,7 +22,7 @@ namespace SystemZapisowy.Models
         public System.TimeSpan StartTime { get; set; }
         public string Day { get; set; }
         public string Teacher { get; set; }
-        public string FieldOfStudy { get; set; }
+        public string Name { get; set; }
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
         public string Semester { get; set; }

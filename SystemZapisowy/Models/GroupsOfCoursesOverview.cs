@@ -21,6 +21,6 @@ namespace SystemZapisowy.Models
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
         public string Day { get; set; }
-        public string FieldOfStudy { get; set; }
+        public string Name { get; set; }
     }
 }

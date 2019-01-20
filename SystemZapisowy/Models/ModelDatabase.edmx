@@ -41,7 +41,7 @@
             <PropertyRef Name="FieldOfStudyId" />
           </Key>
           <Property Name="FieldOfStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
@@ -115,7 +115,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.GroupsOfCoursesOverview' does n
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="Day" />
-            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
@@ -124,7 +124,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.GroupsOfCoursesOverview' does n
           <Property Name="MaximumSeats" Type="int" Nullable="false" />
           <Property Name="OccupiedSeats" Type="int" Nullable="false" />
           <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SystemZapisowy.dbo.SemestersStudentsOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -160,7 +160,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="Day" />
             <PropertyRef Name="Teacher" />
-            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="Name" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="Semester" />
@@ -173,7 +173,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
           <Property Name="Day" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="FieldOfStudy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MaximumSeats" Type="int" Nullable="false" />
           <Property Name="OccupiedSeats" Type="int" Nullable="false" />
           <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
@@ -355,7 +355,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     [GroupsOfCoursesOverview].[MaximumSeats] AS [MaximumSeats], 
     [GroupsOfCoursesOverview].[OccupiedSeats] AS [OccupiedSeats], 
     [GroupsOfCoursesOverview].[Day] AS [Day], 
-    [GroupsOfCoursesOverview].[FieldOfStudy] AS [FieldOfStudy]
+    [GroupsOfCoursesOverview].[Name] AS [Name]
     FROM [dbo].[GroupsOfCoursesOverview] AS [GroupsOfCoursesOverview]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SemestersStudentsOverview" EntityType="Self.SemestersStudentsOverview" store:Type="Views" store:Schema="dbo">
@@ -380,7 +380,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     [StudentsGroupsOverview].[StartTime] AS [StartTime], 
     [StudentsGroupsOverview].[Day] AS [Day], 
     [StudentsGroupsOverview].[Teacher] AS [Teacher], 
-    [StudentsGroupsOverview].[FieldOfStudy] AS [FieldOfStudy], 
+    [StudentsGroupsOverview].[Name] AS [Name], 
     [StudentsGroupsOverview].[MaximumSeats] AS [MaximumSeats], 
     [StudentsGroupsOverview].[OccupiedSeats] AS [OccupiedSeats], 
     [StudentsGroupsOverview].[Semester] AS [Semester]
@@ -486,7 +486,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="FieldOfStudyId" />
           </Key>
           <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="FieldsOfStudy" ToRole="Courses" />
           <NavigationProperty Name="Students" Relationship="Self.FK__Students__FieldO__267ABA7A" FromRole="FieldsOfStudy" ToRole="Students" />
         </EntityType>
@@ -577,7 +577,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="Day" />
-            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
@@ -586,7 +586,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
           <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
           <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="SemestersStudentsOverview">
           <Key>
@@ -618,7 +618,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="Day" />
             <PropertyRef Name="Teacher" />
-            <PropertyRef Name="FieldOfStudy" />
+            <PropertyRef Name="Name" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="Semester" />
@@ -631,7 +631,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
           <Property Name="Day" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FieldOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
           <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
           <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
@@ -905,7 +905,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <EntityTypeMapping TypeName="SystemZapisowyModel.FieldsOfStudy">
               <MappingFragment StoreEntitySet="FieldsOfStudy">
                 <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
-                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -986,7 +986,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
                 <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
                 <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1015,7 +1015,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="Teacher" ColumnName="Teacher" />
-                <ScalarProperty Name="FieldOfStudy" ColumnName="FieldOfStudy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
                 <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
                 <ScalarProperty Name="Semester" ColumnName="Semester" />
