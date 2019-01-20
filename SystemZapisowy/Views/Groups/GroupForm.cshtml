@@ -49,7 +49,7 @@ new ListItem {Text = "18:55", Value = "18:55"}
 
     <div class="form-group">
         @Html.LabelFor(m => m.DayId)
-        @Html.DropDownListFor(m => m.DayId, new SelectList(Model.Days, "DayId", "Day1"), "Select day", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.DayId, new SelectList(Model.Days, "DayId", "DayName"), "Select day", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.DayId)
     </div>
 

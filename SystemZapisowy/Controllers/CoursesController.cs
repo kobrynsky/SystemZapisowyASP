@@ -40,7 +40,7 @@ namespace SystemZapisowy.Controllers
         // GET: Course
         public ActionResult Index()
         {
-            var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.FieldOfStudy);
+            var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.Name);
             return View(model);
         }
 

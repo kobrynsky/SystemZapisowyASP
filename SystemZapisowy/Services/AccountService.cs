@@ -88,7 +88,7 @@ namespace SystemZapisowy.Services
             var fieldsOfStudySelectList = fieldsOfStudy.Select(fieldOfStudy => new SelectListItem()
             {
                 Value = fieldOfStudy.FieldOfStudyId.ToString(),
-                Text = fieldOfStudy.FieldOfStudy,
+                Text = fieldOfStudy.Name,
             }).ToList();
 
             var model = new RegisterStudentViewModel()
