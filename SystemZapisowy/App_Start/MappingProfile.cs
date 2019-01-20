@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SystemZapisowy.Models;
 using SystemZapisowy.ViewModels.Course;
+using SystemZapisowy.ViewModels.Group;
 
 namespace SystemZapisowy.App_Start
 {
@@ -10,10 +11,12 @@ namespace SystemZapisowy.App_Start
         {
             // Models to ViewModels
             Mapper.CreateMap<Course, CourseViewModel>();
+            Mapper.CreateMap<Group, GroupFormViewModel>();
 
 
             // ViewModels to Models
             Mapper.CreateMap<CourseViewModel, Course>();
+            Mapper.CreateMap<GroupFormViewModel, Group>();
         }
     }
 }

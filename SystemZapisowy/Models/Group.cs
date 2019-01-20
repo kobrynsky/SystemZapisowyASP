@@ -11,7 +11,7 @@ namespace SystemZapisowy.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,6 @@ namespace SystemZapisowy.Models
             this.StudentEnrollmentLogs = new HashSet<StudentEnrollmentLog>();
             this.StudentsGroups = new HashSet<StudentsGroup>();
         }
-    
         public int GroupId { get; set; }
         public int CourseId { get; set; }
         public string Type { get; set; }
@@ -29,7 +28,6 @@ namespace SystemZapisowy.Models
         public string Teacher { get; set; }
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
-    
         public virtual Course Cours { get; set; }
         public virtual Day Day { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

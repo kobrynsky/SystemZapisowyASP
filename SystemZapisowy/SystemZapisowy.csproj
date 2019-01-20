@@ -153,13 +153,14 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Services\CourseService.cs" />
+    <Compile Include="Services\CoursesService.cs" />
     <Compile Include="Services\GroupsService.cs" />
-    <Compile Include="Services\Interfaces\ICourseService.cs" />
+    <Compile Include="Services\Interfaces\ICoursesService.cs" />
     <Compile Include="Services\Interfaces\IGroupsService.cs" />
     <Compile Include="ViewModels\Course\CourseOverviewViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseFormViewModel.cs" />
+    <Compile Include="ViewModels\Group\GroupFormViewModel.cs" />
     <Compile Include="ViewModels\User\Administrator\RegisterAdministratorViewModel.cs" />
     <Compile Include="ViewModels\User\Employee\RegisterEmployeeViewModel.cs" />
     <Compile Include="ViewModels\User\Student\RegisterStudentViewModel.cs" />
@@ -317,7 +318,7 @@
     <Content Include="Views\Courses\CourseForm.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
-    <Content Include="Views\Groups\New.cshtml" />
+    <Content Include="Views\Groups\GroupForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
