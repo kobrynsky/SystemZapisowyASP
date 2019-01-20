@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -26,17 +24,6 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(CourseViewModel course)
         {
-            if (!ModelState.IsValid)
-            {
-                var viewModel = new CourseFormViewModel
-                {
-                    Course = course,
-                    FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
-                    Semesters = _unitOfWork.Semesters.GetAll()
-                };
-                return View("CourseForm", viewModel);
-            }
-
             if (course.CourseId != 0)
             {
                 var courseInDb = _unitOfWork.Courses.Get(course.CourseId);
@@ -44,7 +31,6 @@ namespace SystemZapisowy.Controllers
             }
             else
                 _unitOfWork.Courses.Add(Mapper.Map<CourseViewModel, Course>(course));
-            
 
             _unitOfWork.Complete();
             return RedirectToAction("Index", "Courses");
@@ -60,13 +46,10 @@ namespace SystemZapisowy.Controllers
 
         public ActionResult New()
         {
-            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
-            var semesters = _unitOfWork.Semesters.GetAll();
             var viewModel = new CourseFormViewModel
             {
-                FieldsOfStudy = fieldsOfStudy,
-                Semesters = semesters
-
+                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
+                Semesters = _unitOfWork.Semesters.GetAll()
             };
             return View("CourseForm", viewModel);
         }
@@ -74,7 +57,7 @@ namespace SystemZapisowy.Controllers
         public ActionResult Edit(int id)
         {
             var courseInDb = _unitOfWork.Courses.Get(id);
-          
+
             if (courseInDb == null)
                 return HttpNotFound();
 

@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<SystemZapisowy.Models.Group>
 @{
-    ViewBag.Title = "Courses";
+    ViewBag.Title = "Groups";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Courses</h2>
+<h2>Groups</h2>
 
 @if (!Model.Any())
 {
-    <p>There are not any courses yet.</p>
+    <p>There are not any groups yet.</p>
 }
 else
 {
@@ -26,20 +26,17 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var course in Model)
+            @foreach (var group in Model)
             {
                 <tr>
-                    @foreach (var group in Model)
-                    {
-                        <td>@group.GroupId</td>
-                        <td>@group.Cours.Name</td>
-                        <td>@group.Type</td>
-                        <td>@group.StartTime</td>
-                        <td>@group.Day.Day1</td>
-                        <td>@group.MaximumSeats</td>
-                        <td>@group.OccupiedSeats</td>
-                        <td>@group.Teacher</td>
-                    }
+                    <td>@group.GroupId</td>
+                    <td>@group.Cours.Name</td>
+                    <td>@group.Type</td>
+                    <td>@group.StartTime</td>
+                    <td>@group.Day.Day1</td>
+                    <td>@group.MaximumSeats</td>
+                    <td>@group.OccupiedSeats</td>
+                    <td>@group.Teacher</td>
                 </tr>
             }
         </tbody>

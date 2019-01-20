@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
-using SystemZapisowy.ViewModels.Course;
-using AutoMapper;
+using SystemZapisowy.ViewModels.Group;
 
 namespace SystemZapisowy.Controllers
 {
@@ -26,8 +22,17 @@ namespace SystemZapisowy.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(CourseViewModel course)
+        public ActionResult Save(GroupFormViewModel group)
         {
+            if (group.GroupId != 0)
+            {
+                var groupInDb = _unitOfWork.Groups.Get(group.GroupId);
+                Mapper.Map(group, groupInDb);
+            }
+            else
+                _unitOfWork.Groups.Add(Mapper.Map<GroupFormViewModel, Group>(group));
+
+            _unitOfWork.Complete();
             return RedirectToAction("Index", "Groups");
         }
 
@@ -36,21 +41,36 @@ namespace SystemZapisowy.Controllers
         public ActionResult Index()
         {
             var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.FieldOfStudy,
-                g => g.Cours.Semester.Name);   
+                g => g.Cours.Semester.Name);
             return View(model);
         }
 
         public ActionResult New()
         {
+            var viewModel = new GroupFormViewModel
+            {
+                Courses = _unitOfWork.Courses.GetAll(),
+                Days = _unitOfWork.Days.GetAll()
+            };
 
-            //return View("GroupForm", viewModel);
-            return View();
+            return View("GroupForm", viewModel);
         }
 
         public ActionResult Edit(int id)
         {
-            //return View("GroupForm", viewModel);
-            return View();
+            var groupInDb = _unitOfWork.Groups.Get(id);
+
+            if (groupInDb == null)
+                return HttpNotFound();
+
+            var viewModel = new GroupFormViewModel()
+            {
+                Days = _unitOfWork.Days.GetAll(),
+                Courses = _unitOfWork.Courses.GetAll()
+            };
+
+            Mapper.Map(groupInDb, viewModel);
+            return View("GroupForm", viewModel);
         }
     }
 }

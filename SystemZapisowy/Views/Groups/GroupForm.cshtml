@@ -1,0 +1,77 @@
+﻿@using System.Web.UI.WebControls
+@model SystemZapisowy.ViewModels.Group.GroupFormViewModel
+@{
+    ViewBag.Title = "Group form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var listItemTypes = new List<ListItem>
+{
+new ListItem {Text = "Lecture", Value = "Lecture"},
+new ListItem {Text = "Laboratory", Value = "Laboratory"},
+new ListItem {Text = "Project", Value = "Project"}
+};
+
+
+    var listItemTimes = new List<ListItem>
+{
+new ListItem {Text = "7:30", Value = "7:30"},
+new ListItem {Text = "9:15", Value = "9:15"},
+new ListItem {Text = "11:15", Value = "11:15"},
+new ListItem {Text = "13:15", Value = "13:15"},
+new ListItem {Text = "15:15", Value = "15:15"},
+new ListItem {Text = "17:05", Value = "17:05"},
+new ListItem {Text = "18:55", Value = "18:55"}
+};
+}
+
+
+@using (@Html.BeginForm("Save", "Groups"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseId)
+        @Html.DropDownListFor(m => m.CourseId, new SelectList(Model.Courses, "CourseId", "Name"), "Select course", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Type)
+        @Html.DropDownListFor(m => m.Type, new SelectList(listItemTypes, "Value", "Text"), "Select type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Type)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartTime)
+        @Html.DropDownListFor(m => m.StartTime, new SelectList(listItemTimes, "Value", "Text"), "Select start time", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StartTime)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DayId)
+        @Html.DropDownListFor(m => m.DayId, new SelectList(Model.Days, "DayId", "Day1"), "Select day", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DayId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaximumSeats)
+        @Html.TextBoxFor(m => m.MaximumSeats, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MaximumSeats)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Teacher)
+        @Html.TextBoxFor(m => m.Teacher, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Teacher)
+    </div>
+
+
+    @Html.HiddenFor(m => m.GroupId)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
