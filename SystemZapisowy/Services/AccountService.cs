@@ -7,7 +7,10 @@ using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.User.Administrator;
+using SystemZapisowy.ViewModels.User.Employee;
 using SystemZapisowy.ViewModels.User.Student;
+using AutoMapper;
 
 namespace SystemZapisowy.Services
 {
@@ -76,43 +79,57 @@ namespace SystemZapisowy.Services
 
         public RegisterStudentViewModel GetRegisterStudentViewModelWithBasicData()
         {
-            var semesters = _unitOfWork.Semesters.GetAll();
-            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
-
-            var semestersSelectList = semesters.Select(semester => new SelectListItem()
-            {
-                Value = semester.SemesterId.ToString(),
-                Text = semester.Name
-            }).ToList();
-
-            var fieldsOfStudySelectList = fieldsOfStudy.Select(fieldOfStudy => new SelectListItem()
-            {
-                Value = fieldOfStudy.FieldOfStudyId.ToString(),
-                Text = fieldOfStudy.Name,
-            }).ToList();
-
             var model = new RegisterStudentViewModel()
             {
-                FieldsOfStudy = fieldsOfStudySelectList,
-                Semesters = semestersSelectList,
+                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
+                Semesters = _unitOfWork.Semesters.GetAll()
             };
-
             return model;
         }
 
-        public string SaveStudent(RegisterStudentViewModel viewModel)
+        public void SaveStudent(RegisterStudentViewModel viewModel)
         {
+            var user = Mapper.Map<RegisterStudentViewModel, User>(viewModel);
+            _unitOfWork.Users.Add(user);
+            _unitOfWork.Complete();
 
+            viewModel.UserId = user.UserId;
 
-
-            return "XD";
+            var student = Mapper.Map<RegisterStudentViewModel, Student>(viewModel);
+            _unitOfWork.Students.Add(student);
+            _unitOfWork.Complete();
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    _unitOfWork.Dispose();
-        //    base.Dispose(disposing);
-        //}
+        public void SaveEmployee(RegisterEmployeeViewModel viewModel)
+        {
+            var user = Mapper.Map<RegisterEmployeeViewModel, User>(viewModel);
+            _unitOfWork.Users.Add(user);
+            _unitOfWork.Complete();
 
+            viewModel.UserId = user.UserId;
+
+            var employee = Mapper.Map<RegisterEmployeeViewModel, Employee>(viewModel);
+            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Complete();
+        }
+
+        public void SaveAdministrator(RegisterAdministratorViewModel viewModel)
+        {
+            var user = Mapper.Map<RegisterAdministratorViewModel, User>(viewModel);
+            _unitOfWork.Users.Add(user);
+            _unitOfWork.Complete();
+
+            viewModel.UserId = user.UserId;
+
+            var employee = Mapper.Map<RegisterAdministratorViewModel, Employee>(viewModel);
+            _unitOfWork.Employees.Add(employee);
+            _unitOfWork.Complete();
+
+            viewModel.EmployeeId = employee.EmployeeId;
+
+            var administrator = Mapper.Map<RegisterAdministratorViewModel, Administrator>(viewModel);
+            _unitOfWork.Administrators.Add(administrator);
+            _unitOfWork.Complete();
+        }
     }
 }

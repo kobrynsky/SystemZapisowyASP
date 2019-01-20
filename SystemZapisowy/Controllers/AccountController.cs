@@ -83,14 +83,7 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RegisterStudent(RegisterStudentViewModel viewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Something went wrong, check correctness of the data!");
-                return View();
-            }
-
-            TempData["Message"] = _accountService.SaveStudent(viewModel);
-
+            _accountService.SaveStudent(viewModel);
             return RedirectToAction("Index", "Home");
         }
 
@@ -104,6 +97,7 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RegisterEmployee(RegisterEmployeeViewModel viewModel)
         {
+            _accountService.SaveEmployee(viewModel);
             return RedirectToAction("Index", "Home");
         }
 
@@ -117,15 +111,9 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RegisterAdministrator(RegisterAdministratorViewModel viewModel)
         {
+            _accountService.SaveAdministrator(viewModel);
             return RedirectToAction("Index", "Home");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            _unitOfWork.Dispose();
-            base.Dispose(disposing);
-        }
-
     }
 
 }
