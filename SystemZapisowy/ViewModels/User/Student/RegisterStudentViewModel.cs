@@ -10,10 +10,12 @@ namespace SystemZapisowy.ViewModels.User.Student
         [Required]
         [Display(Name = "Index Number")]
         [Range(000001,999999,ErrorMessage="Value must be 6 digits long")]
+        [DisplayFormat(DataFormatString = "{0}")]
         public decimal IndexNumber { get; set; }
 
         [Required]
         [Display(Name = "Year of college")]
+        [Range(1,4)]
         public int YearOfCollege { get; set; }
 
         public int UserId { get; set; }

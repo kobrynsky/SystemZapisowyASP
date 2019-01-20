@@ -7,6 +7,7 @@ namespace SystemZapisowy.ViewModels.User
     {
         [Display(Name = "PESEL")]
         [Required, RegularExpression(@"^\d{11}$", ErrorMessage = "Value must be 11 digits long")]
+        [DisplayFormat(DataFormatString = "{0}")]
         public decimal PESEL { get; set; }
 
         [Required]

@@ -1,8 +1,24 @@
-﻿@model SystemZapisowy.ViewModels.User.Student.RegisterStudentViewModel
+﻿@using System.Web.UI.WebControls
+@model SystemZapisowy.ViewModels.User.Student.RegisterStudentViewModel
 
 @{
     ViewBag.Title = "RegisterStudent";
+
+    var listItemYearsOfCollege = new List<ListItem>
+    {
+        new ListItem {Text = "I", Value = "1"},
+        new ListItem {Text = "II", Value = "2"},
+        new ListItem {Text = "III", Value = "3"},
+        new ListItem {Text = "IV", Value = "4"}
+    };
+
+
 }
+
+
+
+
+
 
 <h2>Register Student</h2>
 
@@ -16,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PESEL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PESEL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.PESEL, new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.PESEL, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -72,7 +88,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IndexNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IndexNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.IndexNumber,  new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.IndexNumber, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -88,7 +104,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.YearOfCollege, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.YearOfCollege, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.YearOfCollege, new SelectList(listItemYearsOfCollege, "Value", "Text"), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.YearOfCollege, "", new { @class = "text-danger" })
             </div>
         </div>
