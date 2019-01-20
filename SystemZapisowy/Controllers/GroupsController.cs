@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -71,6 +72,24 @@ namespace SystemZapisowy.Controllers
 
             Mapper.Map(groupInDb, viewModel);
             return View("GroupForm", viewModel);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var groupInDb = _unitOfWork.Groups.Get(id);
+            if (groupInDb.OccupiedSeats == 0)
+            {
+                _unitOfWork.Groups.Remove(groupInDb);
+                _unitOfWork.Complete();
+            }
+            else
+            {
+                ModelState.AddModelError(String.Empty, "Please make sure the group you want to delete is empty before deleting.");
+                return RedirectToAction("Index");
+                //return Content("<script language='javascript' type='text/javascript'>alert('Please make sure the group you want to delete is empty before deleting.');</script>");
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

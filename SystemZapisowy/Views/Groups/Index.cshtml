@@ -23,6 +23,10 @@ else
                 <th>Maximum seats</th>
                 <th>Occupied seats</th>
                 <th>Teacher</th>
+                @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                {
+                    <th>Management tools</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -46,6 +50,19 @@ else
                     <td>@group.MaximumSeats</td>
                     <td>@group.OccupiedSeats</td>
                     <td>@group.Teacher</td>
+                    @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                    {
+                        // tbh nie wiem jak to ładnie zrobić bez ajaxa. Powinien alert wyskoczyć, że nie można usunać grupy jak są osoby w danej grupie.
+                        if (group.OccupiedSeats == 0)
+                        {
+                            <td>@Html.ActionLink("Delete", "Delete", "Groups", new { id = group.GroupId }, new { onclick = "return confirm('Are you sure you want to delete this group?');"})</td>
+                        }
+                        else
+                        {
+                            <td>@Html.ActionLink("Delete", "Index", "Groups", null , new { onclick = "return alert('Please make sure the group is empty before deleting.');" })</td>
+                        }
+
+                    }
                 </tr>
             }
         </tbody>
