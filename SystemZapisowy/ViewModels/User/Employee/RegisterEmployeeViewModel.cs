@@ -6,6 +6,7 @@ namespace SystemZapisowy.ViewModels.User.Employee
     {
         [Required]
         [DataType(DataType.Currency)]
+        [Display(Name = "Salary")]
         public decimal Salary { get; set; }
 
         public int UserId { get; set; }
