@@ -20,7 +20,7 @@ namespace SystemZapisowy.Models
         public string Course { get; set; }
         public string Type { get; set; }
         public System.TimeSpan StartTime { get; set; }
-        public string Day { get; set; }
+        public string DayName { get; set; }
         public string Teacher { get; set; }
         public string Name { get; set; }
         public int MaximumSeats { get; set; }
