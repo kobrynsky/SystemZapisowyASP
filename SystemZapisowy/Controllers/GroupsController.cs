@@ -82,13 +82,7 @@ namespace SystemZapisowy.Controllers
                 _unitOfWork.Groups.Remove(groupInDb);
                 _unitOfWork.Complete();
             }
-            else
-            {
-                ModelState.AddModelError(String.Empty, "Please make sure the group you want to delete is empty before deleting.");
-                return RedirectToAction("Index");
-                //return Content("<script language='javascript' type='text/javascript'>alert('Please make sure the group you want to delete is empty before deleting.');</script>");
-            }
-
+            
             return RedirectToAction("Index");
         }
     }

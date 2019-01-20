@@ -71,5 +71,18 @@ namespace SystemZapisowy.Controllers
 
             return View("CourseForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            // czy jest sens drugi raz sprawdzać czy ten kurs ma jakieś grupy? Widok by nas nie puścił.
+            var courseInDb = _unitOfWork.Courses.Get(id);
+            if (courseInDb.Groups.Count == 0)
+            {
+                _unitOfWork.Courses.Remove(courseInDb);
+                _unitOfWork.Complete();
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
