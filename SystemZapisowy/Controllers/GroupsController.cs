@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
@@ -82,7 +82,21 @@ namespace SystemZapisowy.Controllers
                 _unitOfWork.Groups.Remove(groupInDb);
                 _unitOfWork.Complete();
             }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult SignUp(int id)
+        {
+            int userId = int.Parse((string)Session["UserId"]);
+
+            var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
             
+            //if(studentInDb.StudentsGroups.Contains())
+
+            _unitOfWork.StudentsGroup.SignUp(studentInDb.IndexNumber, id);
+            _unitOfWork.Complete();
+
             return RedirectToAction("Index");
         }
     }

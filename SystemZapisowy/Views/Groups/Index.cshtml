@@ -23,7 +23,7 @@ else
                 <th>Maximum seats</th>
                 <th>Occupied seats</th>
                 <th>Teacher</th>
-                @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator" || Session["Type"] == "Student")
                 {
                     <th>Management tools</th>
                 }
@@ -32,37 +32,52 @@ else
         <tbody>
             @foreach (var group in Model)
             {
-                <tr>
-                    <td>
-                        @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
-                        {
-                            @Html.ActionLink(group.GroupId.ToString(), "Edit", "Groups", new { id = group.GroupId }, null)
-                        }
-                        else
-                        {
-                            @group.GroupId
-                        }
-                    </td>
-                    <td>@group.Cours.Name</td>
-                    <td>@group.Type</td>
-                    <td>@group.StartTime</td>
-                    <td>@group.Day.DayName</td>
-                    <td>@group.MaximumSeats</td>
-                    <td>@group.OccupiedSeats</td>
-                    <td>@group.Teacher</td>
+            <tr>
+                <td>
                     @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
                     {
-                        // tbh nie wiem jak to ładnie zrobić bez ajaxa. Powinien alert wyskoczyć, że nie można usunać grupy jak są osoby w danej grupie.
-                        if (group.OccupiedSeats == 0)
-                        {
-                            <td>@Html.ActionLink("Delete", "Delete", "Groups", new { id = group.GroupId }, new { onclick = "return confirm('Are you sure you want to delete this group?');"})</td>
-                        }
-                        else
-                        {
-                            <td>@Html.ActionLink("Delete", "Index", "Groups", null , new { onclick = "return alert('Please make sure the group is empty before deleting.');" })</td>
-                        }
+                        @Html.ActionLink(group.GroupId.ToString(), "Edit", "Groups", new { id = group.GroupId }, null)
                     }
-                </tr>
+                    else
+                    {
+                        @group.GroupId
+                    }
+                </td>
+                <td>@group.Cours.Name</td>
+                <td>@group.Type</td>
+                <td>@group.StartTime</td>
+                <td>@group.Day.DayName</td>
+                <td>@group.MaximumSeats</td>
+                <td>@group.OccupiedSeats</td>
+                <td>@group.Teacher</td>
+                @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                {
+                    // tbh nie wiem jak to ładnie zrobić bez ajaxa. Powinien alert wyskoczyć, że nie można usunać grupy jak są osoby w danej grupie.
+                    if (group.OccupiedSeats == 0)
+                    {
+                        <td>@Html.ActionLink("Delete", "Delete", "Groups", new { id = group.GroupId }, new { onclick = "return confirm('Are you sure you want to delete this group?');" })</td>
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink("Delete", "Index", "Groups", null, new { onclick = "return alert('Please make sure the group is empty before deleting.');" })</td>
+                    }
+                }
+                @if (Session["Type"] == "Student")
+                {
+                    if (group.OccupiedSeats < group.MaximumSeats)
+                    {
+                        <td>@Html.ActionLink("Sign up", "SignUp", "Groups", new { id = group.GroupId }, new { onclick = "return confirm('Are you sure you want to sign up for this group?');" })</td>
+
+                    }
+                    else
+                    {
+                        // tu też zrefaktorować na jakiś ludzki sposób wyrzucania błędu. Dodatkowo powinniśmy sprawdzić czy przypadkiem student już nie jest zapisany na taki kurs
+                        // ale nie wydaje mi się, żeby sranie ifami w widoku to był dobry kod xD
+                        <td>@Html.ActionLink("Sign up", "Index", "Groups", null, new { onclick = "return alert('Sorry, this group is full.');" })</td>
+
+                    }
+                }
+            </tr>
             }
         </tbody>
     </table>

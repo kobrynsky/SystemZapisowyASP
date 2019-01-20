@@ -9,5 +9,6 @@ namespace SystemZapisowy.Repository.Interfaces
 {
     public interface IStudentsGroupRepository: IRepository<StudentsGroup>
     {
+        void SignUp(decimal indexNumber, int groupId);
     }
 }
