@@ -29,7 +29,16 @@ else
             @foreach (var group in Model)
             {
                 <tr>
-                    <td>@group.GroupId</td>
+                    <td>
+                        @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
+                        {
+                            @Html.ActionLink(group.GroupId.ToString(), "Edit", "Groups", new { id = group.GroupId }, null)
+                        }
+                        else
+                        {
+                            @group.GroupId
+                        }
+                    </td>
                     <td>@group.Cours.Name</td>
                     <td>@group.Type</td>
                     <td>@group.StartTime</td>

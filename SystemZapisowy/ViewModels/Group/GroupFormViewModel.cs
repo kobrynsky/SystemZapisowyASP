@@ -20,6 +20,7 @@ namespace SystemZapisowy.ViewModels.Group
 
         [Required]
         [Display(Name = "Start time")]
+        //[DisplayFormat(DataFormatString = "{0:hh\\:mm")]
         public System.TimeSpan StartTime { get; set; }
 
         [Display(Name = "Day")]
