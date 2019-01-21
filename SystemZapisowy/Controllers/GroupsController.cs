@@ -102,9 +102,17 @@ namespace SystemZapisowy.Controllers
 
             var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
 
-            //if(studentInDb.StudentsGroups.Contains())
+            // todo refactor
+            if (studentInDb.StudentsGroups.Any(g => g.GroupId == id  && g.IndexNumber == studentInDb.IndexNumber))
+            {
+                var studentGroup =
+                    _unitOfWork.StudentsGroup.Find(g => g.IndexNumber == studentInDb.IndexNumber && g.GroupId == id);
+                _unitOfWork.StudentsGroup.RemoveRange(studentGroup);
+                _unitOfWork.Groups.Get(id).OccupiedSeats--;
+            }
+            else
+                _unitOfWork.StudentsGroup.SignUp(studentInDb.IndexNumber, id);
 
-            _unitOfWork.StudentsGroup.SignUp(studentInDb.IndexNumber, id);
             _unitOfWork.Complete();
 
             return RedirectToAction("Index");
