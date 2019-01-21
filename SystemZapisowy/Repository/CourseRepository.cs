@@ -16,5 +16,15 @@ namespace SystemZapisowy.Repository
         {
             get { return Context as SystemZapisowyEntities;}
         }
+
+        public IEnumerable<Course> GetCoursesOfAFieldOfStudy(int fieldOfStudyId)
+        {
+            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId).OrderBy(c => c.SemesterId).ThenBy(c => c.Name).ToList();
+        }
+
+        public IEnumerable<Course> GetCoursesOfAFieldOfStudy(int fieldOfStudyId, int semesterId)
+        {
+            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId && c.SemesterId == semesterId).OrderBy(c => c.Name).ToList();
+        }
     }
 }

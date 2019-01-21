@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -40,8 +41,19 @@ namespace SystemZapisowy.Controllers
         // GET: Course
         public ActionResult Index()
         {
-            var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.Name);
-            return View(model);
+            if (Session["Type"] == "Student")
+            {
+                int userId = int.Parse((string)Session["UserId"]);
+                var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
+                var model = _unitOfWork.Courses.GetCoursesOfAFieldOfStudy(studentInDb.FieldOfStudyId,
+                    studentInDb.SemesterId);
+                return View(model);
+            }
+            else
+            {
+                var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.Name);
+                return View(model);
+            }
         }
 
         public ActionResult New()

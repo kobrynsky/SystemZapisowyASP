@@ -9,6 +9,7 @@ namespace SystemZapisowy.ViewModels.Group
         public IEnumerable<Day> Days { get; set; }
         public IEnumerable<Models.Course> Courses { get; set; }
 
+        [Display(Name = "Group Code")]
         public int GroupId { get; set; }
 
         [Display(Name = "Course")]

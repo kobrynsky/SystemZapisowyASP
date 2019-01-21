@@ -44,11 +44,9 @@ namespace SystemZapisowy.Controllers
             if (Session["Type"] == "Student")
             {
                 int userId = int.Parse((string)Session["UserId"]);
-
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
                 var model = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId);
                 return View(model);
-
             }
             else
             {
