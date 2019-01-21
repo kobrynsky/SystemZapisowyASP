@@ -45,7 +45,7 @@ namespace SystemZapisowy.Controllers
             {
                 int userId = int.Parse((string)Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-                var model = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId);
+                var model = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId, studentInDb.SemesterId);
                 return View(model);
             }
             else

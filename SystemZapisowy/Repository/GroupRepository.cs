@@ -27,7 +27,12 @@ namespace SystemZapisowy.Repository
 
         public IEnumerable<Group> GetGroupsOfAFieldOfStudy(int fieldOfStudyId)
         {
-            return Context.Set<Group>().Include(g => g.Cours).Where(g => g.Cours.FieldOfStudyId == fieldOfStudyId).OrderBy(g => g.Cours.Name).ThenBy(g => g.Type).ToList();
+            return Context.Set<Group>().Include(g => g.Cours).Where(g => g.Cours.FieldOfStudyId == fieldOfStudyId).OrderBy(g => g.Cours.SemesterId).ThenBy(g => g.Cours.Name).ThenBy(g =>g.Type).ToList();
+        }
+
+        public IEnumerable<Group> GetGroupsOfAFieldOfStudy(int fieldOfStudyId, int semesterId)
+        {
+            return Context.Set<Group>().Include(g => g.Cours).Where(g => g.Cours.FieldOfStudyId == fieldOfStudyId && g.Cours.SemesterId == semesterId).OrderBy(g => g.Cours.Name).ThenBy(g => g.Type).ToList();
         }
     }
 }

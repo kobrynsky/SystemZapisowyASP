@@ -11,5 +11,6 @@ namespace SystemZapisowy.Repository.Interfaces
     {
         IEnumerable<Group> GetGroupsOfACourse(int courseId);
         IEnumerable<Group> GetGroupsOfAFieldOfStudy(int fieldOfStudyId);
+        IEnumerable<Group> GetGroupsOfAFieldOfStudy(int fieldOfStudyId, int semesterId);
     }
 }
