@@ -19,5 +19,10 @@ namespace SystemZapisowy.Repository
         public GroupRepository(DbContext context) : base(context)
         {
         }
+
+        public IEnumerable<Group> GetGroupsOfACourse(int courseId)
+        {
+            return Context.Set<Group>().Where(g => g.CourseId == courseId);
+        }
     }
 }

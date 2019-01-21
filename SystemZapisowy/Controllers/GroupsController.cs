@@ -41,8 +41,18 @@ namespace SystemZapisowy.Controllers
         // GET: Groups
         public ActionResult Index()
         {
+            if (Session["Type"] == "Student")
+            {
+                int userId = int.Parse((string)Session["UserId"]);
+
+                var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
+                var model = _unitOfWork.Groups;
+            }
+            else
+            {
             var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.Name,
                 g => g.Cours.Semester.Name);
+            }
             return View(model);
         }
 
