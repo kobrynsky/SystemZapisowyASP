@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
+using System.Linq;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -46,14 +46,16 @@ namespace SystemZapisowy.Controllers
                 int userId = int.Parse((string)Session["UserId"]);
 
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-                var model = _unitOfWork.Groups;
+                var model = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId);
+                return View(model);
+
             }
             else
             {
-            var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.Name,
-                g => g.Cours.Semester.Name);
+                var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.Name,
+                    g => g.Cours.Semester.Name);
+                return View(model);
             }
-            return View(model);
         }
 
         public ActionResult New()
@@ -101,7 +103,7 @@ namespace SystemZapisowy.Controllers
             int userId = int.Parse((string)Session["UserId"]);
 
             var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-            
+
             //if(studentInDb.StudentsGroups.Contains())
 
             _unitOfWork.StudentsGroup.SignUp(studentInDb.IndexNumber, id);

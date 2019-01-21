@@ -24,5 +24,10 @@ namespace SystemZapisowy.Repository
         {
             return Context.Set<Group>().Where(g => g.CourseId == courseId);
         }
+
+        public IEnumerable<Group> GetGroupsOfAFieldOfStudy(int fieldOfStudyId)
+        {
+            return Context.Set<Group>().Include(g => g.Cours).Where(g => g.Cours.FieldOfStudyId == fieldOfStudyId).OrderBy(g => g.Cours.Name).ThenBy(g => g.Type).ToList();
+        }
     }
 }
