@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SystemZapisowy.Models.Course>
+﻿@model IEnumerable<SystemZapisowy.ViewModels.Course.CourseOverviewViewModel>
 @{
     ViewBag.Title = "Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,27 +25,27 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var course in Model)
+            @foreach (var viewModel in Model)
             {
             <tr>
                 <td>
                     @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
                     {
-                        @Html.ActionLink(course.CourseName, "Edit", "Courses", new { id = course.CourseId }, null)
+                        @Html.ActionLink(viewModel.CourseName, "Edit", "Courses", new { id = viewModel.CourseId }, null)
                     }
                     else
                     {
-                        @course.CourseName
+                        @viewModel.CourseName
                     }
                 </td>
-                <td>@course.FieldsOfStudy.FieldOfStudyName</td>
-                <td>@course.Semester.SemesterName</td>
+                <td>@viewModel.FieldsOfStudy.FieldOfStudyName</td>
+                <td>@viewModel.Semester.SemesterName</td>
                 @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
                 {
                     // tbh nie wiem jak to ładnie zrobić bez ajaxa. Powinien alert wyskoczyć, że nie można usunać grupy jak są osoby w danej grupie.
-                    if (course.Groups.Count == 0)
+                    if (viewModel.Groups.Count == 0)
                     {
-                        <td>@Html.ActionLink("Delete", "Delete", "Courses", new { id = course.CourseId }, new { onclick = "return confirm('Are you sure you want to delete this group?');" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", "Courses", new { id = viewModel.CourseId}, new { onclick = "return confirm('Are you sure you want to delete this group?');" })</td>
                     }
                     else
                     {

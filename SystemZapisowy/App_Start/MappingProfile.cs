@@ -14,11 +14,13 @@ namespace SystemZapisowy.App_Start
         {
             // Models to ViewModels
             Mapper.CreateMap<Course, CourseViewModel>();
+            Mapper.CreateMap<Course, CourseOverviewViewModel>();
             Mapper.CreateMap<Group, GroupFormViewModel>();
 
 
             // ViewModels to Models
             Mapper.CreateMap<CourseViewModel, Course>();
+            Mapper.CreateMap<CourseOverviewViewModel, Course>();
             Mapper.CreateMap<GroupFormViewModel, Group>();
             Mapper.CreateMap<RegisterStudentViewModel, User>();
             Mapper.CreateMap<RegisterStudentViewModel, Student>();

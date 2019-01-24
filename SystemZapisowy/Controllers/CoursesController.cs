@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
@@ -45,13 +46,16 @@ namespace SystemZapisowy.Controllers
             {
                 int userId = int.Parse((string)Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-                var model = _unitOfWork.Courses.GetCoursesOfAFieldOfStudy(studentInDb.FieldOfStudyId,
+                var coursesOfAFieldOfStudy = _unitOfWork.Courses.GetCoursesOfAFieldOfStudy(studentInDb.FieldOfStudyId,
                     studentInDb.SemesterId);
+                var model = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseOverviewViewModel>>(coursesOfAFieldOfStudy);
                 return View(model);
             }
             else
             {
-                var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.SemesterName, c => c.FieldsOfStudy.FieldOfStudyName);
+                var coursesOrdered = _unitOfWork.Courses.GetOrdered(c => c.Semester.SemesterName, c => c.FieldsOfStudy.FieldOfStudyName);
+                var model = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseOverviewViewModel>>(coursesOrdered);
+                
                 return View(model);
             }
         }

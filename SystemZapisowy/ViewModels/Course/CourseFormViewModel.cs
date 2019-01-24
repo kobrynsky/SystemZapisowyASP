@@ -7,6 +7,6 @@ namespace SystemZapisowy.ViewModels.Course
     {
         public IEnumerable<FieldsOfStudy> FieldsOfStudy { get; set; }
         public IEnumerable<Semester> Semesters{ get; set; }
-        public CourseViewModel Course { get; set; }
+        public CourseViewModel Course;
     }
 }
