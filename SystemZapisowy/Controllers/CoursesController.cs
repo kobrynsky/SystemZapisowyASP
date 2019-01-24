@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
@@ -28,15 +27,7 @@ namespace SystemZapisowy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(CourseViewModel course)
         {
-            if (course.CourseId != 0)
-            {
-                var courseInDb = _unitOfWork.Courses.Get(course.CourseId);
-                Mapper.Map(course, courseInDb);
-            }
-            else
-                _unitOfWork.Courses.Add(Mapper.Map<CourseViewModel, Course>(course));
-
-            _unitOfWork.Complete();
+            _coursesService.SaveCourse(course);
             return RedirectToAction("Index", "Courses");
         }
 
@@ -44,67 +35,28 @@ namespace SystemZapisowy.Controllers
         // GET: Course
         public ActionResult Index()
         {
-            if (Session["Type"] == "Student")
-            {
-                int userId = int.Parse((string)Session["UserId"]);
-                var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-                var coursesOfAFieldOfStudy = _unitOfWork.Courses.GetCoursesOfAFieldOfStudy(studentInDb.FieldOfStudyId,
-                    studentInDb.SemesterId);
-                var model = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseOverviewViewModel>>(coursesOfAFieldOfStudy);
-                return View(model);
-            }
-            else
-            {
-                var coursesOrdered = _unitOfWork.Courses.GetOrdered(c => c.Semester.SemesterName, c => c.FieldsOfStudy.FieldOfStudyName);
-                var model = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseOverviewViewModel>>(coursesOrdered);
-                
-                return View(model);
-            }
+            var viewModel = _coursesService.GetCoursesOverviewViewModel();
+            return View(viewModel);
         }
 
         public ActionResult New()
         {
-            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
-            var semesters = _unitOfWork.Semesters.GetAll();
-            var viewModel = new CourseFormViewModel
-            {
-                FieldsOfStudy = Mapper.Map<IEnumerable<FieldsOfStudy>, IEnumerable<FieldsOfStudyViewModel>>(fieldsOfStudy),
-                Semesters = Mapper.Map<IEnumerable<Semester>, IEnumerable<SemesterViewModel>>(semesters)
-            };
+            var viewModel = _coursesService.GetNewCourseFormViewModel();
             return View("CourseForm", viewModel);
         }
 
         public ActionResult Edit(int id)
         {
-            var courseInDb = _unitOfWork.Courses.Get(id);
+            var viewModel = _coursesService.GetEditCourseFormViewModel(id);
 
-            if (courseInDb == null)
-                return HttpNotFound();
-
-            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
-            var semesters = _unitOfWork.Semesters.GetAll();
-
-            var viewModel = new CourseFormViewModel
-            {
-                Course = Mapper.Map<Course, CourseViewModel>(courseInDb),
-                FieldsOfStudy = Mapper.Map<IEnumerable<FieldsOfStudy>, IEnumerable<FieldsOfStudyViewModel>>(fieldsOfStudy),
-                Semesters = Mapper.Map<IEnumerable<Semester>, IEnumerable<SemesterViewModel>>(semesters)
-            };
-
+            if (viewModel == null) return HttpNotFound();
 
             return View("CourseForm", viewModel);
         }
 
         public ActionResult Delete(int id)
         {
-            // Czy jest sens drugi raz sprawdzać czy ten kurs ma jakieś grupy? Widok by nas nie puścił.
-            var courseInDb = _unitOfWork.Courses.Get(id);
-            if (courseInDb.Groups.Count == 0)
-            {
-                _unitOfWork.Courses.Remove(courseInDb);
-                _unitOfWork.Complete();
-            }
-
+            _coursesService.DeleteCourse(id);
             return RedirectToAction("Index");
         }
     }
