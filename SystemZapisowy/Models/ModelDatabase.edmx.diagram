@@ -5,33 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dfabe4c487634e6ca3f9336681e4e37a" Name="Diagram1">
-        <EntityTypeShape EntityType="SystemZapisowyModel.Administrator" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Course" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Day" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Employee" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.FieldsOfStudy" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Group" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Semester" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.StudentEnrollmentLog" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.Student" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.StudentsGroup" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.User" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.GroupsOfCoursesOverview" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.SemestersStudentsOverview" Width="1.5" PointX="2.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SystemZapisowyModel.StudentsGroupsOverview" Width="1.5" PointX="10.75" PointY="8.375" IsExpanded="true" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Administr__Emplo__24927208" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Courses__FieldOf__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Courses__Semeste__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Groups__CourseId__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Groups__DayId__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Employees__UserI__239E4DCF" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Students__FieldO__267ABA7A" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__StudentEn__Group__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__StudentsG__Group__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Students__Semest__276EDEB3" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__StudentEn__Index__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__Students__UserId__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="SystemZapisowyModel.FK__StudentsG__Index__2E1BDC42" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Administrator" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Course" Width="1.5" PointX="0.75" PointY="13.5" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Day" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Employee" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.FieldsOfStudy" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Group" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Semester" Width="1.5" PointX="0.75" PointY="7.5" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.StudentEnrollmentLog" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.Student" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.StudentsGroup" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.User" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.GroupsOfCoursesOverview" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.SemestersStudentsOverview" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SystemZapisowyModel.StudentsGroupsOverview" Width="1.5" PointX="7.75" PointY="8.75" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Administr__Emplo__5DCAEF64" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Courses__FieldOf__628FA481" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Courses__Semeste__619B8048" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Groups__CourseId__6383C8BA" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Groups__DayId__6477ECF3" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Employees__UserI__5CD6CB2B" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Students__FieldO__5FB337D6" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__StudentEn__Group__66603565" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__StudentsG__Group__68487DD7" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Students__Semest__60A75C0F" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__StudentEn__Index__656C112C" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__Students__UserId__5EBF139D" />
+        <AssociationConnector Association="SystemZapisowyModel.FK__StudentsG__Index__6754599E" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

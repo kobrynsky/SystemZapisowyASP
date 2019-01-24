@@ -50,8 +50,8 @@ namespace SystemZapisowy.Controllers
             }
             else
             {
-                var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.Name,
-                    g => g.Cours.Semester.Name);
+                var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.FieldOfStudyName,
+                    g => g.Cours.Semester.SemesterName);
                 return View(model);
             }
         }

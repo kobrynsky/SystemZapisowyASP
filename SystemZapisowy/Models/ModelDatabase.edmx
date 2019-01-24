@@ -17,7 +17,7 @@
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SemesterId" Type="int" Nullable="false" />
           <Property Name="FieldOfStudyId" Type="int" Nullable="false" />
         </EntityType>
@@ -41,7 +41,7 @@
             <PropertyRef Name="FieldOfStudyId" />
           </Key>
           <Property Name="FieldOfStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldOfStudyName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Groups">
           <Key>
@@ -61,7 +61,7 @@
             <PropertyRef Name="SemesterId" />
           </Key>
           <Property Name="SemesterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentEnrollmentLog">
           <Key>
@@ -102,35 +102,35 @@
           <Property Name="BirthDate" Type="datetime" Nullable="false" />
           <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="50" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SystemZapisowy.dbo.GroupsOfCoursesOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GroupsOfCoursesOverview">
           <Key>
-            <PropertyRef Name="Course" />
+            <PropertyRef Name="CourseName" />
             <PropertyRef Name="Type" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="Teacher" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="DayName" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="FieldOfStudyName" />
           </Key>
-          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
           <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MaximumSeats" Type="int" Nullable="false" />
           <Property Name="OccupiedSeats" Type="int" Nullable="false" />
           <Property Name="DayName" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldOfStudyName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SystemZapisowy.dbo.SemestersStudentsOverview' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SemestersStudentsOverview">
           <Key>
-            <PropertyRef Name="Semester" />
+            <PropertyRef Name="SemesterName" />
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="LastName" />
             <PropertyRef Name="IndexNumber" />
@@ -139,7 +139,7 @@ warning 6002: The table/view 'SystemZapisowy.dbo.SemestersStudentsOverview' does
             <PropertyRef Name="Email" />
             <PropertyRef Name="PESEL" />
           </Key>
-          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="3" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
@@ -155,28 +155,28 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="LastName" />
             <PropertyRef Name="IndexNumber" />
-            <PropertyRef Name="Course" />
+            <PropertyRef Name="Coursename" />
             <PropertyRef Name="Type" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="DayName" />
             <PropertyRef Name="Teacher" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="FieldOfStudyName" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
-            <PropertyRef Name="Semester" />
+            <PropertyRef Name="SemesterName" />
           </Key>
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IndexNumber" Type="numeric" Precision="6" Scale="0" Nullable="false" />
-          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coursename" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="4" Nullable="false" />
           <Property Name="DayName" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Teacher" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldOfStudyName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MaximumSeats" Type="int" Nullable="false" />
           <Property Name="OccupiedSeats" Type="int" Nullable="false" />
-          <Property Name="Semester" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <Association Name="FK__Administr__Emplo__5DCAEF64">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
@@ -348,19 +348,19 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GroupsOfCoursesOverview" EntityType="Self.GroupsOfCoursesOverview" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [GroupsOfCoursesOverview].[Course] AS [Course], 
+    [GroupsOfCoursesOverview].[CourseName] AS [CourseName], 
     [GroupsOfCoursesOverview].[Type] AS [Type], 
     [GroupsOfCoursesOverview].[StartTime] AS [StartTime], 
     [GroupsOfCoursesOverview].[Teacher] AS [Teacher], 
     [GroupsOfCoursesOverview].[MaximumSeats] AS [MaximumSeats], 
     [GroupsOfCoursesOverview].[OccupiedSeats] AS [OccupiedSeats], 
     [GroupsOfCoursesOverview].[DayName] AS [DayName], 
-    [GroupsOfCoursesOverview].[Name] AS [Name]
+    [GroupsOfCoursesOverview].[FieldOfStudyName] AS [FieldOfStudyName]
     FROM [dbo].[GroupsOfCoursesOverview] AS [GroupsOfCoursesOverview]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SemestersStudentsOverview" EntityType="Self.SemestersStudentsOverview" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [SemestersStudentsOverview].[Semester] AS [Semester], 
+    [SemestersStudentsOverview].[SemesterName] AS [SemesterName], 
     [SemestersStudentsOverview].[FirstName] AS [FirstName], 
     [SemestersStudentsOverview].[LastName] AS [LastName], 
     [SemestersStudentsOverview].[IndexNumber] AS [IndexNumber], 
@@ -375,15 +375,15 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     [StudentsGroupsOverview].[FirstName] AS [FirstName], 
     [StudentsGroupsOverview].[LastName] AS [LastName], 
     [StudentsGroupsOverview].[IndexNumber] AS [IndexNumber], 
-    [StudentsGroupsOverview].[Course] AS [Course], 
+    [StudentsGroupsOverview].[Coursename] AS [Coursename], 
     [StudentsGroupsOverview].[Type] AS [Type], 
     [StudentsGroupsOverview].[StartTime] AS [StartTime], 
     [StudentsGroupsOverview].[DayName] AS [DayName], 
     [StudentsGroupsOverview].[Teacher] AS [Teacher], 
-    [StudentsGroupsOverview].[Name] AS [Name], 
+    [StudentsGroupsOverview].[FieldOfStudyName] AS [FieldOfStudyName], 
     [StudentsGroupsOverview].[MaximumSeats] AS [MaximumSeats], 
     [StudentsGroupsOverview].[OccupiedSeats] AS [OccupiedSeats], 
-    [StudentsGroupsOverview].[Semester] AS [Semester]
+    [StudentsGroupsOverview].[SemesterName] AS [SemesterName]
     FROM [dbo].[StudentsGroupsOverview] AS [StudentsGroupsOverview]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Administr__Emplo__5DCAEF64" Association="Self.FK__Administr__Emplo__5DCAEF64">
@@ -443,52 +443,120 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SystemZapisowyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SystemZapisowyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="SystemZapisowyModel.Administrator" />
+          <EntitySet Name="Courses" EntityType="SystemZapisowyModel.Course" />
+          <EntitySet Name="Days" EntityType="SystemZapisowyModel.Day" />
+          <EntitySet Name="Employees" EntityType="SystemZapisowyModel.Employee" />
+          <EntitySet Name="FieldsOfStudies" EntityType="SystemZapisowyModel.FieldsOfStudy" />
+          <EntitySet Name="Groups" EntityType="SystemZapisowyModel.Group" />
+          <EntitySet Name="Semesters" EntityType="SystemZapisowyModel.Semester" />
+          <EntitySet Name="StudentEnrollmentLogs" EntityType="SystemZapisowyModel.StudentEnrollmentLog" />
+          <EntitySet Name="Students" EntityType="SystemZapisowyModel.Student" />
+          <EntitySet Name="StudentsGroups" EntityType="SystemZapisowyModel.StudentsGroup" />
+          <EntitySet Name="Users" EntityType="SystemZapisowyModel.User" />
+          <EntitySet Name="GroupsOfCoursesOverviews" EntityType="SystemZapisowyModel.GroupsOfCoursesOverview" />
+          <EntitySet Name="SemestersStudentsOverviews" EntityType="SystemZapisowyModel.SemestersStudentsOverview" />
+          <EntitySet Name="StudentsGroupsOverviews" EntityType="SystemZapisowyModel.StudentsGroupsOverview" />
+          <AssociationSet Name="FK__Administr__Emplo__5DCAEF64" Association="SystemZapisowyModel.FK__Administr__Emplo__5DCAEF64">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Administrator" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__FieldOf__628FA481" Association="SystemZapisowyModel.FK__Courses__FieldOf__628FA481">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudies" />
+            <End Role="Cours" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Courses__Semeste__619B8048" Association="SystemZapisowyModel.FK__Courses__Semeste__619B8048">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="Cours" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__CourseId__6383C8BA" Association="SystemZapisowyModel.FK__Groups__CourseId__6383C8BA">
+            <End Role="Cours" EntitySet="Courses" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__DayId__6477ECF3" Association="SystemZapisowyModel.FK__Groups__DayId__6477ECF3">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__UserI__5CD6CB2B" Association="SystemZapisowyModel.FK__Employees__UserI__5CD6CB2B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__FieldO__5FB337D6" Association="SystemZapisowyModel.FK__Students__FieldO__5FB337D6">
+            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudies" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Group__66603565" Association="SystemZapisowyModel.FK__StudentEn__Group__66603565">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Group__68487DD7" Association="SystemZapisowyModel.FK__StudentsG__Group__68487DD7">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="StudentsGroup" EntitySet="StudentsGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__Semest__60A75C0F" Association="SystemZapisowyModel.FK__Students__Semest__60A75C0F">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentEn__Index__656C112C" Association="SystemZapisowyModel.FK__StudentEn__Index__656C112C">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Students__UserId__5EBF139D" Association="SystemZapisowyModel.FK__Students__UserId__5EBF139D">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StudentsG__Index__6754599E" Association="SystemZapisowyModel.FK__StudentsG__Index__6754599E">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentsGroup" EntitySet="StudentsGroups" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="AdministratorId" />
           </Key>
           <Property Name="AdministratorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Administr__Emplo__24927208" FromRole="Administrators" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="SystemZapisowyModel.FK__Administr__Emplo__5DCAEF64" FromRole="Administrator" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
           </Key>
           <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SemesterId" Type="Int32" Nullable="false" />
           <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FieldsOfStudy" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="Courses" ToRole="FieldsOfStudy" />
-          <NavigationProperty Name="Semester" Relationship="Self.FK__Courses__Semeste__286302EC" FromRole="Courses" ToRole="Semesters" />
-          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__CourseId__2A4B4B5E" FromRole="Courses" ToRole="Groups" />
+          <NavigationProperty Name="FieldsOfStudy" Relationship="SystemZapisowyModel.FK__Courses__FieldOf__628FA481" FromRole="Cours" ToRole="FieldsOfStudy" />
+          <NavigationProperty Name="Semester" Relationship="SystemZapisowyModel.FK__Courses__Semeste__619B8048" FromRole="Cours" ToRole="Semester" />
+          <NavigationProperty Name="Groups" Relationship="SystemZapisowyModel.FK__Groups__CourseId__6383C8BA" FromRole="Cours" ToRole="Group" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
             <PropertyRef Name="DayId" />
           </Key>
           <Property Name="DayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DayName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__DayId__2B3F6F97" FromRole="Days" ToRole="Groups" />
+          <Property Name="DayName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Groups" Relationship="SystemZapisowyModel.FK__Groups__DayId__6477ECF3" FromRole="Day" ToRole="Group" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeId" />
           </Key>
           <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Administrators" Relationship="Self.FK__Administr__Emplo__24927208" FromRole="Employees" ToRole="Administrators" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Employees__UserI__239E4DCF" FromRole="Employees" ToRole="Users" />
+          <NavigationProperty Name="Administrators" Relationship="SystemZapisowyModel.FK__Administr__Emplo__5DCAEF64" FromRole="Employee" ToRole="Administrator" />
+          <NavigationProperty Name="User" Relationship="SystemZapisowyModel.FK__Employees__UserI__5CD6CB2B" FromRole="Employee" ToRole="User" />
         </EntityType>
         <EntityType Name="FieldsOfStudy">
           <Key>
             <PropertyRef Name="FieldOfStudyId" />
           </Key>
           <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__FieldOf__29572725" FromRole="FieldsOfStudy" ToRole="Courses" />
-          <NavigationProperty Name="Students" Relationship="Self.FK__Students__FieldO__267ABA7A" FromRole="FieldsOfStudy" ToRole="Students" />
+          <Property Name="FieldOfStudyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Courses" Relationship="SystemZapisowyModel.FK__Courses__FieldOf__628FA481" FromRole="FieldsOfStudy" ToRole="Cours" />
+          <NavigationProperty Name="Students" Relationship="SystemZapisowyModel.FK__Students__FieldO__5FB337D6" FromRole="FieldsOfStudy" ToRole="Student" />
         </EntityType>
         <EntityType Name="Group">
           <Key>
@@ -496,101 +564,101 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           </Key>
           <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
           <Property Name="DayId" Type="Int32" Nullable="false" />
-          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Teacher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
           <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cours" Relationship="Self.FK__Groups__CourseId__2A4B4B5E" FromRole="Groups" ToRole="Courses" />
-          <NavigationProperty Name="Day" Relationship="Self.FK__Groups__DayId__2B3F6F97" FromRole="Groups" ToRole="Days" />
-          <NavigationProperty Name="StudentEnrollmentLogs" Relationship="Self.FK__StudentEn__Group__2D27B809" FromRole="Groups" ToRole="StudentEnrollmentLog" />
-          <NavigationProperty Name="StudentsGroups" Relationship="Self.FK__StudentsG__Group__2F10007B" FromRole="Groups" ToRole="StudentsGroups" />
+          <NavigationProperty Name="Cours" Relationship="SystemZapisowyModel.FK__Groups__CourseId__6383C8BA" FromRole="Group" ToRole="Cours" />
+          <NavigationProperty Name="Day" Relationship="SystemZapisowyModel.FK__Groups__DayId__6477ECF3" FromRole="Group" ToRole="Day" />
+          <NavigationProperty Name="StudentEnrollmentLogs" Relationship="SystemZapisowyModel.FK__StudentEn__Group__66603565" FromRole="Group" ToRole="StudentEnrollmentLog" />
+          <NavigationProperty Name="StudentsGroups" Relationship="SystemZapisowyModel.FK__StudentsG__Group__68487DD7" FromRole="Group" ToRole="StudentsGroup" />
         </EntityType>
         <EntityType Name="Semester">
           <Key>
             <PropertyRef Name="SemesterId" />
           </Key>
           <Property Name="SemesterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Courses" Relationship="Self.FK__Courses__Semeste__286302EC" FromRole="Semesters" ToRole="Courses" />
-          <NavigationProperty Name="Students" Relationship="Self.FK__Students__Semest__276EDEB3" FromRole="Semesters" ToRole="Students" />
+          <Property Name="SemesterName" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Courses" Relationship="SystemZapisowyModel.FK__Courses__Semeste__619B8048" FromRole="Semester" ToRole="Cours" />
+          <NavigationProperty Name="Students" Relationship="SystemZapisowyModel.FK__Students__Semest__60A75C0F" FromRole="Semester" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentEnrollmentLog">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="IndexNumber" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
-          <Property Name="MessageText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MessageText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfOperation" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Group" Relationship="Self.FK__StudentEn__Group__2D27B809" FromRole="StudentEnrollmentLog" ToRole="Groups" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__StudentEn__Index__2C3393D0" FromRole="StudentEnrollmentLog" ToRole="Students" />
+          <NavigationProperty Name="Group" Relationship="SystemZapisowyModel.FK__StudentEn__Group__66603565" FromRole="StudentEnrollmentLog" ToRole="Group" />
+          <NavigationProperty Name="Student" Relationship="SystemZapisowyModel.FK__StudentEn__Index__656C112C" FromRole="StudentEnrollmentLog" ToRole="Student" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="IndexNumber" />
           </Key>
-          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndexNumber" Type="Decimal" Nullable="false" Precision="6" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FieldOfStudyId" Type="Int32" Nullable="false" />
           <Property Name="YearOfCollege" Type="Int32" Nullable="false" />
           <Property Name="SemesterId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FieldsOfStudy" Relationship="Self.FK__Students__FieldO__267ABA7A" FromRole="Students" ToRole="FieldsOfStudy" />
-          <NavigationProperty Name="Semester" Relationship="Self.FK__Students__Semest__276EDEB3" FromRole="Students" ToRole="Semesters" />
-          <NavigationProperty Name="StudentEnrollmentLogs" Relationship="Self.FK__StudentEn__Index__2C3393D0" FromRole="Students" ToRole="StudentEnrollmentLog" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Students__UserId__25869641" FromRole="Students" ToRole="Users" />
-          <NavigationProperty Name="StudentsGroups" Relationship="Self.FK__StudentsG__Index__2E1BDC42" FromRole="Students" ToRole="StudentsGroups" />
+          <NavigationProperty Name="FieldsOfStudy" Relationship="SystemZapisowyModel.FK__Students__FieldO__5FB337D6" FromRole="Student" ToRole="FieldsOfStudy" />
+          <NavigationProperty Name="Semester" Relationship="SystemZapisowyModel.FK__Students__Semest__60A75C0F" FromRole="Student" ToRole="Semester" />
+          <NavigationProperty Name="StudentEnrollmentLogs" Relationship="SystemZapisowyModel.FK__StudentEn__Index__656C112C" FromRole="Student" ToRole="StudentEnrollmentLog" />
+          <NavigationProperty Name="User" Relationship="SystemZapisowyModel.FK__Students__UserId__5EBF139D" FromRole="Student" ToRole="User" />
+          <NavigationProperty Name="StudentsGroups" Relationship="SystemZapisowyModel.FK__StudentsG__Index__6754599E" FromRole="Student" ToRole="StudentsGroup" />
         </EntityType>
         <EntityType Name="StudentsGroup">
           <Key>
             <PropertyRef Name="StudentsGroupsId" />
           </Key>
           <Property Name="StudentsGroupsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="IndexNumber" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Group" Relationship="Self.FK__StudentsG__Group__2F10007B" FromRole="StudentsGroups" ToRole="Groups" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__StudentsG__Index__2E1BDC42" FromRole="StudentsGroups" ToRole="Students" />
+          <NavigationProperty Name="Group" Relationship="SystemZapisowyModel.FK__StudentsG__Group__68487DD7" FromRole="StudentsGroup" ToRole="Group" />
+          <NavigationProperty Name="Student" Relationship="SystemZapisowyModel.FK__StudentsG__Index__6754599E" FromRole="StudentsGroup" ToRole="Student" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PESEL" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PESEL" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__UserI__239E4DCF" FromRole="Users" ToRole="Employees" />
-          <NavigationProperty Name="Students" Relationship="Self.FK__Students__UserId__25869641" FromRole="Users" ToRole="Students" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="SystemZapisowyModel.FK__Employees__UserI__5CD6CB2B" FromRole="User" ToRole="Employee" />
+          <NavigationProperty Name="Students" Relationship="SystemZapisowyModel.FK__Students__UserId__5EBF139D" FromRole="User" ToRole="Student" />
         </EntityType>
         <EntityType Name="GroupsOfCoursesOverview">
           <Key>
-            <PropertyRef Name="Course" />
+            <PropertyRef Name="CourseName" />
             <PropertyRef Name="Type" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="Teacher" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
             <PropertyRef Name="DayName" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="FieldOfStudyName" />
           </Key>
-          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
-          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Teacher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
           <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
-          <Property Name="DayName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DayName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FieldOfStudyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SemestersStudentsOverview">
           <Key>
-            <PropertyRef Name="Semester" />
+            <PropertyRef Name="SemesterName" />
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="LastName" />
             <PropertyRef Name="IndexNumber" />
@@ -599,132 +667,132 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             <PropertyRef Name="Email" />
             <PropertyRef Name="PESEL" />
           </Key>
-          <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="SemesterName" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndexNumber" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
           <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PESEL" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PESEL" Type="Decimal" Nullable="false" Precision="11" Scale="0" />
         </EntityType>
         <EntityType Name="StudentsGroupsOverview">
           <Key>
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="LastName" />
             <PropertyRef Name="IndexNumber" />
-            <PropertyRef Name="Course" />
+            <PropertyRef Name="Coursename" />
             <PropertyRef Name="Type" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="DayName" />
             <PropertyRef Name="Teacher" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="FieldOfStudyName" />
             <PropertyRef Name="MaximumSeats" />
             <PropertyRef Name="OccupiedSeats" />
-            <PropertyRef Name="Semester" />
+            <PropertyRef Name="SemesterName" />
           </Key>
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IndexNumber" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
-          <Property Name="Course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndexNumber" Type="Decimal" Nullable="false" Precision="6" Scale="0" />
+          <Property Name="Coursename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="StartTime" Type="Time" Nullable="false" Precision="4" />
-          <Property Name="DayName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DayName" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Teacher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FieldOfStudyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaximumSeats" Type="Int32" Nullable="false" />
           <Property Name="OccupiedSeats" Type="Int32" Nullable="false" />
-          <Property Name="Semester" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SemesterName" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__Administr__Emplo__24927208">
-          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Administrators" Type="Self.Administrator" Multiplicity="*" />
+        <Association Name="FK__Administr__Emplo__5DCAEF64">
+          <End Type="SystemZapisowyModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Administrator" Role="Administrator" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employees">
+            <Principal Role="Employee">
               <PropertyRef Name="EmployeeId" />
             </Principal>
-            <Dependent Role="Administrators">
+            <Dependent Role="Administrator">
               <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__FieldOf__29572725">
-          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
-          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="*" />
+        <Association Name="FK__Courses__FieldOf__628FA481">
+          <End Type="SystemZapisowyModel.FieldsOfStudy" Role="FieldsOfStudy" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Course" Role="Cours" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FieldsOfStudy">
               <PropertyRef Name="FieldOfStudyId" />
             </Principal>
-            <Dependent Role="Courses">
+            <Dependent Role="Cours">
               <PropertyRef Name="FieldOfStudyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Courses__Semeste__286302EC">
-          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
-          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="*" />
+        <Association Name="FK__Courses__Semeste__619B8048">
+          <End Type="SystemZapisowyModel.Semester" Role="Semester" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Course" Role="Cours" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Semesters">
+            <Principal Role="Semester">
               <PropertyRef Name="SemesterId" />
             </Principal>
-            <Dependent Role="Courses">
+            <Dependent Role="Cours">
               <PropertyRef Name="SemesterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Groups__CourseId__2A4B4B5E">
-          <End Role="Courses" Type="SystemZapisowyModel.Course" Multiplicity="1" />
-          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+        <Association Name="FK__Groups__CourseId__6383C8BA">
+          <End Type="SystemZapisowyModel.Course" Role="Cours" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Group" Role="Group" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Courses">
+            <Principal Role="Cours">
               <PropertyRef Name="CourseId" />
             </Principal>
-            <Dependent Role="Groups">
+            <Dependent Role="Group">
               <PropertyRef Name="CourseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Groups__DayId__2B3F6F97">
-          <End Role="Days" Type="Self.Day" Multiplicity="1" />
-          <End Role="Groups" Type="Self.Group" Multiplicity="*" />
+        <Association Name="FK__Groups__DayId__6477ECF3">
+          <End Type="SystemZapisowyModel.Day" Role="Day" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Group" Role="Group" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Days">
+            <Principal Role="Day">
               <PropertyRef Name="DayId" />
             </Principal>
-            <Dependent Role="Groups">
+            <Dependent Role="Group">
               <PropertyRef Name="DayId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__UserI__239E4DCF">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
+        <Association Name="FK__Employees__UserI__5CD6CB2B">
+          <End Type="SystemZapisowyModel.User" Role="User" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Employees">
+            <Dependent Role="Employee">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__FieldO__267ABA7A">
-          <End Role="FieldsOfStudy" Type="Self.FieldsOfStudy" Multiplicity="1" />
-          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+        <Association Name="FK__Students__FieldO__5FB337D6">
+          <End Type="SystemZapisowyModel.FieldsOfStudy" Role="FieldsOfStudy" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Student" Role="Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="FieldsOfStudy">
               <PropertyRef Name="FieldOfStudyId" />
             </Principal>
-            <Dependent Role="Students">
+            <Dependent Role="Student">
               <PropertyRef Name="FieldOfStudyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentEn__Group__2D27B809">
-          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
-          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+        <Association Name="FK__StudentEn__Group__66603565">
+          <End Type="SystemZapisowyModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.StudentEnrollmentLog" Role="StudentEnrollmentLog" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Groups">
+            <Principal Role="Group">
               <PropertyRef Name="GroupId" />
             </Principal>
             <Dependent Role="StudentEnrollmentLog">
@@ -732,35 +800,35 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentsG__Group__2F10007B">
-          <End Role="Groups" Type="Self.Group" Multiplicity="1" />
-          <End Role="StudentsGroups" Type="Self.StudentsGroup" Multiplicity="*" />
+        <Association Name="FK__StudentsG__Group__68487DD7">
+          <End Type="SystemZapisowyModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.StudentsGroup" Role="StudentsGroup" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Groups">
+            <Principal Role="Group">
               <PropertyRef Name="GroupId" />
             </Principal>
-            <Dependent Role="StudentsGroups">
+            <Dependent Role="StudentsGroup">
               <PropertyRef Name="GroupId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__Semest__276EDEB3">
-          <End Role="Semesters" Type="Self.Semester" Multiplicity="1" />
-          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+        <Association Name="FK__Students__Semest__60A75C0F">
+          <End Type="SystemZapisowyModel.Semester" Role="Semester" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Student" Role="Student" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Semesters">
+            <Principal Role="Semester">
               <PropertyRef Name="SemesterId" />
             </Principal>
-            <Dependent Role="Students">
+            <Dependent Role="Student">
               <PropertyRef Name="SemesterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentEn__Index__2C3393D0">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentEnrollmentLog" Type="Self.StudentEnrollmentLog" Multiplicity="*" />
+        <Association Name="FK__StudentEn__Index__656C112C">
+          <End Type="SystemZapisowyModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.StudentEnrollmentLog" Role="StudentEnrollmentLog" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
+            <Principal Role="Student">
               <PropertyRef Name="IndexNumber" />
             </Principal>
             <Dependent Role="StudentEnrollmentLog">
@@ -768,98 +836,30 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Students__UserId__25869641">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Students" Type="Self.Student" Multiplicity="*" />
+        <Association Name="FK__Students__UserId__5EBF139D">
+          <End Type="SystemZapisowyModel.User" Role="User" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.Student" Role="Student" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Students">
+            <Dependent Role="Student">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__StudentsG__Index__2E1BDC42">
-          <End Role="Students" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentsGroups" Type="Self.StudentsGroup" Multiplicity="*" />
+        <Association Name="FK__StudentsG__Index__6754599E">
+          <End Type="SystemZapisowyModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SystemZapisowyModel.StudentsGroup" Role="StudentsGroup" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Students">
+            <Principal Role="Student">
               <PropertyRef Name="IndexNumber" />
             </Principal>
-            <Dependent Role="StudentsGroups">
+            <Dependent Role="StudentsGroup">
               <PropertyRef Name="IndexNumber" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SystemZapisowyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Administrators" EntityType="Self.Administrator" />
-          <EntitySet Name="Courses" EntityType="SystemZapisowyModel.Course" />
-          <EntitySet Name="Days" EntityType="Self.Day" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="FieldsOfStudies" EntityType="Self.FieldsOfStudy" />
-          <EntitySet Name="Groups" EntityType="Self.Group" />
-          <EntitySet Name="Semesters" EntityType="Self.Semester" />
-          <EntitySet Name="StudentEnrollmentLogs" EntityType="Self.StudentEnrollmentLog" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
-          <EntitySet Name="StudentsGroups" EntityType="Self.StudentsGroup" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="GroupsOfCoursesOverviews" EntityType="Self.GroupsOfCoursesOverview" />
-          <EntitySet Name="SemestersStudentsOverviews" EntityType="Self.SemestersStudentsOverview" />
-          <EntitySet Name="StudentsGroupsOverviews" EntityType="Self.StudentsGroupsOverview" />
-          <AssociationSet Name="FK__Administr__Emplo__24927208" Association="Self.FK__Administr__Emplo__24927208">
-            <End Role="Employees" EntitySet="Employees" />
-            <End Role="Administrators" EntitySet="Administrators" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Courses__FieldOf__29572725" Association="Self.FK__Courses__FieldOf__29572725">
-            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudies" />
-            <End Role="Courses" EntitySet="Courses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Courses__Semeste__286302EC" Association="Self.FK__Courses__Semeste__286302EC">
-            <End Role="Semesters" EntitySet="Semesters" />
-            <End Role="Courses" EntitySet="Courses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Groups__CourseId__2A4B4B5E" Association="Self.FK__Groups__CourseId__2A4B4B5E">
-            <End Role="Courses" EntitySet="Courses" />
-            <End Role="Groups" EntitySet="Groups" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Groups__DayId__2B3F6F97" Association="Self.FK__Groups__DayId__2B3F6F97">
-            <End Role="Days" EntitySet="Days" />
-            <End Role="Groups" EntitySet="Groups" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employees__UserI__239E4DCF" Association="Self.FK__Employees__UserI__239E4DCF">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Employees" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Students__FieldO__267ABA7A" Association="Self.FK__Students__FieldO__267ABA7A">
-            <End Role="FieldsOfStudy" EntitySet="FieldsOfStudies" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudentEn__Group__2D27B809" Association="Self.FK__StudentEn__Group__2D27B809">
-            <End Role="Groups" EntitySet="Groups" />
-            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudentsG__Group__2F10007B" Association="Self.FK__StudentsG__Group__2F10007B">
-            <End Role="Groups" EntitySet="Groups" />
-            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Students__Semest__276EDEB3" Association="Self.FK__Students__Semest__276EDEB3">
-            <End Role="Semesters" EntitySet="Semesters" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudentEn__Index__2C3393D0" Association="Self.FK__StudentEn__Index__2C3393D0">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="StudentEnrollmentLog" EntitySet="StudentEnrollmentLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Students__UserId__25869641" Association="Self.FK__Students__UserId__25869641">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Students" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__StudentsG__Index__2E1BDC42" Association="Self.FK__StudentsG__Index__2E1BDC42">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="StudentsGroups" EntitySet="StudentsGroups" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -869,64 +869,64 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <EntitySetMapping Name="Administrators">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Administrator">
               <MappingFragment StoreEntitySet="Administrators">
-                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="AdministratorId" ColumnName="AdministratorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Course">
               <MappingFragment StoreEntitySet="Courses">
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
                 <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Days">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Day">
               <MappingFragment StoreEntitySet="Days">
-                <ScalarProperty Name="DayId" ColumnName="DayId" />
                 <ScalarProperty Name="DayName" ColumnName="DayName" />
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Employee">
               <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FieldsOfStudies">
             <EntityTypeMapping TypeName="SystemZapisowyModel.FieldsOfStudy">
               <MappingFragment StoreEntitySet="FieldsOfStudy">
+                <ScalarProperty Name="FieldOfStudyName" ColumnName="FieldOfStudyName" />
                 <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Group">
               <MappingFragment StoreEntitySet="Groups">
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="DayId" ColumnName="DayId" />
-                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
-                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
                 <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Semesters">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Semester">
               <MappingFragment StoreEntitySet="Semesters">
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
                 <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -934,91 +934,91 @@ warning 6002: The table/view 'SystemZapisowy.dbo.StudentsGroupsOverview' does no
           <EntitySetMapping Name="StudentEnrollmentLogs">
             <EntityTypeMapping TypeName="SystemZapisowyModel.StudentEnrollmentLog">
               <MappingFragment StoreEntitySet="StudentEnrollmentLog">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
                 <ScalarProperty Name="DateOfOperation" ColumnName="DateOfOperation" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="SystemZapisowyModel.Student">
               <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
-                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
-                <ScalarProperty Name="YearOfCollege" ColumnName="YearOfCollege" />
-                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="YearOfCollege" ColumnName="YearOfCollege" />
+                <ScalarProperty Name="FieldOfStudyId" ColumnName="FieldOfStudyId" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentsGroups">
             <EntityTypeMapping TypeName="SystemZapisowyModel.StudentsGroup">
               <MappingFragment StoreEntitySet="StudentsGroups">
-                <ScalarProperty Name="StudentsGroupsId" ColumnName="StudentsGroupsId" />
-                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="StudentsGroupsId" ColumnName="StudentsGroupsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="SystemZapisowyModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GroupsOfCoursesOverviews">
             <EntityTypeMapping TypeName="SystemZapisowyModel.GroupsOfCoursesOverview">
               <MappingFragment StoreEntitySet="GroupsOfCoursesOverview">
-                <ScalarProperty Name="Course" ColumnName="Course" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
-                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
-                <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+                <ScalarProperty Name="FieldOfStudyName" ColumnName="FieldOfStudyName" />
                 <ScalarProperty Name="DayName" ColumnName="DayName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SemestersStudentsOverviews">
             <EntityTypeMapping TypeName="SystemZapisowyModel.SemestersStudentsOverview">
               <MappingFragment StoreEntitySet="SemestersStudentsOverview">
-                <ScalarProperty Name="Semester" ColumnName="Semester" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentsGroupsOverviews">
             <EntityTypeMapping TypeName="SystemZapisowyModel.StudentsGroupsOverview">
               <MappingFragment StoreEntitySet="StudentsGroupsOverview">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="DayName" ColumnName="DayName" />
-                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
                 <ScalarProperty Name="OccupiedSeats" ColumnName="OccupiedSeats" />
-                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="MaximumSeats" ColumnName="MaximumSeats" />
+                <ScalarProperty Name="FieldOfStudyName" ColumnName="FieldOfStudyName" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="DayName" ColumnName="DayName" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Coursename" ColumnName="Coursename" />
+                <ScalarProperty Name="IndexNumber" ColumnName="IndexNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

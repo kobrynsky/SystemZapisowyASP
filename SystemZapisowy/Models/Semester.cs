@@ -22,7 +22,7 @@ namespace SystemZapisowy.Models
         }
     
         public int SemesterId { get; set; }
-        public string Name { get; set; }
+        public string SemesterName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }

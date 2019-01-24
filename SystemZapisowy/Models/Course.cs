@@ -21,7 +21,7 @@ namespace SystemZapisowy.Models
         }
     
         public int CourseId { get; set; }
-        public string Name { get; set; }
+        public string CourseName { get; set; }
         public int SemesterId { get; set; }
         public int FieldOfStudyId { get; set; }
     

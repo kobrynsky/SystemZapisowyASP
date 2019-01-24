@@ -31,15 +31,15 @@ else
                 <td>
                     @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
                     {
-                        @Html.ActionLink(course.Name, "Edit", "Courses", new { id = course.CourseId }, null)
+                        @Html.ActionLink(course.CourseName, "Edit", "Courses", new { id = course.CourseId }, null)
                     }
                     else
                     {
-                        @course.Name
+                        @course.CourseName
                     }
                 </td>
-                <td>@course.FieldsOfStudy.Name</td>
-                <td>@course.Semester.Name</td>
+                <td>@course.FieldsOfStudy.FieldOfStudyName</td>
+                <td>@course.Semester.SemesterName</td>
                 @if (Session["Type"] == "Employee" || Session["Type"] == "Administrator")
                 {
                     // tbh nie wiem jak to ładnie zrobić bez ajaxa. Powinien alert wyskoczyć, że nie można usunać grupy jak są osoby w danej grupie.

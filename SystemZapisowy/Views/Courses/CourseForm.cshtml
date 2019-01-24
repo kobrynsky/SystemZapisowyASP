@@ -8,21 +8,21 @@
 @using (@Html.BeginForm("Save", "Courses"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Course.Name)
-        @Html.TextBoxFor(m => m.Course.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Course.Name)
+        @Html.LabelFor(m => m.Course.CourseName)
+        @Html.TextBoxFor(m => m.Course.CourseName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Course.CourseName)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Course.FieldOfStudyId)
-        @Html.DropDownListFor(m => m.Course.FieldOfStudyId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "Name"), "Select the field of study", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Course.FieldOfStudyId, new SelectList(Model.FieldsOfStudy, "FieldOfStudyId", "FieldOfStudyName"), "Select the field of study", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Course.FieldOfStudyId)
 
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Course.SemesterId)
-        @Html.DropDownListFor(m => m.Course.SemesterId, new SelectList(Model.Semesters, "SemesterId", "Name"), "Select the semester", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.Course.SemesterId, new SelectList(Model.Semesters, "SemesterId", "SemesterName"), "Select the semester", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Course.SemesterId)
     </div>
     @Html.HiddenFor(m => m.Course.CourseId)

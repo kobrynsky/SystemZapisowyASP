@@ -15,7 +15,7 @@ namespace SystemZapisowy.ViewModels.Course
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string CourseName { get; set; }
 
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }

@@ -14,7 +14,7 @@ namespace SystemZapisowy.Models
     
     public partial class SemestersStudentsOverview
     {
-        public string Semester { get; set; }
+        public string SemesterName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public decimal IndexNumber { get; set; }

@@ -51,7 +51,7 @@ namespace SystemZapisowy.Controllers
             }
             else
             {
-                var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.Name, c => c.FieldsOfStudy.Name);
+                var model = _unitOfWork.Courses.GetOrdered(c => c.Semester.SemesterName, c => c.FieldsOfStudy.FieldOfStudyName);
                 return View(model);
             }
         }

@@ -14,13 +14,13 @@ namespace SystemZapisowy.Models
     
     public partial class GroupsOfCoursesOverview
     {
-        public string Course { get; set; }
+        public string CourseName { get; set; }
         public string Type { get; set; }
         public System.TimeSpan StartTime { get; set; }
         public string Teacher { get; set; }
         public int MaximumSeats { get; set; }
         public int OccupiedSeats { get; set; }
         public string DayName { get; set; }
-        public string Name { get; set; }
+        public string FieldOfStudyName { get; set; }
     }
 }

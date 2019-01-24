@@ -19,12 +19,12 @@ namespace SystemZapisowy.Repository
 
         public IEnumerable<Course> GetCoursesOfAFieldOfStudy(int fieldOfStudyId)
         {
-            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId).OrderBy(c => c.SemesterId).ThenBy(c => c.Name).ToList();
+            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId).OrderBy(c => c.SemesterId).ThenBy(c => c.CourseName).ToList();
         }
 
         public IEnumerable<Course> GetCoursesOfAFieldOfStudy(int fieldOfStudyId, int semesterId)
         {
-            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId && c.SemesterId == semesterId).OrderBy(c => c.Name).ToList();
+            return Context.Set<Course>().Where(c => c.FieldOfStudyId == fieldOfStudyId && c.SemesterId == semesterId).OrderBy(c => c.CourseName).ToList();
         }
     }
 }
