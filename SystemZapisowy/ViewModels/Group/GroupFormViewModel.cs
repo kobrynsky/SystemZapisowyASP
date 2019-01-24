@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using SystemZapisowy.Models;
+using SystemZapisowy.ViewModels.Course;
+using SystemZapisowy.ViewModels.Day;
 
 namespace SystemZapisowy.ViewModels.Group
 {
     public class GroupFormViewModel
     {
-        public IEnumerable<Day> Days { get; set; }
-        public IEnumerable<Models.Course> Courses { get; set; }
+        public IEnumerable<DayViewModel> Days { get; set; }
+        public IEnumerable<CourseViewModel> Courses { get; set; }
 
         [Display(Name = "Group Code")]
         public int GroupId { get; set; }
@@ -21,7 +22,6 @@ namespace SystemZapisowy.ViewModels.Group
 
         [Required]
         [Display(Name = "Start time")]
-        //[DisplayFormat(DataFormatString = "{0:hh\\:mm")]
         public System.TimeSpan StartTime { get; set; }
 
         [Display(Name = "Day")]
@@ -32,13 +32,5 @@ namespace SystemZapisowy.ViewModels.Group
         public string Teacher { get; set; }
 
         public int MaximumSeats { get; set; }
-
-        //public int OccupiedSeats { get; set; }
-        //public virtual Models.Course Cours { get; set; }
-        //public virtual Day Day { get; set; }
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<StudentEnrollmentLog> StudentEnrollmentLogs { get; set; }
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<StudentsGroup> StudentsGroups { get; set; }
     }
 }

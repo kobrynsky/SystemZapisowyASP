@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections;
+using System.Collections.Generic;
+using AutoMapper;
 using System.Linq;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
@@ -6,6 +8,8 @@ using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
+using SystemZapisowy.ViewModels.Course;
+using SystemZapisowy.ViewModels.Day;
 using SystemZapisowy.ViewModels.Group;
 
 namespace SystemZapisowy.Controllers
@@ -45,23 +49,26 @@ namespace SystemZapisowy.Controllers
             {
                 int userId = int.Parse((string)Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
-                var model = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId, studentInDb.SemesterId);
-                return View(model);
+                var groups = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId, studentInDb.SemesterId);
+                
+                return View(Mapper.Map<IEnumerable<Group>, IEnumerable<GroupViewModel>>(groups));
             }
             else
             {
-                var model = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.FieldOfStudyName,
+                var groups = _unitOfWork.Groups.GetOrdered(g => g.Cours.FieldsOfStudy.FieldOfStudyName,
                     g => g.Cours.Semester.SemesterName);
-                return View(model);
+                return View(Mapper.Map<IEnumerable<Group>, IEnumerable<GroupViewModel>>(groups));
             }
         }
 
         public ActionResult New()
         {
+            var  courses = _unitOfWork.Courses.GetAll();
+            var days = _unitOfWork.Days.GetAll();
             var viewModel = new GroupFormViewModel
             {
-                Courses = _unitOfWork.Courses.GetAll(),
-                Days = _unitOfWork.Days.GetAll()
+                Courses = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseViewModel>>(courses),
+                Days = Mapper.Map<IEnumerable<Day>, IEnumerable<DayViewModel>>(days)
             };
 
             return View("GroupForm", viewModel);
@@ -74,10 +81,13 @@ namespace SystemZapisowy.Controllers
             if (groupInDb == null)
                 return HttpNotFound();
 
+            var courses = _unitOfWork.Courses.GetAll();
+            var days = _unitOfWork.Days.GetAll();
+
             var viewModel = new GroupFormViewModel()
             {
-                Days = _unitOfWork.Days.GetAll(),
-                Courses = _unitOfWork.Courses.GetAll()
+                Courses = Mapper.Map<IEnumerable<Course>, IEnumerable<CourseViewModel>>(courses),
+                Days = Mapper.Map<IEnumerable<Day>, IEnumerable<DayViewModel>>(days)
             };
 
             Mapper.Map(groupInDb, viewModel);

@@ -8,6 +8,8 @@ using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels.Course;
+using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Semester;
 
 namespace SystemZapisowy.Controllers
 {
@@ -62,10 +64,12 @@ namespace SystemZapisowy.Controllers
 
         public ActionResult New()
         {
+            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
+            var semesters = _unitOfWork.Semesters.GetAll();
             var viewModel = new CourseFormViewModel
             {
-                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
-                Semesters = _unitOfWork.Semesters.GetAll()
+                FieldsOfStudy = Mapper.Map<IEnumerable<FieldsOfStudy>, IEnumerable<FieldsOfStudyViewModel>>(fieldsOfStudy),
+                Semesters = Mapper.Map<IEnumerable<Semester>, IEnumerable<SemesterViewModel>>(semesters)
             };
             return View("CourseForm", viewModel);
         }
@@ -77,11 +81,14 @@ namespace SystemZapisowy.Controllers
             if (courseInDb == null)
                 return HttpNotFound();
 
+            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
+            var semesters = _unitOfWork.Semesters.GetAll();
+
             var viewModel = new CourseFormViewModel
             {
                 Course = Mapper.Map<Course, CourseViewModel>(courseInDb),
-                Semesters = _unitOfWork.Semesters.GetAll(),
-                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll()
+                FieldsOfStudy = Mapper.Map<IEnumerable<FieldsOfStudy>, IEnumerable<FieldsOfStudyViewModel>>(fieldsOfStudy),
+                Semesters = Mapper.Map<IEnumerable<Semester>, IEnumerable<SemesterViewModel>>(semesters)
             };
 
 

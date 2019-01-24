@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -7,6 +8,8 @@ using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels;
+using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Semester;
 using SystemZapisowy.ViewModels.User.Administrator;
 using SystemZapisowy.ViewModels.User.Employee;
 using SystemZapisowy.ViewModels.User.Student;
@@ -79,10 +82,13 @@ namespace SystemZapisowy.Services
 
         public RegisterStudentViewModel GetRegisterStudentViewModelWithBasicData()
         {
+            var fieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll();
+            var semesters = _unitOfWork.Semesters.GetAll();
+
             var model = new RegisterStudentViewModel()
             {
-                FieldsOfStudy = _unitOfWork.FieldsOfStudy.GetAll(),
-                Semesters = _unitOfWork.Semesters.GetAll()
+                FieldsOfStudy = Mapper.Map<IEnumerable<FieldsOfStudy>, IEnumerable<FieldsOfStudyViewModel>>(fieldsOfStudy),
+                Semesters = Mapper.Map<IEnumerable<Semester>, IEnumerable<SemesterViewModel>>(semesters)
             };
             return model;
         }

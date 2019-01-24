@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
+using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Semester;
 
 namespace SystemZapisowy.ViewModels.User.Student
 {
@@ -23,11 +25,11 @@ namespace SystemZapisowy.ViewModels.User.Student
         [Required]
         [Display(Name = "Semester")]
         public int SemesterId { get; set; }
-        public IEnumerable<Semester> Semesters { get; set; }
+        public IEnumerable<SemesterViewModel> Semesters { get; set; }
 
         [Required]
         [Display(Name = "Field of study")]
         public int FieldOfStudyId { get; set; }
-        public IEnumerable<FieldsOfStudy> FieldsOfStudy{ get; set; }
+        public IEnumerable<FieldsOfStudyViewModel> FieldsOfStudy{ get; set; }
     }
 }

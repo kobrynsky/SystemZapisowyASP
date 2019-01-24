@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using SystemZapisowy.Models;
+using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Semester;
 
 namespace SystemZapisowy.ViewModels.Course
 {
     public class CourseFormViewModel
     {
-        public IEnumerable<FieldsOfStudy> FieldsOfStudy { get; set; }
-        public IEnumerable<Semester> Semesters{ get; set; }
+        public IEnumerable<FieldsOfStudyViewModel> FieldsOfStudy { get; set; }
+        public IEnumerable<SemesterViewModel> Semesters{ get; set; }
         public CourseViewModel Course;
     }
 }

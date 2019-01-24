@@ -163,7 +163,11 @@
     <Compile Include="ViewModels\Course\CourseOverviewViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseFormViewModel.cs" />
+    <Compile Include="ViewModels\Day\DayViewModel.cs" />
+    <Compile Include="ViewModels\FieldOfStudy\FieldsOfStudyViewModel.cs" />
     <Compile Include="ViewModels\Group\GroupFormViewModel.cs" />
+    <Compile Include="ViewModels\Group\GroupViewModel.cs" />
+    <Compile Include="ViewModels\Semester\SemesterViewModel.cs" />
     <Compile Include="ViewModels\User\Administrator\RegisterAdministratorViewModel.cs" />
     <Compile Include="ViewModels\User\Employee\RegisterEmployeeViewModel.cs" />
     <Compile Include="ViewModels\User\Student\RegisterStudentViewModel.cs" />

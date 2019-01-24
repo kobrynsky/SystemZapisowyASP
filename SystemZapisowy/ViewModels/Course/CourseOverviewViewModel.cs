@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using SystemZapisowy.Models;
+using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Group;
+using SystemZapisowy.ViewModels.Semester;
 
 namespace SystemZapisowy.ViewModels.Course
 {
     public class CourseOverviewViewModel
     {
-        public ICollection<Models.Group> Groups { get; set; }
-        public FieldsOfStudy FieldsOfStudy{ get; set; }
-        public Semester Semester { get; set; }
+        public ICollection<GroupViewModel> Groups { get; set; }
+        public FieldsOfStudyViewModel FieldsOfStudy { get; set; }
+        public SemesterViewModel Semester { get; set; }
 
         public int CourseId { get; set; }
 
