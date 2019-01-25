@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
-using SystemZapisowy.ViewModels.FieldOfStudy;
-using SystemZapisowy.ViewModels.Semester;
+using SystemZapisowy.ViewModels.Course;
 using SystemZapisowy.ViewModels.User.Student;
-using AutoMapper;
 
 namespace SystemZapisowy.Controllers
 {
@@ -24,7 +17,7 @@ namespace SystemZapisowy.Controllers
         public StudentsController(IStudentsService studentsService)
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
-            _studentsService= new StudentsService();
+            _studentsService = new StudentsService();
         }
 
         // GET: Students
@@ -32,6 +25,29 @@ namespace SystemZapisowy.Controllers
         {
             var viewModel = _studentsService.GetStudentsWithPersonalInformation();
             return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(StudentWithGroupsViewModel student)
+        {
+            _studentsService.SaveStudent(student);
+            return RedirectToAction("Index", "Students");
+        }
+        
+        public ActionResult Edit(int id)
+        {
+            var viewModel = _studentsService.GetStudentWithGroupsViewModel(id);
+
+            if (viewModel == null) return HttpNotFound();
+
+            return View("StudentGroups", viewModel);
+        }
+
+        public ActionResult SignOutStudent(int groupId, int userId)
+        {
+            _studentsService.SignOutStudent(groupId, userId);
+            return RedirectToAction("Index");
         }
 
 

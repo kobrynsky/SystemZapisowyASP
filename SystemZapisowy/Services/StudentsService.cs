@@ -1,15 +1,15 @@
-﻿using System;
+﻿using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net.Http.Headers;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
 using SystemZapisowy.ViewModels.FieldOfStudy;
+using SystemZapisowy.ViewModels.Group;
 using SystemZapisowy.ViewModels.Semester;
 using SystemZapisowy.ViewModels.User.Student;
-using AutoMapper;
 
 namespace SystemZapisowy.Services
 {
@@ -51,6 +51,34 @@ namespace SystemZapisowy.Services
                 });
             }
             return viewModel.OrderBy(s => s.LastName);
+        }
+
+        public void SaveStudent(StudentWithGroupsViewModel student)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SignOutStudent(int groupId, int userId)
+        {
+            _unitOfWork.Students.SignOutStudentFromGroup(groupId, userId);
+            _unitOfWork.Complete();
+        }
+
+
+        public StudentWithGroupsViewModel GetStudentWithGroupsViewModel(int id)
+        {
+            var student = _unitOfWork.Students.GetStudentByUserId(id);
+            if (student == null) return null;
+
+            var groups = _unitOfWork.Students.GetStudentsGroups(id);
+
+            var viewModel = new StudentWithGroupsViewModel
+            {
+                Student = Mapper.Map<Student, StudentViewModel>(student),
+                Groups = Mapper.Map<IEnumerable<Group>, IEnumerable<GroupViewModel>>(groups)
+            };
+
+            return viewModel;
         }
     }
 }

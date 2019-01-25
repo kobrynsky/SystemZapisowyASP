@@ -173,6 +173,7 @@
     <Compile Include="ViewModels\Semester\SemesterViewModel.cs" />
     <Compile Include="ViewModels\User\Administrator\RegisterAdministratorViewModel.cs" />
     <Compile Include="ViewModels\User\Employee\RegisterEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\User\Student\StudentWithGroupsViewModel.cs" />
     <Compile Include="ViewModels\User\Student\RegisterStudentViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterUserViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -328,6 +329,7 @@
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Groups\GroupForm.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Students\StudentGroups.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

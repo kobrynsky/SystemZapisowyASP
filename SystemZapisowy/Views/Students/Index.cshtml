@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SystemZapisowy.ViewModels.User.Student.StudentViewModel>
+﻿@using System.Web.Mvc.Html
+@model IEnumerable<SystemZapisowy.ViewModels.User.Student.StudentViewModel>
 @{
     ViewBag.Title = "Students";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -27,7 +28,7 @@ else
         @foreach (var student in Model)
         {
             <tr>
-                <td>@student.IndexNumber</td>
+                <td>@Html.ActionLink(student.IndexNumber.ToString(), "Edit", "Students", new { id = student.UserId}, null)</td>
                 <td>@student.LastName</td>
                 <td>@student.FirstName</td>
                 <td>@student.FieldsOfStudy.FieldOfStudyName</td>
