@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SystemZapisowy.ViewModels.User.Student.StudentViewModel>
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Students</h2>
+
+@if (!Model.Any())
+{
+    <p>There are no students yet!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Index Number</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>Field of study</th>
+            <th>Semester</th>
+            <th>Year of college</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.IndexNumber</td>
+                <td>@student.LastName</td>
+                <td>@student.FirstName</td>
+                <td>@student.FieldsOfStudy.FieldOfStudyName</td>
+                <td>@student.Semester.SemesterName</td>
+                <td>@student.YearOfCollege</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

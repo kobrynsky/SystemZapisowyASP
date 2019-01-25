@@ -28,6 +28,9 @@ namespace SystemZapisowy.App_Start
 
             Mapper.CreateMap<Semester, SemesterViewModel>();
 
+            Mapper.CreateMap<Student, StudentViewModel>();
+            Mapper.CreateMap<User, StudentViewModel>().ForMember(x => x.UserId, opt => opt.Ignore());
+
             // ViewModels to Models
             Mapper.CreateMap<CourseViewModel, Course>();
             Mapper.CreateMap<CourseOverviewViewModel, Course>();
@@ -40,6 +43,8 @@ namespace SystemZapisowy.App_Start
             Mapper.CreateMap<FieldsOfStudyViewModel, FieldsOfStudy>();
 
             Mapper.CreateMap<SemesterViewModel, Semester>();
+
+            Mapper.CreateMap<StudentViewModel, Student>();
 
             Mapper.CreateMap<RegisterStudentViewModel, User>();
             Mapper.CreateMap<RegisterStudentViewModel, Student>();

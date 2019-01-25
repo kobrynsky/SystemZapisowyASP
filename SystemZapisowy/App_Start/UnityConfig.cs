@@ -48,6 +48,9 @@ namespace SystemZapisowy
             container.RegisterType<IAccountService, AccountService>();
             container.RegisterType<ICoursesService, CoursesService>();
             container.RegisterType<IGroupsService, GroupsService>();
+            container.RegisterType<IStudentsService, StudentsService>();
+
+
             container.RegisterType<IAdministratorRepository, AdministratorRepository>();
             container.RegisterType<ICourseRepository,CourseRepository>();
             container.RegisterType<IEmployeeRepository,EmployeeRepository>();

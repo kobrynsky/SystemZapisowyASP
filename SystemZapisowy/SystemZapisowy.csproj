@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Models\Course.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
@@ -160,6 +161,8 @@
     <Compile Include="Services\GroupsService.cs" />
     <Compile Include="Services\Interfaces\ICoursesService.cs" />
     <Compile Include="Services\Interfaces\IGroupsService.cs" />
+    <Compile Include="Services\Interfaces\IStudentsService.cs" />
+    <Compile Include="Services\StudentsService.cs" />
     <Compile Include="ViewModels\Course\CourseOverviewViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseViewModel.cs" />
     <Compile Include="ViewModels\Course\CourseFormViewModel.cs" />
@@ -257,6 +260,7 @@
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
+    <Compile Include="ViewModels\User\Student\StudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-readable.css" />
@@ -323,6 +327,7 @@
     <Content Include="Views\Courses\Index.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Groups\GroupForm.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

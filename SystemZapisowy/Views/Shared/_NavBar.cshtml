@@ -15,13 +15,9 @@
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                 <li>@Html.ActionLink("Groups", "Index", "Groups")</li>
-                @if (Session["Type"] == null)
+                @if (Session["Type"] == "Administrator" || Session["Type"] == "Employee")
                 {
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    <li>@Html.ActionLink("Students", "Index", "Students")</li>
                 }
                 @if (Session["Type"] == "Administrator")
                 {
@@ -51,7 +47,14 @@
                 else if (Session["Type"] == "Student")
                 {
                 }
-
+                @if (Session["Type"] == null)
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                }
             </ul>
         </div>
     </div>

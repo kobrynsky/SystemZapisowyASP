@@ -1,6 +1,5 @@
-﻿using System.Collections;
+﻿using AutoMapper;
 using System.Collections.Generic;
-using AutoMapper;
 using System.Linq;
 using System.Web.Mvc;
 using SystemZapisowy.Models;
@@ -50,7 +49,7 @@ namespace SystemZapisowy.Controllers
                 int userId = int.Parse((string)Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
                 var groups = _unitOfWork.Groups.GetGroupsOfAFieldOfStudy(studentInDb.FieldOfStudyId, studentInDb.SemesterId);
-                
+
                 return View(Mapper.Map<IEnumerable<Group>, IEnumerable<GroupViewModel>>(groups));
             }
             else
@@ -63,7 +62,7 @@ namespace SystemZapisowy.Controllers
 
         public ActionResult New()
         {
-            var  courses = _unitOfWork.Courses.GetAll();
+            var courses = _unitOfWork.Courses.GetAll();
             var days = _unitOfWork.Days.GetAll();
             var viewModel = new GroupFormViewModel
             {
@@ -113,7 +112,7 @@ namespace SystemZapisowy.Controllers
             var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
 
             // todo refactor
-            if (studentInDb.StudentsGroups.Any(g => g.GroupId == id  && g.IndexNumber == studentInDb.IndexNumber))
+            if (studentInDb.StudentsGroups.Any(g => g.GroupId == id && g.IndexNumber == studentInDb.IndexNumber))
             {
                 var studentGroup =
                     _unitOfWork.StudentsGroup.Find(g => g.IndexNumber == studentInDb.IndexNumber && g.GroupId == id);

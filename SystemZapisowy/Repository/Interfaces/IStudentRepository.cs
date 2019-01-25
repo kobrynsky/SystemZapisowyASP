@@ -1,4 +1,5 @@
-﻿using SystemZapisowy.Models;
+﻿using System.Collections.Generic;
+using SystemZapisowy.Models;
 
 namespace SystemZapisowy.Repository.Interfaces
 {

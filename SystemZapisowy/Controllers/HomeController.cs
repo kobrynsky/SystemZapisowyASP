@@ -9,12 +9,6 @@ namespace SystemZapisowy.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        // for DI(?)
-        //public HomeController(IUnitOfWork unitOfWork)
-        //{
-        //    _unitOfWork = unitOfWork;
-        //}
-
         public HomeController()
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());

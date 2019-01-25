@@ -25,7 +25,7 @@ namespace SystemZapisowy.Models
         public int FieldOfStudyId { get; set; }
         public int YearOfCollege { get; set; }
         public int SemesterId { get; set; }
-        public int UserId { get; set; }
+        public int UserId { get; set; } 
     
         public virtual FieldsOfStudy FieldsOfStudy { get; set; }
         public virtual Semester Semester { get; set; }
