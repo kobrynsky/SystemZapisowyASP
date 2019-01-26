@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SystemZapisowy.Models;
+﻿using System.Collections.Generic;
 using SystemZapisowy.ViewModels.Course;
 
 namespace SystemZapisowy.Services.Interfaces

@@ -4,41 +4,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Student.FirstName</h2>
-@*<h2>@Model.Student.FirstName @Model.Student.LastName @Model.Student.IndexNumber</h2>
-<h2>@Model.Student.FirstName @Model.Student.LastName @Model.Student.IndexNumber</h2>*@
+<h2>@Model.Student.FirstName @Model.Student.LastName @Model.Student.IndexNumber</h2>
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>GroupID</th>
-            <th>Course</th>
-            <th>Type</th>
-            <th>Start time</th>
-            <th>Day</th>
-            <th>Maximum seats</th>
-            <th>Occupied seats</th>
-            <th>Teacher</th>
-            <th>Management tools</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var m in Model.Groups)
-        {
+@if (!Model.Groups.Any())
+{
+    <p>This student does not belong to any group</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-                <td>@m.GroupId</td>
-                <td>@m.Cours.CourseName</td>
-                <td>@m.Type</td>
-                <td>@m.StartTime</td>
-                <td>@m.Day.DayName</td>
-                <td>@m.MaximumSeats</td>
-                <td>@m.OccupiedSeats</td>
-                <td>@m.Teacher</td>
-                <td>@Html.ActionLink("Sign out", "SignOutStudent", "Students", new { groupId = m.GroupId, userId = Model.Student.UserId  }, new { onclick = "return confirm('Are you sure?');" })</td>
+                <th>GroupID</th>
+                <th>Course</th>
+                <th>Type</th>
+                <th>Start time</th>
+                <th>Day</th>
+                <th>Maximum seats</th>
+                <th>Occupied seats</th>
+                <th>Teacher</th>
+                <th>Management tools</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Groups)
+            {
+                <tr>
+                    <td>@m.GroupId</td>
+                    <td>@m.Cours.CourseName</td>
+                    <td>@m.Type</td>
+                    <td>@m.StartTime</td>
+                    <td>@m.Day.DayName</td>
+                    <td>@m.MaximumSeats</td>
+                    <td>@m.OccupiedSeats</td>
+                    <td>@m.Teacher</td>
+                    <td>@Html.ActionLink("Sign out", "SignOutStudent", "Students", new { groupId = m.GroupId, userId = Model.Student.UserId }, new { onclick = "return confirm('Are you sure?');" })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 @section scripts
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using SystemZapisowy.Models;
-using SystemZapisowy.ViewModels;
 using SystemZapisowy.ViewModels.User.Administrator;
 using SystemZapisowy.ViewModels.User.Employee;
 using SystemZapisowy.ViewModels.User.Student;

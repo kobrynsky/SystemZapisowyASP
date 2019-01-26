@@ -1,7 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Collections;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
@@ -70,13 +70,35 @@ namespace SystemZapisowy.Services
             var student = _unitOfWork.Students.GetStudentByUserId(id);
             if (student == null) return null;
 
+            var userInDb = _unitOfWork.Users.Get(student.UserId);
+
             var groups = _unitOfWork.Students.GetStudentsGroups(id);
 
             var viewModel = new StudentWithGroupsViewModel
             {
-                Student = Mapper.Map<Student, StudentViewModel>(student),
+
+                //todo refactor
+                Student = new StudentViewModel
+                {
+                    UserId = student.UserId,
+                    Semester = Mapper.Map<Semester, SemesterViewModel>(student.Semester),
+                    IndexNumber = student.IndexNumber,
+                    FieldsOfStudy = Mapper.Map<FieldsOfStudy, FieldsOfStudyViewModel>(student.FieldsOfStudy),
+                    YearOfCollege = student.YearOfCollege,
+                    SemesterId = student.SemesterId,
+                    FieldOfStudyId = student.FieldOfStudyId,
+                    PESEL = userInDb.PESEL,
+                    BirthDate = userInDb.BirthDate,
+                    LastName = userInDb.LastName,
+                    FirstName = userInDb.FirstName,
+                    Email = userInDb.Email,
+                    Gender = userInDb.Gender,
+                    Password = userInDb.Password,
+                },
                 Groups = Mapper.Map<IEnumerable<Group>, IEnumerable<GroupViewModel>>(groups)
             };
+
+            
 
             return viewModel;
         }

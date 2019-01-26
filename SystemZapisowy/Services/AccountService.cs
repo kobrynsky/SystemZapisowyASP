@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services.Interfaces;
-using SystemZapisowy.ViewModels;
 using SystemZapisowy.ViewModels.FieldOfStudy;
 using SystemZapisowy.ViewModels.Semester;
 using SystemZapisowy.ViewModels.User.Administrator;
 using SystemZapisowy.ViewModels.User.Employee;
 using SystemZapisowy.ViewModels.User.Student;
-using AutoMapper;
 
 namespace SystemZapisowy.Services
 {

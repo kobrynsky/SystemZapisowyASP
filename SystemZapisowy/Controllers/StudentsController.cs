@@ -1,22 +1,16 @@
 ﻿using System.Web.Mvc;
-using SystemZapisowy.Models;
-using SystemZapisowy.Repository;
-using SystemZapisowy.Repository.Interfaces;
 using SystemZapisowy.Services;
 using SystemZapisowy.Services.Interfaces;
-using SystemZapisowy.ViewModels.Course;
 using SystemZapisowy.ViewModels.User.Student;
 
 namespace SystemZapisowy.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IStudentsService _studentsService;
 
         public StudentsController(IStudentsService studentsService)
         {
-            _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
             _studentsService = new StudentsService();
         }
 
@@ -34,7 +28,7 @@ namespace SystemZapisowy.Controllers
             _studentsService.SaveStudent(student);
             return RedirectToAction("Index", "Students");
         }
-        
+
         public ActionResult Edit(int id)
         {
             var viewModel = _studentsService.GetStudentWithGroupsViewModel(id);
