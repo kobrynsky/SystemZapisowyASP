@@ -18,5 +18,15 @@ namespace SystemZapisowy.Repository
         {
             get { return Context as SystemZapisowyEntities;}
         }
+
+        public void RemoveByGroupId(int groupId)
+        {
+            var logs = SystemZapisowyEntities.StudentEnrollmentLogs.Where(x => x.GroupId == groupId);
+            if (logs.Any())
+            {
+                SystemZapisowyEntities.StudentEnrollmentLogs.RemoveRange(logs);
+                SystemZapisowyEntities.SaveChanges();
+            }
+        }
     }
 }

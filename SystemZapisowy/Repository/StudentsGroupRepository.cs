@@ -42,5 +42,15 @@ namespace SystemZapisowy.Repository
 
             Context.Set<Group>().Find(groupId).OccupiedSeats++; // to pewnie też należy inaczej zapisać
         }
+
+        public void RemoveByGroupId(int groupId)
+        {
+            var studentsGroups = SystemZapisowyEntities.StudentsGroups.Where(x => x.GroupId == groupId);
+            if (studentsGroups.Any())
+            {
+                SystemZapisowyEntities.StudentsGroups.RemoveRange(studentsGroups);
+                SystemZapisowyEntities.SaveChanges();
+            }
+        }
     }
 }

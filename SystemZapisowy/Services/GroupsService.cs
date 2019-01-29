@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using SystemZapisowy.Models;
 using SystemZapisowy.Repository;
 using SystemZapisowy.Repository.Interfaces;
@@ -87,11 +88,14 @@ namespace SystemZapisowy.Services
         public void Delete(int id)
         {
             var groupInDb = _unitOfWork.Groups.Get(id);
-            if (groupInDb.OccupiedSeats == 0)
+            if (groupInDb.OccupiedSeats != 0)
             {
-                _unitOfWork.Groups.Remove(groupInDb);
-                _unitOfWork.Complete();
+                _unitOfWork.Logs.RemoveByGroupId(id);
+                _unitOfWork.StudentsGroup.RemoveByGroupId(id);
             }
+
+            _unitOfWork.Groups.Remove(groupInDb);
+            _unitOfWork.Complete();
         }
 
         public void SignUp(int id)

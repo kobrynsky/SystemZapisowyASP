@@ -9,5 +9,6 @@ namespace SystemZapisowy.Repository.Interfaces
 {
     public interface IStudentEnrollmentLogRepository: IRepository<StudentEnrollmentLog>
     {
+        void RemoveByGroupId(int groupId);
     }
 }

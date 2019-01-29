@@ -16,10 +16,12 @@ namespace SystemZapisowy.Services
     public class CoursesService : ICoursesService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IGroupsService _groupsService;
 
         public CoursesService()
         {
             _unitOfWork = new UnitOfWork(new SystemZapisowyEntities());
+            _groupsService = new GroupsService();
         }
 
         public IEnumerable<CourseOverviewViewModel> GetCoursesOverviewViewModel()
@@ -80,11 +82,15 @@ namespace SystemZapisowy.Services
         {
             // Czy jest sens drugi raz sprawdzać czy ten kurs ma jakieś grupy? Widok by nas nie puścił.
             var courseInDb = _unitOfWork.Courses.Get(id);
-            if (courseInDb.Groups.Count == 0)
+            if (courseInDb.Groups.Count != 0)
             {
-                _unitOfWork.Courses.Remove(courseInDb);
-                _unitOfWork.Complete();
+                foreach (var group in courseInDb.Groups)
+                {
+                    _groupsService.Delete(group.GroupId); 
+                }
             }
+            _unitOfWork.Courses.Remove(courseInDb);
+            _unitOfWork.Complete();
         }
 
         public void SaveCourse(CourseViewModel course)
