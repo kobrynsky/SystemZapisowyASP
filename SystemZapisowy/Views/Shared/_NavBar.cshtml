@@ -15,7 +15,7 @@
                 <li id="groups">@Html.ActionLink("Groups", "Index", "Groups")</li>
                 @if (Session["Type"] == "Administrator" || Session["Type"] == "Employee")
                 {
-                    <li>@Html.ActionLink("Students", "Index", "Students")</li>
+                    <li id="students">@Html.ActionLink("Students", "Index", "Students")</li>
                 }
                 @if (Session["Type"] == "Administrator")
                 {
@@ -51,7 +51,7 @@
                 }
                 else
                 {
-                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    <li id="logout">@Html.ActionLink("Logout", "Logout", "Account")</li>
                 }
             </ul>
         </div>

@@ -28,8 +28,8 @@ else
         @foreach (var student in Model)
         {
             <tr>
-                <td>@Html.ActionLink(student.IndexNumber.ToString(), "Edit", "Students", new { id = student.UserId}, null)</td>
-                <td>@student.LastName</td>
+                <td>@Html.ActionLink(student.IndexNumber.ToString(), "Edit", "Students", new { id = student.UserId }, null)</td>
+                <td>@Html.ActionLink(student.LastName, "Edit", "Students", new { id = student.UserId }, null)</td>
                 <td>@student.FirstName</td>
                 <td>@student.FieldsOfStudy.FieldOfStudyName</td>
                 <td>@student.Semester.SemesterName</td>

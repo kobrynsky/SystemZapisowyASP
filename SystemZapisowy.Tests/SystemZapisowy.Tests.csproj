@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UI\Data.cs" />
+    <Compile Include="UI\BaseSeleniumTestClass.cs" />
+    <Compile Include="UI\Helpers\Logger.cs" />
+    <Compile Include="UI\Helpers\Screenshooter.cs" />
     <Compile Include="UI\SystemZapisowyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
