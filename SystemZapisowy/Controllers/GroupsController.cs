@@ -15,7 +15,7 @@ namespace SystemZapisowy.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Save(GroupFormViewModel group)
         {
             _groupsService.Save(group);

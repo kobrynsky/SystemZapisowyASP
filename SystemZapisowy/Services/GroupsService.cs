@@ -38,7 +38,7 @@ namespace SystemZapisowy.Services
 
         public IEnumerable<GroupViewModel> GetGroups()
         {
-            if (Current.Session["Type"] == "Student")
+            if (Current.Session["Type"].Equals("Student"))
             {
                 int userId = int.Parse((string)Current.Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();

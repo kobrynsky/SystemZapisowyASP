@@ -15,7 +15,7 @@ namespace SystemZapisowy.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Save(CourseViewModel course)
         {
             _coursesService.SaveCourse(course);

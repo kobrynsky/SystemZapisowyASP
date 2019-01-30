@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemZapisowy", "SystemZapisowy\SystemZapisowy.csproj", "{6BE75F82-3B8B-4263-A184-9DDF150173D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemZapisowy.Tests", "SystemZapisowy.Tests\SystemZapisowy.Tests.csproj", "{6DC29CAD-4F69-41A3-A26C-FBDD3DD5B4CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6BE75F82-3B8B-4263-A184-9DDF150173D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE75F82-3B8B-4263-A184-9DDF150173D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE75F82-3B8B-4263-A184-9DDF150173D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC29CAD-4F69-41A3-A26C-FBDD3DD5B4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC29CAD-4F69-41A3-A26C-FBDD3DD5B4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC29CAD-4F69-41A3-A26C-FBDD3DD5B4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC29CAD-4F69-41A3-A26C-FBDD3DD5B4CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
