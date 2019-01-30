@@ -11,8 +11,8 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                <li>@Html.ActionLink("Groups", "Index", "Groups")</li>
+                <li id="courses">@Html.ActionLink("Courses", "Index", "Courses")</li>
+                <li id="groups">@Html.ActionLink("Groups", "Index", "Groups")</li>
                 @if (Session["Type"] == "Administrator" || Session["Type"] == "Employee")
                 {
                     <li>@Html.ActionLink("Students", "Index", "Students")</li>

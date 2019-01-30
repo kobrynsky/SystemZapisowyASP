@@ -38,7 +38,7 @@ namespace SystemZapisowy.Services
 
         public IEnumerable<GroupViewModel> GetGroups()
         {
-            if (Current.Session["Type"].Equals("Student"))
+            if (Current.Session["Type"] == ("Student"))
             {
                 int userId = int.Parse((string)Current.Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
@@ -88,11 +88,9 @@ namespace SystemZapisowy.Services
         public void Delete(int id)
         {
             var groupInDb = _unitOfWork.Groups.Get(id);
-            if (groupInDb.OccupiedSeats != 0)
-            {
-                _unitOfWork.Logs.RemoveByGroupId(id);
-                _unitOfWork.StudentsGroup.RemoveByGroupId(id);
-            }
+
+            _unitOfWork.Logs.RemoveByGroupId(id);
+            _unitOfWork.StudentsGroup.RemoveByGroupId(id);
 
             _unitOfWork.Groups.Remove(groupInDb);
             _unitOfWork.Complete();

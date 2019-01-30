@@ -20,7 +20,8 @@ namespace SystemZapisowy.Tests.UI
         private readonly string screenShotPath = "E:\\Programowanie\\Projekty\\C# VisualStudio\\SystemZapisowy\\SystemZapisowy.Tests\\Content\\images\\";
         private readonly string logPath = "E:\\Programowanie\\Projekty\\C# VisualStudio\\SystemZapisowy\\SystemZapisowy.Tests\\Content\\logs\\";
         private readonly string url = "http://localhost:55648/";
-        private readonly int delay = 1000;
+        private readonly int delay = 500;
+        private readonly int delayLonger = 2000;
 
         [TestMethod]
         public void Login()
@@ -33,11 +34,17 @@ namespace SystemZapisowy.Tests.UI
                 var loginButton = driver.FindElement(By.Id("login"));
                 loginButton.Click();
 
+                Thread.Sleep(delay);
+
                 var emailInput = driver.FindElement(By.Id("Email"));
                 emailInput.SendKeys("administrator@gmai.com");
 
+                Thread.Sleep(delay);
+
                 var passwordInput = driver.FindElement(By.Id("Password"));
                 passwordInput.SendKeys("123");
+
+                Thread.Sleep(delay);
 
                 var submitButton = driver.FindElement(By.Id("submit"));
                 submitButton.Click();
@@ -62,9 +69,6 @@ namespace SystemZapisowy.Tests.UI
 
             try
             {
-//                driver.Navigate().GoToUrl(url + "GroupForm/");
-//                driver.Manage().Window.Maximize();
-
                 var addButton = driver.FindElement(By.ClassName("dropdown-toggle"));
                 addButton.Click();
 
@@ -115,9 +119,9 @@ namespace SystemZapisowy.Tests.UI
                 Thread.Sleep(delay);
 
                 wait = new WebDriverWait(driver, new TimeSpan(0, 0, 5));
-                wait.Until(wt => wt.FindElement(By.Id("home-index-div")));
+                wait.Until(wt => wt.FindElement(By.LinkText("Groups")));
 
-                Thread.Sleep(5000);
+                Thread.Sleep(delayLonger);
             }
             catch (Exception e)
             {
@@ -126,6 +130,39 @@ namespace SystemZapisowy.Tests.UI
                 driver.Quit();
             }
         }
+
+        [TestMethod]
+        public void DeleteGroup()
+        {
+            Login();
+
+            try
+            {
+                var groupsButton = driver.FindElement(By.Id("groups"));
+                groupsButton.Click();
+
+                Thread.Sleep(delayLonger);
+
+
+                var deleteCell = driver.FindElement(By.LinkText("Delete"));
+                deleteCell.Click();
+
+                Thread.Sleep(delayLonger);
+
+                IAlert alert = driver.SwitchTo().Alert();
+                Thread.Sleep(delayLonger);
+                alert.Accept();
+
+                Thread.Sleep(delayLonger);
+            }
+            catch (Exception e)
+            {
+                SaveLog(e, "CheckAddedGroup");
+                SaveScreenShot("CheckAddedGroup");
+                driver.Quit();
+            }
+        }
+
 
 
         private void SaveLog(Exception exception, string methodName)
@@ -157,7 +194,7 @@ namespace SystemZapisowy.Tests.UI
                 var fileName = methodName + "-" + DateTime.Now.ToString("yyyyMMddTHHmmss") + ".png";
                 screenshot.SaveAsFile((screenShotPath + fileName), ScreenshotImageFormat.Png);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Write(e.StackTrace);
             }

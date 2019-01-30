@@ -26,7 +26,7 @@ namespace SystemZapisowy.Services
 
         public IEnumerable<CourseOverviewViewModel> GetCoursesOverviewViewModel()
         {
-            if (Current.Session["Type"].Equals("Student"))
+            if (Current.Session["Type"] == ("Student"))
             {
                 int userId = int.Parse((string)Current.Session["UserId"]);
                 var studentInDb = _unitOfWork.Students.Find(s => s.UserId == userId).Single();
@@ -82,13 +82,12 @@ namespace SystemZapisowy.Services
         {
             // Czy jest sens drugi raz sprawdzać czy ten kurs ma jakieś grupy? Widok by nas nie puścił.
             var courseInDb = _unitOfWork.Courses.Get(id);
-            if (courseInDb.Groups.Count != 0)
+
+            foreach (var group in courseInDb.Groups)
             {
-                foreach (var group in courseInDb.Groups)
-                {
-                    _groupsService.Delete(group.GroupId); 
-                }
+                _groupsService.Delete(group.GroupId);
             }
+
             _unitOfWork.Courses.Remove(courseInDb);
             _unitOfWork.Complete();
         }
