@@ -1,10 +1,10 @@
 # SystemZapisowyASP
 
-Projekt napisany na kurs Bazy Danych 2. Jest to uproszczony system do zarządzania zapisami na uczelni wyższej.
+The project was written for the University's Database course. It is a simplified system for managing enrolment at the university. 
 
-Autorzy: [Paweł Kobryński](https://github.com/blc132)  i [Szymon Pituła](https://github.com/JJMPdsk) 
+Authors: [Paweł Kobryński](https://github.com/blc132) and [Szymon Pituła](https://github.com/JJMPdsk) 
 
-Użyte technologie:
+The technology used:
   - ASP.NET MVC 5
   - EntityFramework
   - HTML, CSS, JS, Bootstrap
