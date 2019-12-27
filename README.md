@@ -8,3 +8,25 @@ The technology used:
   - ASP.NET MVC 5
   - EntityFramework
   - HTML, CSS, JS, Bootstrap
+
+## Screenshots
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/1_StronaGlowna.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/1_StronaGlownaAdmin.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/2_Courses.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/3_Groups.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/4_Students.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/5_Add.png)
+
+![](https://raw.githubusercontent.com/blc132/SystemZapisowyASP/dev/images/6_StudentGroups.png)
+
+------------
+
+#### This project was written with ❤️.
+
+
+##### XD Driven Development
